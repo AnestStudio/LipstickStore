@@ -1,6 +1,8 @@
 package org.anest.mystore.controller;
 
+import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Product;
+import org.anest.mystore.service.BrandService;
 import org.anest.mystore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,16 +17,19 @@ import java.util.List;
 public class ProductController {
 
     private ProductService productService;
+    private BrandService brandService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, BrandService brandService) {
         this.productService = productService;
+        this.brandService = brandService;
     }
 
     @GetMapping("/")
     public String index(Model model) {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
+        model.addAttribute("title", "Danh sách sản phẩm");
         return "layout";
     }
 
@@ -32,13 +37,16 @@ public class ProductController {
     public String findByType(@PathVariable Long categoryId, Model model) {
         List<Product> products = productService.findByCategoryCategoryId(categoryId);
         model.addAttribute("products", products);
+        model.addAttribute("title", "Danh sách sản phẩm");
         return "layout";
     }
 
     @GetMapping("/lipstick-brand/{brandId}")
     public String findByBrand(@PathVariable Long brandId, Model model) {
         List<Product> products = productService.findByBrandBrandId(brandId);
+        Brand brand = brandService.findByBrandId(brandId);
         model.addAttribute("products", products);
+        model.addAttribute("title", "Thương hiệu " + brand.getBrandName());
         return "layout";
     }
 
@@ -49,7 +57,7 @@ public class ProductController {
         return "layout";
     }
 
-    @GetMapping("/product-detail/{productId}")
+    @GetMapping("/detail/{productId}")
     public String productDetail(@PathVariable Long productId, Model model) {
         return "layout";
     }
