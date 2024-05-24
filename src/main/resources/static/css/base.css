@@ -1,0 +1,153 @@
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+
+/**
+ * Icon ----------------------------------------------------------------------------------------------------------------
+ */
+
+.bi {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentcolor;
+}
+
+
+/**
+ * Dropdown ------------------------------------------------------------------------------------------------------------
+ */
+
+.dropdown-menu .active .bi {
+  display: block !important;
+}
+
+.dropdown-menu {
+  font-size: 15px;
+}
+
+.dropdown-toggle::after {
+  vertical-align: .2em;
+}
+
+nav .key-search {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+
+/**
+ * Nav -----------------------------------------------------------------------------------------------------------------
+ */
+
+nav .navbar {
+  --bs-navbar-nav-link-padding-x: 0.65rem
+}
+
+nav .navbar sup {
+  top: -0.75em;
+  right: 2px;
+}
+
+nav .navbar .badge {
+  --bs-badge-padding-x: 0.55em;
+}
+
+
+/**
+ * Sub nav -------------------------------------------------------------------------------------------------------------
+ */
+
+.fix-sub-nav {
+  margin-top: 98px;
+}
+
+.sub-nav .nav-link {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.sub-nav .nav-underline .nav-link.active,
+.nav-underline .show > .nav-link {
+  font-weight: 400;
+}
+
+
+/**
+ * Footer --------------------------------------------------------------------------------------------------------------
+ */
+
+#footer .f-top {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+#footer .f-top img {
+  height: 45px;
+  margin-bottom: 7px;
+}
+
+#footer h6 {
+  margin-bottom: 13px;
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+#footer h6:hover {
+  color: #ffcf5c;
+}
+
+#footer .info ul,
+#footer .social ul {
+  padding: 0;
+}
+
+#footer .info ul li,
+#footer .social ul li {
+  list-style: none;
+  padding: .15rem 0;
+}
+
+#footer .course ul {
+  padding-left: 18px;
+}
+
+#footer .course ul li {
+  padding: .15rem 0;
+}
+
+#footer .social ul li a {
+  margin-right: 16px;
+}
+
+#footer .social ul li a:hover {
+  text-decoration: none;
+}
+
+#footer .social ul li a i {
+  font-size: 40px;
+}
+
+#footer .social ul li a.btn i {
+  font-size: 16px;
+}
+
+@media (max-width: 575.98px) {
+  #footer .f-top {
+    padding: 3rem 0 2.5rem;
+  }
+}

@@ -1,0 +1,34 @@
+/**
+ * Products ------------------------------------------------------------------------------------------------------------
+ */
+
+#products .product-title a {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  height: 60px;
+}
+
+#products .product-title a:hover {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+}
+
+#products .product-price {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#products .card {
+  border: none;
+  margin-bottom: 20px;
+}
+
+#products .card img {
+  border-radius: var(--bs-card-inner-border-radius);
+}
+
+
+/**
+ * Products ------------------------------------------------------------------------------------------------------------
+ */

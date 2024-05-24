@@ -1,0 +1,12 @@
+.cart table tr td i {
+  font-size: 21px;
+}
+
+.cart table tr td i:hover {
+  cursor: pointer;
+  color: #0dcaf0;
+}
+
+.cart .table > :not(caption) > * > * {
+  padding: 16px;
+}

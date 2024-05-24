@@ -35,6 +35,13 @@ public class ProductController {
         return "layout";
     }
 
+    @GetMapping("/lipstick-brand/{brandId}")
+    public String findByBrand(@PathVariable Long brandId, Model model) {
+        List<Product> products = productService.findByBrandBrandId(brandId);
+        model.addAttribute("products", products);
+        return "layout";
+    }
+
     @GetMapping("/search")
     public String searchByName(@RequestParam String productName, Model model) {
         List<Product> products = productService.findByProductNameContaining(productName);
@@ -42,8 +49,8 @@ public class ProductController {
         return "layout";
     }
 
-    @GetMapping("/detail")
-    public String detail() {
-        return "detail";
+    @GetMapping("/product-detail/{productId}")
+    public String productDetail(@PathVariable Long productId, Model model) {
+        return "layout";
     }
 }

@@ -12,5 +12,7 @@ public interface ProductService {
 
     List<Product> findByCategoryCategoryId(Long id);
 
+    List<Product> findByBrandBrandId(Long id);
+
     List<Product> findByProductNameContaining(String productName);
 }
