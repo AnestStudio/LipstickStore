@@ -1,0 +1,19 @@
+<div class="container mt-5" th:fragment="products">
+  <div class="row">
+    <div class="col-md-3 mb-5" th:each="product : ${products}">
+      <div class="card">
+        <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="card-title" style="height: 78px" th:text="*{product.productName}"></h6>
+          <div class="price text-center mb-3 fw-bold text-danger">
+            <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+          </div>
+          <div class="text-center">
+            <a href="#" class="btn btn-danger">Mua ngay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

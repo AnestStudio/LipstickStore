@@ -1,0 +1,16 @@
+.card {
+    border-color: transparent;
+}
+
+nav.navbar .navbar-brand {
+    color: #fff;
+    font-size: 24px;
+}
+
+nav.navbar .form-control {
+    border-color: #fff;
+}
+
+nav.navbar .navbar-nav .nav-item .nav-link {
+    color: #fff;
+}
