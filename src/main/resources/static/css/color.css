@@ -1,0 +1,25 @@
+html[data-bs-theme='light'] {
+  --sub-nav-border-color: #c7c7c7;
+
+  /* border-color ------------------------------------ */
+  --primary-border-color: transparent;
+  --secondary-border-color: #E4E6EB;
+  --third-border-color: #D5D6DB;
+
+  /* button-background-color ------------------------- */
+  --primary-button-background-color: #FFFFFF;
+  --secondary-button-background-color: #E4E6EB;
+}
+
+html[data-bs-theme='dark'] {
+  --sub-nav-border-color: #676f79;
+
+  /* border-color ------------------------------------ */
+  --primary-border-color: transparent;
+  --secondary-border-color: #3A3B3C;
+  --third-border-color: #4E4F50;
+
+  /* button-background-color ------------------------- */
+  --primary-button-background-color: #242526;
+  --secondary-button-background-color: #3A3B3C;
+}

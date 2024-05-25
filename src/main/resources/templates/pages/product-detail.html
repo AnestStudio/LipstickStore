@@ -5,44 +5,85 @@
       layout:decorate="~{layout.html}">
 <head>
   <title>Product detail</title>
+  <link rel="stylesheet" th:href="@{/css/product-detail.css}"/>
 </head>
 <body>
 <th:block layout:fragment="content">
-  <div class="container py-5 product-detail">
+  <div class="container product-detail">
     <div class="row">
       <div class="col-12 col-md-6">
-        <img th:src="@{'/images/products/' + ${product.productImage}}" class="card-img-top rounded-3" alt="...">
-      </div>
-      <div class="col-12 ps-5 col-md-6">
-        <h2 class="name" th:text="${product.productName}"></h2>
-        <h4 class="price">
-          <span th:text="${#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
-        </h4>
-        <div class="quantity">
-          <form>
-            <div class="row g-1 align-items-center mt-3">
-              <div class="col-auto">
-                <label class="col-form-label">Số lượng</label>
-              </div>
-              <div class="col-auto">
-                <label style="width: 92px">
-                  <input type="number" min="0" class="form-control ms-1" id="quantity" value="1"/>
-                </label>
-              </div>
-              <div class="col-auto ms-3">
-                <label class="col-form-label">22 sản phẩm có sẵn</label>
-              </div>
-            </div>
-            <div class="mt-3 mb-5">
-              <button class="btn btn-success me-2" th:onclick="'javascript:addToCart(' + ${product.productId} + ')'"
-                      type="button">Thêm vào giỏ hàng
-              </button>
-              <button class="btn btn-info" name="btnBuyNow" type="submit">Mua ngay</button>
-            </div>
-          </form>
+        <div class="product-detail-image">
+          <img th:src="@{'/images/products/' + ${product.productImage}}" class="card-img-top rounded-3" alt="...">
         </div>
-        <div class="description">
-          <p th:text="${product.productDescription}"></p>
+      </div>
+      <div class="col-12 col-md-6 left">
+        <div class="product-detail-info">
+          <h3 class="product-name" th:text="${product.productName}"></h3>
+          <h4 class="product-price text-danger">
+            <span th:text="${#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+          </h4>
+          <div class="product-description">
+            <p th:text="${product.productDescription}"></p>
+          </div>
+          <div class="product-quantity">
+            <form>
+              <div class="row mt-3">
+                <div class="col-auto">
+                  <label class="col-form-label">Số lượng</label>
+                </div>
+                <div class="col-auto">
+                  <div class="quantity-group">
+                    <div>
+                      <a href="javascript:void(0)" class="btn-change-quantity btn-dash">
+                        <i class="bi bi-dash-lg text-success"></i>
+                      </a>
+                      <label>
+                        <input class="quantity-number" type="text" name="quantity-number" th:value="2" />
+                      </label>
+                      <a href="javascript:void(0)" class="btn-change-quantity btn-plus">
+                        <i class="bi bi-plus-lg text-success"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto ms-3">
+                  <label class="col-form-label" th:text="${product.productQuantity} + ' sản phẩm có sẵn'"></label>
+                </div>
+              </div>
+              <div class="mt-4">
+                <button class="btn btn-danger me-2" name="btn-buy-now" type="submit">
+                  <i class="far fa-credit-card me-2"></i>Mua ngay
+                </button>
+                <button class="btn btn-success"
+                        th:onclick="'javascript:addToCart(' + ${product.productId} + ')'"
+                        type="button"><i class="fas fa-cart-plus me-2"></i>Thêm vào giỏ hàng
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="support bg-warning bg-opacity-10">
+          <div class="title">HỖ TRỢ MUA HÀNG</div>
+          <div class="mobile">0973 888 678 / 0989 234 566</div>
+          <div class="note">(Sản phẩm chính hãng 100%, đổi trả 30 ngày, Free ship từ 800k)</div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="products">
+      <h4 class="mb-4">SẢN PHẨM ĐÃ XEM</h4>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-2" th:each="product : ${products}">
+        <div class="card">
+          <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
+          <div class="card-body">
+            <h5 class="card-title product-title">
+              <a class="text-dark-emphasis text-decoration-none" th:href="@{'detail/' + *{product.productId}}">
+                <span th:text="*{product.productName}"></span>
+              </a>
+            </h5>
+            <h5 class="product-price text-danger">
+              <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+            </h5>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
 package org.anest.mystore.controller;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.service.BrandService;
@@ -7,10 +9,12 @@ import org.anest.mystore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -58,9 +62,29 @@ public class ProductController {
     }
 
     @GetMapping("/detail/{productId}")
-    public String productDetail(@PathVariable Long productId, Model model) {
+    public String productDetail(@PathVariable Long productId, Model model, HttpServletResponse response) {
         Product product = productService.findByProductId(productId);
         model.addAttribute("product", product);
+
+//        Cookie cookie = new Cookie("productId", productId + "");
+//        cookie.setMaxAge(3600);
+//        response.addCookie(cookie);
+
+        List<Product> products = new ArrayList<>();
+        products.add(product);
+        products.add(product);
+        products.add(product);
+        products.add(product);
+        products.add(product);
+        products.add(product);
+        model.addAttribute("products", products);
         return "pages/product-detail";
+    }
+
+    @GetMapping("/test")
+    public String test(@CookieValue(value = "productId", defaultValue = "0") String productId, Model model) {
+        model.addAttribute("productId", productId);
+        System.out.println("PRODUCT ID: " + productId);
+        return "error500";
     }
 }
