@@ -1,160 +1,172 @@
-<div th:fragment="products">
-  <section id="cover">
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col">
-          <h1 class="title mb-3">
-            <span th:text="${title}"></span>
-            <span class="ms-1 title-quantity text-danger" th:text="'[' + ${products.size} + ']'"></span>
-          </h1>
-          <p class="title-des">
-            Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.
-          </p>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+  <title>Products</title>
+  <link rel="stylesheet" th:href="@{/css/products.css}"/>
+</head>
+<body>
+  <th:block layout:fragment="content">
+    <section id="cover">
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col">
+            <h1 class="title mb-3">
+              <span th:text="${title}"></span>
+              <span class="ms-1 title-quantity text-danger" th:text="'[' + ${products.size} + ']'"></span>
+            </h1>
+            <p class="title-des">
+              Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="sub-nav" class="sub-nav bg-body">
+    <section id="sub-nav" class="sub-nav bg-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="d-flex justify-content-lg-between">
+              <ul class="nav nav-underline">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Loại son
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-start">
+                    <li>
+                      <a class="dropdown-item" th:href="@{/lipstick-type/1}">Son Thỏi</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" th:href="@{/lipstick-type/2}">Son Kem</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" th:href="@{/lipstick-type/3}">Son Dưỡng</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Thương hiệu
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-start">
+                    <li>
+                      <a class="dropdown-item" th:href="@{/lipstick-brand/1}">Chanel</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" th:href="@{/lipstick-brand/2}">Dior</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" th:href="@{/lipstick-brand/3}">Gucci</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" th:href="@{/lipstick-brand/4}">YSL</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" th:href="@{/lipstick-brand/5}">Louboutin</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav nav-underline">
+                <li class="nav-item">
+                  <a class="nav-link text-secondary-emphasis" href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                    <i class="fas fa-sliders-h fa-fw me-1"></i>Bộ lọc
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sắp xếp theo
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá Thấp - Cao</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"><i class="fas fa-sort-amount-down fa-fw me-1"></i>Giá Cao - Thấp</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="product : ${products}">
+            <div class="card">
+              <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
+              <div class="card-body">
+                <h5 class="card-title product-title">
+                  <a class="text-dark-emphasis text-decoration-none" th:href="@{'detail/' + *{product.productId}}">
+                    <span th:text="*{product.productName}"></span>
+                  </a>
+                </h5>
+                <h5 class="product-price text-danger">
+                  <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pagination -->
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="d-flex justify-content-lg-between">
-            <ul class="nav nav-underline">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Loại son
-                </a>
-                <ul class="dropdown-menu dropdown-menu-start">
-                  <li>
-                    <a class="dropdown-item" th:href="@{/lipstick-type/1}">Son Thỏi</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/lipstick-type/2}">Son Kem</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/lipstick-type/3}">Son Dưỡng</a>
-                  </li>
-                </ul>
+          <nav class="my-5">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link">Previous</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Thương hiệu
-                </a>
-                <ul class="dropdown-menu dropdown-menu-start">
-                  <li>
-                    <a class="dropdown-item" th:href="@{/lipstick-brand/1}">Chanel</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/lipstick-brand/2}">Dior</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/lipstick-brand/3}">Gucci</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/lipstick-brand/4}">YSL</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/lipstick-brand/5}">Louboutin</a>
-                  </li>
-                </ul>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
               </li>
             </ul>
-            <ul class="nav nav-underline">
-              <li class="nav-item">
-                <a class="nav-link text-secondary-emphasis" href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                  <i class="fas fa-sliders-h fa-fw me-1"></i>Bộ lọc
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Sắp xếp theo
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <a class="dropdown-item" href="#"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá Thấp - Cao</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#"><i class="fas fa-sort-amount-down fa-fw me-1"></i>Giá Cao - Thấp</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+          </nav>
         </div>
       </div>
     </div>
-  </section>
 
-  <section id="products">
-    <div class="container mt-5">
+    <!-- Filter -->
+    <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="product : ${products}">
-          <div class="card">
-            <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
-            <div class="card-body">
-              <h5 class="card-title product-title">
-                <a class="text-dark-emphasis text-decoration-none" th:href="@{product-detail/*{product.productId}}">
-                  <span th:text="*{product.productName}"></span>
-                </a>
-              </h5>
-              <h5 class="product-price text-danger">
-                <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
-              </h5>
+        <div class="col">
+          <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="--bs-offcanvas-width: 360px">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Bộ lọc sản phẩm</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>
+                <p>Price Range</p>
+                <section class="range-slider">
+                  <span class="rangeValues"></span>
+                  <input value="500" min="500" max="50000" step="500" type="range">
+                  <input value="50000" min="500" max="50000" step="500" type="range">
+                </section>
+              </div>
+            </div>
+            <div class="offcanvas-end p-3">
+              <button type="button" class="btn btn-success">
+                Áp dụng<i class="bi bi-arrow-right ms-2"></i>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Pagination -->
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <nav class="my-5">
-          <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-              <a class="page-link">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-
-  <!-- Filter -->
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="--bs-offcanvas-width: 360px">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Bộ lọc sản phẩm</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <div>
-              <p>Price Range</p>
-              <section class="range-slider">
-                <span class="rangeValues"></span>
-                <input value="500" min="500" max="50000" step="500" type="range">
-                <input value="50000" min="500" max="50000" step="500" type="range">
-              </section>
-            </div>
-          </div>
-          <div class="offcanvas-end p-3">
-            <button type="button" class="btn btn-success">
-              Áp dụng<i class="bi bi-arrow-right ms-2"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  </th:block>
+</body>
+</html>

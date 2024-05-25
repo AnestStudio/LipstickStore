@@ -30,7 +30,7 @@ public class ProductController {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
         model.addAttribute("title", "Danh sách sản phẩm");
-        return "layout";
+        return "pages/products";
     }
 
     @GetMapping("/lipstick-type/{categoryId}")
@@ -38,7 +38,7 @@ public class ProductController {
         List<Product> products = productService.findByCategoryCategoryId(categoryId);
         model.addAttribute("products", products);
         model.addAttribute("title", "Danh sách sản phẩm");
-        return "layout";
+        return "pages/products";
     }
 
     @GetMapping("/lipstick-brand/{brandId}")
@@ -47,18 +47,20 @@ public class ProductController {
         Brand brand = brandService.findByBrandId(brandId);
         model.addAttribute("products", products);
         model.addAttribute("title", "Thương hiệu " + brand.getBrandName());
-        return "layout";
+        return "pages/products";
     }
 
     @GetMapping("/search")
     public String searchByName(@RequestParam String productName, Model model) {
         List<Product> products = productService.findByProductNameContaining(productName);
         model.addAttribute("products", products);
-        return "layout";
+        return "pages/products";
     }
 
     @GetMapping("/detail/{productId}")
     public String productDetail(@PathVariable Long productId, Model model) {
-        return "layout";
+        Product product = productService.findByProductId(productId);
+        model.addAttribute("product", product);
+        return "pages/product-detail";
     }
 }
