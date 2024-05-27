@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalExceptionHandlerController {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public String handleExceptionA(Exception e) {
@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public String handleUnwantedException(Exception e) {
+    public String defaultErrorHandler(Exception e) {
         return "error500";
     }
 }

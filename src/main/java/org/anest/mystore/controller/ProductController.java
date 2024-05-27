@@ -1,9 +1,9 @@
 package org.anest.mystore.controller;
 
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Product;
+import org.anest.mystore.exception.ProductNotFoundException;
 import org.anest.mystore.service.BrandService;
 import org.anest.mystore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,13 +62,9 @@ public class ProductController {
     }
 
     @GetMapping("/detail/{productId}")
-    public String productDetail(@PathVariable Long productId, Model model, HttpServletResponse response) {
+    public String productDetail(@PathVariable Long productId, Model model) {
         Product product = productService.findByProductId(productId);
         model.addAttribute("product", product);
-
-//        Cookie cookie = new Cookie("productId", productId + "");
-//        cookie.setMaxAge(3600);
-//        response.addCookie(cookie);
 
         List<Product> products = new ArrayList<>();
         products.add(product);

@@ -1,10 +1,8 @@
 package org.anest.mystore.exception;
 
-public class ProductNotFoundException extends Exception {
+public class ProductNotFoundException extends RuntimeException {
 
-    private int code;
-    private String message;
-
-    public ProductNotFoundException() {
+    public ProductNotFoundException(String message) {
+        super(message);
     }
 }
