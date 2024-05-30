@@ -104,7 +104,7 @@
               <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
               <div class="card-body">
                 <h5 class="card-title product-title">
-                  <a class="text-dark-emphasis text-decoration-none" th:href="@{'detail/' + *{product.productId}}">
+                  <a class="text-dark-emphasis text-decoration-none" th:href="@{'detail/' + *{product.id}}">
                     <span th:text="*{product.productName}"></span>
                   </a>
                 </h5>

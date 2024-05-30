@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -24,18 +25,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findByProductId(Long id) {
-        return repository.findByProductId(id);
+    public Optional<Product> findById(Long id) {
+        return repository.findById(id);
     }
 
     @Override
-    public List<Product> findByCategoryCategoryId(Long id) {
-        return repository.findByCategoryCategoryId(id);
+    public List<Product> findByCategoryId(Long id) {
+        return repository.findByCategoryId(id);
     }
 
     @Override
-    public List<Product> findByBrandBrandId(Long id) {
-        return repository.findByBrandBrandId(id);
+    public List<Product> findByBrandId(Long id) {
+        return repository.findByBrandId(id);
     }
 
     @Override

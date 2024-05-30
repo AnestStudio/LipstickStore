@@ -15,6 +15,7 @@
   <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap-icons.min.css}"/>
   <!-- Custom CSS -->
   <link rel="stylesheet" th:href="@{/css/color.css}"/>
+  <link rel="stylesheet" th:href="@{/css/table.css}"/>
   <link rel="stylesheet" th:href="@{/css/common.css}"/>
 </head>
 <body onkeydown="showSearchForm(event)">
@@ -25,7 +26,11 @@
 
   <div th:replace="~{component/footer :: footer}"></div>
   <div th:replace="~{modal/search-product :: search-product-modal}"></div>
+
   <th:block layout:fragment="modal"></th:block>
+
+  <div th:replace="~{toast/toast-error :: toast-error}"></div>
+  <div th:replace="~{toast/toast-success :: toast-success}"></div>
 
   <script th:src="@{/js/bootstrap/bootstrap.bundle.min.js}"></script>
   <script th:src="@{/js/common.js}"></script>

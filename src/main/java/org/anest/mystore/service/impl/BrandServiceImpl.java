@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BrandServiceImpl implements BrandService {
@@ -24,7 +25,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public Brand findByBrandId(Long brandId) {
-        return brandRepository.findByBrandId(brandId);
+    public Optional<Brand> findById(Long brandId) {
+        return brandRepository.findById(brandId);
     }
 }
