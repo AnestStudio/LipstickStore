@@ -1,15 +1,10 @@
 @charset "utf-8";
 
-/**/
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-
-/**/
 
 html {
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -84,7 +79,7 @@ form {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0rem 5rem;
+  padding: 0 5rem;
   transition: all 0.2s 0.7s;
   overflow: hidden;
   grid-column: 1 / 2;
@@ -154,7 +149,6 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--primary-text);
-  -webkit-box-shadow: 0 0 0px 1000px var(--primary-background) inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -237,7 +231,9 @@ select:-webkit-autofill:focus {
 }
 
 
-/**/
+/**
+ * TOAST ---------------------------------------------------------------------------------------------------------------
+ */
 
 #toast-info,
 #toast-error {
@@ -274,6 +270,11 @@ select:-webkit-autofill:focus {
 #toast-info.success {
   background-color: #198754;
 }
+
+
+/**
+ * RESPONSIVE ----------------------------------------------------------------------------------------------------------
+ */
 
 @media (max-width: 870px) {
   .container {

@@ -1,3 +1,7 @@
+/**
+ * TABLE ---------------------------------------------------------------------------------------------------------------
+ */
+
 .datatable {
   margin-top: 2px;
   margin-bottom: 2px;
@@ -28,7 +32,6 @@
 .table>thead>tr>th {
   padding: 10px;
   line-height: 1.45;
-  vertical-align: top;
   border-top: 1px solid var(--secondary-border-color);
   color: var(--secondary-text);
   font-size: 15px;
@@ -104,7 +107,7 @@
 }
 
 
-/* Customer - Select */
+/* Custom - Select */
 
 .datatable label select {
   margin: 0 5px;
@@ -124,7 +127,7 @@
 }
 
 
-/* Customer - Search */
+/* Custom - Search */
 
 .datatable label input {
   margin-left: 10px;
@@ -142,7 +145,7 @@
 }
 
 
-/* Customer - Pagination */
+/* Custom - Pagination */
 
 .dataTables_paginate {
   float: right;
@@ -193,7 +196,7 @@
 }
 
 
-/* Customer - Responsivve */
+/* Custom - Responsive: ORDER TABLE */
 
 @media(max-width: 500px) {
   #order-table_filter {

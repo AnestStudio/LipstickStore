@@ -22,10 +22,10 @@ function updateProductQuantity(btnType) {
 }
 
 function addToCart () {
-  fetch(window.location.origin + '/cart/test')
+  fetch(window.location.origin + "/cart/test")
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
       return response.json();
     })
@@ -33,6 +33,6 @@ function addToCart () {
       console.log(data);
     })
     .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
+      console.error("There was a problem with the fetch operation:", error);
     });
 }
