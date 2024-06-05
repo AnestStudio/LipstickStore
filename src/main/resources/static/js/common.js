@@ -30,3 +30,9 @@ function showSearchForm(e) {
     }
   }
 }
+
+function handlerCommonError(error){
+  console.error(error);
+  document.getElementById("toast-error-content").innerText = "Yêu cầu chưa được thực hiện. Vui lòng thử lại sau ít phút.";
+  showToast("toast-error");
+}

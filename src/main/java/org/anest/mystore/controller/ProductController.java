@@ -55,6 +55,7 @@ public class ProductController {
     public String searchByName(@RequestParam String productName, Model model) {
         List<Product> products = productService.findByProductNameContaining(productName);
         model.addAttribute("products", products);
+        model.addAttribute("title", "Kết quả tìm kiếm: " + productName);
         return "pages/products";
     }
 

@@ -8,89 +8,96 @@
   <link rel="stylesheet" th:href="@{/css/product-detail.css}"/>
 </head>
 <body>
-<th:block layout:fragment="content">
-  <div class="container product-detail">
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <div class="product-detail-image">
-          <img th:src="@{'/images/products/' + ${product.productImage}}" class="card-img-top rounded-3" alt="...">
-        </div>
-      </div>
-      <div class="col-12 col-md-6 left">
-        <div class="product-detail-info">
-          <h3 class="product-name" th:text="${product.productName}"></h3>
-          <h4 class="product-price text-danger">
-            <span th:text="${#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
-          </h4>
-          <div class="product-description">
-            <p th:text="${product.productDescription}"></p>
+  <th:block layout:fragment="content">
+    <section id="product-detail">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="product-detail-image">
+              <img th:src="@{'/images/products/' + ${product.productImage}}" class="card-img-top rounded-3" alt="...">
+            </div>
           </div>
-          <div class="product-quantity">
-            <form>
-              <div class="row mt-3">
-                <div class="col-auto">
-                  <label class="col-form-label">Số lượng</label>
-                </div>
-                <div class="col-auto">
-                  <div class="quantity-group">
-                    <div>
-                      <a href="javascript:void(0)" th:onclick="updateProductQuantity(0)" class="btn-change-quantity btn-dash">
-                        <i class="bi bi-dash-lg text-danger"></i>
-                      </a>
-                      <label>
-                        <input id="quantity-number" class="quantity-number" type="text" name="quantity-number" th:value="0" />
-                      </label>
-                      <a href="javascript:void(0)" th:onclick="updateProductQuantity(1)" class="btn-change-quantity btn-plus">
-                        <i class="bi bi-plus-lg text-danger"></i>
-                      </a>
+          <div class="col-12 col-md-6 left">
+            <div class="product-detail-info">
+              <h3 class="product-name" th:text="${product.productName}"></h3>
+              <h4 class="product-price text-danger">
+                <span th:text="${#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+              </h4>
+              <div class="product-description">
+                <p th:text="${product.productDescription}"></p>
+              </div>
+              <div class="product-quantity">
+                <form>
+                  <div class="row mt-3">
+                    <div class="col-auto">
+                      <label class="col-form-label">Số lượng</label>
+                    </div>
+                    <div class="col-auto">
+                      <div class="quantity-group">
+                        <div>
+                          <a href="javascript:void(0)" th:onclick="updateProductQuantity(0)" class="btn-change-quantity btn-dash">
+                            <i class="bi bi-dash-lg text-danger"></i>
+                          </a>
+                          <label>
+                            <input id="quantity-number" class="quantity-number" type="text" name="quantity-number" th:value="1" />
+                          </label>
+                          <a href="javascript:void(0)" th:onclick="updateProductQuantity(1)" class="btn-change-quantity btn-plus">
+                            <i class="bi bi-plus-lg text-danger"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto ms-3">
+                      <label id="quantity-stock" class="col-form-label" th:text="${product.productQuantity}"></label> sản phẩm có sẵn
                     </div>
                   </div>
-                </div>
-                <div class="col-auto ms-3">
-                  <label id="quantity-stock" class="col-form-label" th:text="${product.productQuantity}"></label> sản phẩm có sẵn
-                </div>
+                  <div class="mt-4">
+                    <button class="btn btn-danger me-2 py-2 px-3" name="btn-buy-now" type="submit">
+                      <i class="far fa-credit-card me-2"></i>Mua ngay
+                    </button>
+                    <button class="btn btn-success py-2 px-3"
+                            th:onclick="'javascript:addToCart(' + ${product.id} + ')'"
+                            type="button"><i class="fas fa-cart-plus me-2"></i>Thêm vào giỏ hàng
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div class="mt-4">
-                <button class="btn btn-danger me-2 py-2 px-3" name="btn-buy-now" type="submit">
-                  <i class="far fa-credit-card me-2"></i>Mua ngay
-                </button>
-                <button class="btn btn-success py-2 px-3"
-                        th:onclick="'javascript:addToCart(' + ${product.id} + ')'"
-                        type="button"><i class="fas fa-cart-plus me-2"></i>Thêm vào giỏ hàng
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="support bg-warning bg-opacity-10">
-          <div class="title">HỖ TRỢ MUA HÀNG</div>
-          <div class="mobile">0973 888 678 / 0989 234 566</div>
-          <div class="note">(Sản phẩm chính hãng 100%, đổi trả 30 ngày, Free ship từ 800k)</div>
-        </div>
-      </div>
-    </div>
-    <div class="row" id="products">
-      <h4 class="mb-4">SẢN PHẨM ĐÃ XEM</h4>
-      <div class="col-12 col-sm-6 col-md-4 col-lg-2" th:each="product : ${products}">
-        <div class="card">
-          <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
-          <div class="card-body">
-            <h5 class="card-title product-title">
-              <a class="text-dark-emphasis text-decoration-none" th:href="@{'detail/' + *{product.id}}">
-                <span th:text="*{product.productName}"></span>
-              </a>
-            </h5>
-            <h5 class="product-price text-danger">
-              <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
-            </h5>
+            </div>
+            <div class="support bg-warning bg-opacity-10">
+              <div class="title">HỖ TRỢ MUA HÀNG</div>
+              <div class="mobile">0973 888 678 / 0989 234 566</div>
+              <div class="note">(Sản phẩm chính hãng 100%, đổi trả 30 ngày, Free ship từ 800k)</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</th:block>
-<th:block layout:fragment="js">
-  <script th:src="@{/js/product-detail.js}"></script>
-</th:block>
+    </section>
+
+    <section id="viewed-products">
+      <div class="container">
+        <div class="row">
+          <h4 class="mb-4">SẢN PHẨM ĐÃ XEM</h4>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-2" th:each="product : ${products}">
+            <div class="card">
+              <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
+              <div class="card-body">
+                <h5 class="card-title product-title">
+                  <a class="text-dark-emphasis text-decoration-none" th:href="@{'detail/' + *{product.id}}">
+                    <span th:text="*{product.productName}"></span>
+                  </a>
+                </h5>
+                <h5 class="product-price text-danger">
+                  <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </th:block>
+  <th:block layout:fragment="js">
+    <script th:src="@{/js/product-detail.js}"></script>
+  </th:block>
 </body>
 </html>

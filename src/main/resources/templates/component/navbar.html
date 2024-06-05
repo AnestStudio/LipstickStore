@@ -56,22 +56,27 @@
           </li>
           <li class="nav-item d-flex align-items-center">
             <div class="dropdown">
-              <a class="nav-link text-secondary-emphasis" href="javascript:void(0)" data-bs-toggle="dropdown"
-                 aria-expanded="false">
+              <a class="nav-link text-secondary-emphasis"
+                 href="javascript:void(0)"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false"
+                 data-bs-offset="10,20"
+              >
                 <i class="fas fa-shopping-bag"></i>
                 <sup>
-                  <span class="badge rounded-pill text-bg-danger" id="quantityItemInCart"
+                  <span class="badge rounded-pill text-bg-danger" id="quantity-item-in-cart"
                         th:text="${session.quantityItemInCart == null ? 0 : session.quantityItemInCart}"></span>
                 </sup>
               </a>
-              <ul class="dropdown-menu dropdown-menu-end" style="width: 350px" th:if="${session.myCart != null}">
-                <li class="px-3 py-2" th:each="item : ${session.myCart}">
+              <ul class="dropdown-menu dropdown-menu-end items" style="width: 350px" th:if="${session.cart != null}">
+                <li><h6 class="dropdown-header">Sản phẩm mới thêm</h6></li>
+                <li class="px-3 py-2 item" th:each="item : ${session.cart}">
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
-                      <img class="rounded-2" th:src="@{${'/images/' + item.drinkImage}}" width="50">
+                      <img class="rounded-2" th:src="@{${'/images/products/' + item.image}}" width="50">
                       <div>
-                        <p class="ms-2 my-0 text-secondary-emphasis">
-                          <span th:text="*{item.name}"></span>
+                        <p class="ms-2 my-0 text-secondary-emphasis" data-bs-toggle="tooltip" th:title="*{item.name}">
+                          <span th:text="${#strings.substring(item.name, 0, 35) + '...'}"></span>
                         </p>
                         <p class="ms-2 my-0 text-secondary-emphasis" style="font-size: 14px;">
                           Số lượng: <span th:text="*{item.quantity}"></span>
@@ -79,7 +84,6 @@
                       </div>
                     </div>
                     <div>
-                      <p class="ms-2 my-0">&nbsp;</p>
                       <p class="ms-2 my-0 text-secondary-emphasis" style="font-size: 14px;">
                         <span th:text="${#numbers.formatInteger(item.amount, 3, 'POINT')}"></span><sup>đ</sup>
                       </p>
@@ -91,7 +95,7 @@
                 </li>
                 <li><a class="dropdown-item text-end" th:href="@{/cart}">Xem giỏ hàng</a></li>
               </ul>
-              <ul class="dropdown-menu dropdown-menu-end" th:if="${session.myCart == null}">
+              <ul class="dropdown-menu dropdown-menu-end" th:if="${session.cart == null}">
                 <li><a class="dropdown-item text-end" href="javascript:void(0)">Giỏ hàng trống.</a></li>
               </ul>
             </div>
