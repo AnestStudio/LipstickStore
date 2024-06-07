@@ -1,0 +1,24 @@
+<div class="modal fade"
+     id="confirmModal"
+     tabindex="-1"
+     aria-labelledby="confirmModalModalLabel"
+     aria-hidden="true"
+     th:fragment="confirm-modal"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalModalLabel">Thông báo</h5>
+      </div>
+      <div class="modal-body py-2">
+        <div id="confirm-modal-content"></div>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:void(0)" class="btn btn-secondary btn-danger mr-12px" id="btn-confirm-modal">
+          <i class="fas fa-check me-2"></i>Xác nhận
+        </a>
+        <a href="javascript:void(0)" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</a>
+      </div>
+    </div>
+  </div>
+</div>

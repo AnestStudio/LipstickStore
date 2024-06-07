@@ -7,4 +7,6 @@ import java.util.List;
 public interface ItemService {
 
     int countTotalProductQuantity(List<Item> items);
+
+    double countTotalProductAmount(List<Item> items);
 }

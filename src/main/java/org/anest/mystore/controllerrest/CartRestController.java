@@ -55,7 +55,6 @@ public class CartRestController {
             if (cart == null) {
                 cart = new ArrayList<>();
                 cart.add(item);
-                session.setAttribute("cart", cart);
             } else {
                 boolean isExist = false;
                 for (Item i : cart) {
@@ -69,13 +68,17 @@ public class CartRestController {
                     cart.add(item);
                 }
             }
+            session.setAttribute("cart", cart);
 
-            int count = itemService.countTotalProductQuantity(cart);
-            session.setAttribute("quantityItemInCart", count);
+            int totalProduct = itemService.countTotalProductQuantity(cart);
+            double totalAmount = itemService.countTotalProductAmount(cart);
+            session.setAttribute("totalProductInCart", totalProduct);
+            session.setAttribute("totalAmountOfCart", totalAmount);
 
             Map<String, Object> response = new HashMap<>();
             response.put("cart", cart);
-            response.put("quantityItemInCart", count);
+            response.put("totalProductInCart", totalProduct);
+            response.put("totalAmountOfCart", totalAmount);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

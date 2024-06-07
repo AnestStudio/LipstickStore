@@ -1,8 +1,7 @@
 <nav id="navbar" class="navbar navbar-expand-lg fixed-top bg-body-tertiary" th:fragment="navbar">
   <div class="container">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -24,8 +23,7 @@
 
       <div class="d-lg-flex justify-content-lg-end align-items-center">
         <form role="search" class="d-block me-3">
-          <button type="button" class="btn btn-outline-secondary d-flex justify-content-between align-items-center"
-                  style="--bs-btn-padding-x: 0.5rem;" data-bs-toggle="modal" data-bs-target="#searchModal">
+          <button type="button" class="btn btn-outline-secondary d-flex justify-content-between align-items-center" style="--bs-btn-padding-x: 0.5rem;" data-bs-toggle="modal" data-bs-target="#searchModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search me-1"
                  viewBox="0 0 16 16">
               <path
@@ -39,11 +37,10 @@
         <ul class="navbar-nav">
           <li class="nav-item d-flex align-items-center">
             <div class="dropdown me-1">
-              <a class="nav-link text-secondary-emphasis" href="javascript:void(0)" data-bs-toggle="dropdown"
-                 aria-expanded="false">
+              <a class="nav-link text-secondary-emphasis" href="javascript:void(0)" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-user"></i>
               </a>
-              <ul class="dropdown-menu dropdown-menu-end">
+              <ul class="dropdown-menu dropdown-menu-end mt-2">
                 <li><a class="dropdown-item text-secondary-emphasis" href="#"><i
                     class="fas fa-sign-in-alt fa-fw me-2"></i>Đăng nhập</a></li>
                 <li><a class="dropdown-item text-secondary-emphasis" href="#"><i class="fas fa-edit fa-fw me-2"></i>Đăng
@@ -56,22 +53,19 @@
           </li>
           <li class="nav-item d-flex align-items-center">
             <div class="dropdown">
-              <a class="nav-link text-secondary-emphasis"
-                 href="javascript:void(0)"
-                 data-bs-toggle="dropdown"
-                 aria-expanded="false"
-                 data-bs-offset="10,20"
-              >
+              <a class="nav-link text-secondary-emphasis" href="javascript:void(0)" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-shopping-bag"></i>
                 <sup>
                   <span class="badge rounded-pill text-bg-danger" id="quantity-item-in-cart"
-                        th:text="${session.quantityItemInCart == null ? 0 : session.quantityItemInCart}"></span>
+                        th:text="${session.totalProductInCart == null ? 0 : session.totalProductInCart}"></span>
                 </sup>
               </a>
-              <ul class="dropdown-menu dropdown-menu-end items" style="width: 350px" th:if="${session.cart != null}">
-                <li><h6 class="dropdown-header">Sản phẩm mới thêm</h6></li>
-                <li class="px-3 py-2 item" th:each="item : ${session.cart}">
-                  <div class="d-flex justify-content-between align-items-center">
+              <ul class="dropdown-menu dropdown-menu-end items mt-2" style="width: 350px" th:if="${session.cart != null}">
+                <li>
+                  <h6 class="dropdown-header">Sản phẩm mới thêm</h6>
+                </li>
+                <li class="px-3 item">
+                  <div class="d-flex justify-content-between align-items-center py-2" th:each="item : ${session.cart}">
                     <div class="d-flex align-items-center">
                       <img class="rounded-2" th:src="@{${'/images/products/' + item.image}}" width="50">
                       <div>
@@ -95,8 +89,10 @@
                 </li>
                 <li><a class="dropdown-item text-end" th:href="@{/cart}">Xem giỏ hàng</a></li>
               </ul>
-              <ul class="dropdown-menu dropdown-menu-end" th:if="${session.cart == null}">
-                <li><a class="dropdown-item text-end" href="javascript:void(0)">Giỏ hàng trống.</a></li>
+              <ul class="dropdown-menu dropdown-menu-end items mt-2" style="width: 220px" th:if="${session.cart == null}">
+                <li class="text-end item">
+                  <div class="py-1 px-3">Giỏ hàng trống</div>
+                </li>
               </ul>
             </div>
           </li>
@@ -106,9 +102,7 @@
           </li>
           <li class="nav-item">
             <div class="nav-item dropdown">
-              <a class="nav-link text-secondary-emphasis dropdown-toggle d-flex align-items-center"
-                 href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="bd-theme"
-                 aria-label="Toggle theme (auto)">
+              <a class="nav-link text-secondary-emphasis dropdown-toggle d-flex align-items-center" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="bd-theme" aria-label="Toggle theme (auto)">
                 <svg class="bi my-1 theme-icon-active">
                   <use href="#circle-half"></use>
                 </svg>
@@ -116,36 +110,30 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
                 <li>
-                  <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)"
-                     data-bs-theme-value="light" aria-pressed="false">
+                  <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)" data-bs-theme-value="light" aria-pressed="false">
                     <svg class="bi me-2 opacity-75 theme-icon">
                       <use href="#sun-fill"></use>
-                    </svg>
-                    Light
+                    </svg> Light
                     <svg class="bi ms-auto d-none">
                       <use href="#check2"></use>
                     </svg>
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)"
-                     data-bs-theme-value="dark" aria-pressed="false">
+                  <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)" data-bs-theme-value="dark" aria-pressed="false">
                     <svg class="bi me-2 opacity-75 theme-icon">
                       <use href="#moon-stars-fill"></use>
-                    </svg>
-                    Dark
+                    </svg> Dark
                     <svg class="bi ms-auto d-none">
                       <use href="#check2"></use>
                     </svg>
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)"
-                     data-bs-theme-value="auto" aria-pressed="true">
+                  <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)" data-bs-theme-value="auto" aria-pressed="true">
                     <svg class="bi me-2 opacity-75 theme-icon">
                       <use href="#circle-half"></use>
-                    </svg>
-                    Auto
+                    </svg> Auto
                     <svg class="bi ms-auto d-none">
                       <use href="#check2"></use>
                     </svg>

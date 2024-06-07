@@ -15,4 +15,11 @@ public class ItemServiceImpl implements ItemService {
                 .mapToInt(Item::getQuantity)
                 .sum();
     }
+
+    @Override
+    public double countTotalProductAmount(List<Item> items) {
+        return items.stream()
+                .mapToDouble(Item::getAmount)
+                .sum();
+    }
 }
