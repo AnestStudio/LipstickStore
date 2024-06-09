@@ -16,4 +16,6 @@ public interface ProductService {
     List<Product> findByBrandId(Long id);
 
     List<Product> findByProductNameContaining(String productName);
+
+    List<Product> getAllSorted(String sortType);
 }

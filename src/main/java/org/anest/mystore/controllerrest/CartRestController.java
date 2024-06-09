@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 @RestController
-@RequestMapping("api/cart")
+@RequestMapping("api/public/cart")
 public class CartRestController {
 
-    private ProductService productService;
-    private ItemService itemService;
+    private final ProductService productService;
+    private final ItemService itemService;
 
     @Autowired
     public CartRestController(ProductService productService, ItemService itemService) {
@@ -28,7 +28,7 @@ public class CartRestController {
         this.itemService = itemService;
     }
 
-    @GetMapping("/add")
+    @GetMapping("/item/add")
     public ResponseEntity<Map<String, Object>> addToCart(
             @RequestParam Long productId,
             @RequestParam int quantity,

@@ -55,6 +55,7 @@ tbody, td, tfoot, th, thead, tr {
 
 .dropdown-menu {
   font-size: 15px;
+  border-radius: 8px;
 }
 
 .dropdown-toggle::after {
@@ -84,24 +85,35 @@ tbody, td, tfoot, th, thead, tr {
   box-shadow: none;
 }
 
-.modal-content .modal-header {
-  border-bottom: 1px solid transparent;
-  padding: 12px 16px;
-}
-
 .modal-content .modal-header .modal-title,
 .modal-content .modal-sub-title {
   font-weight: 400;
   font-size: 20px;
 }
 
+.modal-content .modal-header {
+  /*border-bottom: 1px solid transparent;*/
+  padding: 12px 16px;
+}
+
 .modal-content .modal-footer {
-  border-top: 1px solid transparent;
+  /*border-top: 1px solid transparent;*/
   padding: 16px;
 }
 
 .modal-footer>* {
   margin: 0;
+}
+
+#confirmModal .modal-dialog {
+  width: 380px;
+  transition: bottom .75s ease-in-out;
+}
+
+#confirmModal .modal-dialog .modal-content .modal-footer a{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-decoration: none;
 }
 
 
@@ -142,6 +154,7 @@ nav.navbar .bi {
   height: 1em;
   vertical-align: -0.125em;
   fill: currentcolor;
+  display: inline-flex;
 }
 
 
@@ -181,13 +194,23 @@ nav.navbar .bi {
 }
 
 
+/*
+ *
+ */
+
+.page-link {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity));
+}
+
+
 /**
  * FOOTER --------------------------------------------------------------------------------------------------------------
  */
 
 #footer .f-top {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 #footer .f-top img {

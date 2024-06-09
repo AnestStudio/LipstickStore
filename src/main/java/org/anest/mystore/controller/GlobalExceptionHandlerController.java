@@ -1,5 +1,6 @@
 package org.anest.mystore.controller;
 
+import org.anest.mystore.exception.BrandNotFoundException;
 import org.anest.mystore.exception.ProductNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,9 +14,9 @@ public class GlobalExceptionHandlerController {
         return "error400";
     }
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public String handProductNotFoundException(Exception e) {
-        return "error400";
+    @ExceptionHandler({ProductNotFoundException.class, BrandNotFoundException.class})
+    public String handleNotFoundException(Exception e) {
+        return "error404";
     }
 
     @ExceptionHandler(Exception.class)

@@ -26,7 +26,7 @@ function addToCart(productId) {
   const quantityStr = document.getElementById("quantity-number").value;
   const quantityStockStr = document.getElementById("quantity-stock").innerText;
 
-  const apiUrl = window.location.origin + "/api/cart/add?productId=" + productId + "&quantity=" + quantityStr;
+  const apiUrl = window.location.origin + "api/public/cart/item/add?productId=" + productId + "&quantity=" + quantityStr;
   fetch(apiUrl)
     .then(response => {
       if (!response.ok) {

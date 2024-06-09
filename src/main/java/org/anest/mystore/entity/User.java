@@ -11,7 +11,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "[user]")
 public class User {
@@ -45,7 +44,6 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    // Helper methods to manage bi-directional relationship
     public void addRole(Role role) {
         this.roles.add(role);
         role.getUsers().add(this);

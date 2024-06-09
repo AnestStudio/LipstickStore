@@ -17,15 +17,19 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                        // STATIC
                         .requestMatchers("/css/**", "/images/**", "/js/**", "/webfonts/**").permitAll()
+                        // URL
                         .requestMatchers("/", "/login", "/logout").permitAll()
-                        .requestMatchers("/detail/**").permitAll()
-                        .requestMatchers("/api/cart/**").permitAll()
+                        .requestMatchers("/lipstick/**", "/lipstick-type/**", "/lipstick-brand/**").permitAll()
+                        .requestMatchers("/cart/**").permitAll()
                         .requestMatchers("/checkout").hasRole("MEMBER")
-                        .requestMatchers("/admin/**", "/employee/**").hasRole("ADMIN")
-                        .requestMatchers("/employee/**").hasRole("EMPLOYEE")
-                        .requestMatchers("/template/**").hasRole("EMPLOYEE")
-                        .anyRequest().authenticated()
+                        .requestMatchers("/auth/**").hasRole("ADMIN")
+                        // API
+                        .requestMatchers("/api/public/**").permitAll()
+                        // OTHER
+                        .anyRequest().permitAll()
+                        //.anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")

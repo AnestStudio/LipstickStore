@@ -1,7 +1,10 @@
 package org.anest.mystore.controller;
 
+import org.anest.mystore.constant.IConstant;
 import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Product;
+import org.anest.mystore.exception.BrandNotFoundException;
+import org.anest.mystore.exception.ProductNotFoundException;
 import org.anest.mystore.service.BrandService;
 import org.anest.mystore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +20,8 @@ import java.util.List;
 @Controller
 public class ProductController {
 
-    private ProductService productService;
-    private BrandService brandService;
+    private final ProductService productService;
+    private final BrandService brandService;
 
     @Autowired
     public ProductController(ProductService productService, BrandService brandService) {
@@ -45,13 +48,13 @@ public class ProductController {
     @GetMapping("/lipstick-brand/{brandId}")
     public String findByBrand(@PathVariable Long brandId, Model model) {
         List<Product> products = productService.findByBrandId(brandId);
-        Brand brand = brandService.findById(brandId).orElse(null);
+        Brand brand = brandService.findById(brandId).orElseThrow(() -> new BrandNotFoundException("Brand not found"));
         model.addAttribute("products", products);
         model.addAttribute("title", "Thương hiệu " + brand.getBrandName());
         return "pages/products";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/lipstick/search")
     public String searchByName(@RequestParam String productName, Model model) {
         List<Product> products = productService.findByProductNameContaining(productName);
         model.addAttribute("products", products);
@@ -59,12 +62,21 @@ public class ProductController {
         return "pages/products";
     }
 
-    @GetMapping("/detail/{productId}")
+    @GetMapping("/lipstick/sort")
+    public String sortByPrice(@RequestParam(name = "type") String sortType, Model model) {
+        if (!sortType.toLowerCase().matches(IConstant.SORT_TYPE_REGEX)) {
+            return "error400";
+        }
+        List<Product> products = productService.getAllSorted(sortType);
+        model.addAttribute("products", products);
+        model.addAttribute("title", "Danh sách sản phẩm");
+        return "pages/products";
+    }
+
+    @GetMapping("/lipstick/detail/{productId}")
     public String productDetail(@PathVariable Long productId, Model model) {
-
-        Product product = productService.findById(productId).orElse(null);
+        Product product = productService.findById(productId).orElseThrow(() -> new ProductNotFoundException("Product not found"));
         model.addAttribute("product", product);
-
 
         List<Product> products = new ArrayList<>();
         products.add(product);

@@ -82,10 +82,10 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item" href="#"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá Thấp - Cao</a>
+                      <a class="dropdown-item" th:href="@{/lipstick/sort(type=asc)}"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá Thấp - Cao</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#"><i class="fas fa-sort-amount-down fa-fw me-1"></i>Giá Cao - Thấp</a>
+                      <a class="dropdown-item" th:href="@{/lipstick/sort(type=desc)}"><i class="fas fa-sort-amount-down fa-fw me-1"></i>Giá Cao - Thấp</a>
                     </li>
                   </ul>
                 </li>
@@ -104,7 +104,7 @@
               <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
               <div class="card-body">
                 <h5 class="card-title product-title">
-                  <a class="text-dark-emphasis text-decoration-none" th:href="@{'detail/' + *{product.id}}">
+                  <a class="text-dark-emphasis text-decoration-none" th:href="@{'/lipstick/detail/' + *{product.id}}">
                     <span th:text="*{product.productName}"></span>
                   </a>
                 </h5>

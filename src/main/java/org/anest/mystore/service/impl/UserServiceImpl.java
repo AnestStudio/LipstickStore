@@ -3,7 +3,6 @@ package org.anest.mystore.service.impl;
 import org.anest.mystore.entity.AuthUser;
 import org.anest.mystore.entity.Role;
 import org.anest.mystore.entity.User;
-import org.anest.mystore.repository.RoleRepository;
 import org.anest.mystore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,12 +20,10 @@ import java.util.Set;
 public class UserServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
     }
 
     @Override
