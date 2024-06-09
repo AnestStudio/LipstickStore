@@ -35,7 +35,7 @@
                   <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Loại son
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-start">
+                  <ul class="dropdown-menu dropdown-menu-start mt-1">
                     <li>
                       <a class="dropdown-item" th:href="@{/lipstick-type/1}">Son Thỏi</a>
                     </li>
@@ -51,7 +51,7 @@
                   <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Thương hiệu
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-start">
+                  <ul class="dropdown-menu dropdown-menu-start mt-1">
                     <li>
                       <a class="dropdown-item" th:href="@{/lipstick-brand/1}">Chanel</a>
                     </li>
@@ -71,16 +71,11 @@
                 </li>
               </ul>
               <ul class="nav nav-underline">
-                <li class="nav-item">
-                  <a class="nav-link text-secondary-emphasis" href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                    <i class="fas fa-sliders-h fa-fw me-1"></i>Bộ lọc
-                  </a>
-                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-secondary-emphasis" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Sắp xếp theo
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
+                  <ul class="dropdown-menu dropdown-menu-end mt-1">
                     <li>
                       <a class="dropdown-item" th:href="@{/lipstick/sort(type=asc)}"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá Thấp - Cao</a>
                     </li>
@@ -99,72 +94,50 @@
     <section id="products">
       <div class="container mt-5">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="product : ${products}">
-            <div class="card">
-              <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
-              <div class="card-body">
-                <h5 class="card-title product-title">
-                  <a class="text-dark-emphasis text-decoration-none" th:href="@{'/lipstick/detail/' + *{product.id}}">
-                    <span th:text="*{product.productName}"></span>
-                  </a>
-                </h5>
-                <h5 class="product-price text-danger">
-                  <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
-                </h5>
-              </div>
+          <th:block th:unless="${products.isEmpty()}">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="product : ${products}">
+              <a class="card" th:href="@{'/lipstick/detail/' + *{product.id}}">
+                <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title product-title">
+                    <span th:text="*{product.productName + ' - ' + product.productColor}"></span>
+                  </h5>
+                  <h5 class="product-price text-danger">
+                    <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+                  </h5>
+                </div>
+              </a>
             </div>
-          </div>
+          </th:block>
+          <th:block th:if="${products.isEmpty()}">
+            <div class="col-12">
+              <h3 class="text-center">Không tìm thấy sản phẩm nào.</h3>
+            </div>
+          </th:block>
         </div>
       </div>
     </section>
 
-    <section id="pagination" class="container">
-      <div class="row">
-        <div class="col">
-          <nav class="my-5">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </section>
+<!--    <section id="pagination" class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col">-->
+<!--          <nav class="my-5">-->
+<!--            <ul class="pagination justify-content-center">-->
+<!--              <li class="page-item disabled">-->
+<!--                <a class="page-link">Previous</a>-->
+<!--              </li>-->
+<!--              <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--              <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--              <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--              <li class="page-item">-->
+<!--                <a class="page-link" href="#">Next</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </nav>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
 
-    <div id="filter" class="container">
-      <div class="row">
-        <div class="col">
-          <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="--bs-offcanvas-width: 360px">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Bộ lọc sản phẩm</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <div>
-                <p>Price Range</p>
-                <section class="range-slider">
-                  <span class="rangeValues"></span>
-                  <input value="500" min="500" max="50000" step="500" type="range">
-                  <input value="50000" min="500" max="50000" step="500" type="range">
-                </section>
-              </div>
-            </div>
-            <div class="offcanvas-end p-3">
-              <button type="button" class="btn btn-success">
-                Áp dụng<i class="bi bi-arrow-right ms-2"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </th:block>
   <th:block layout:fragment="js">
     <script th:src="@{/js/product.js}"></script>

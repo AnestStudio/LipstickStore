@@ -2,11 +2,12 @@
  * PRODUCTS ------------------------------------------------------------------------------------------------------------
  */
 
-#products .product-title a {
+#products .product-title span {
   display: inline-block;
   font-size: 16px;
-  font-weight: 400;
-  height: 60px;
+  font-weight: 500;
+  height: 65px;
+  line-height: 1.35;
 }
 
 #products .product-title a:hover {
@@ -24,7 +25,7 @@
   border-color: transparent;
   padding-top: 16px;
   margin-bottom: 20px;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 #products .card:hover {

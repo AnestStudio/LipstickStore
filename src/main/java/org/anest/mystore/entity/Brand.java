@@ -17,7 +17,7 @@ public class Brand {
     @Column(name = "brand_id")
     private Long id;
 
-    @Column(name = "brand_name")
+    @Column(name = "brand_name", nullable = false)
     private String brandName;
 
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)

@@ -3,10 +3,10 @@ package org.anest.mystore.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -35,6 +35,12 @@ public class User {
 
     @Column (name = "status", nullable = false)
     private int status;
+
+    @OneToOne (mappedBy = "user", cascade = CascadeType.ALL)
+    private UserDetail userDetail;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserAddress> userAddressList;
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     @JoinTable(

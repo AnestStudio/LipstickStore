@@ -1,39 +1,43 @@
-create table brand
-(
+create table brand (
     brand_id   bigint identity primary key,
     brand_name nvarchar(150)
 )
 go
 
-create table category
-(
+create table category (
     category_id   bigint identity primary key,
     category_name nvarchar(150)
 )
 go
 
-create table product
-(
-    product_id          bigint identity primary key,
-    product_name        nvarchar(255),
-    product_image       varchar(255),
-    product_price       decimal,
-    product_quantity    int,
-    product_description nvarchar(600),
-    category_id         bigint references category,
-    brand_id            bigint references brand
+create table product (
+    product_id                bigint identity primary key,
+    product_name              nvarchar(255) not null,
+    product_color             nvarchar(255),
+    product_image             varchar(255),
+    product_price             decimal,
+    product_quantity          int,
+    product_short_description nvarchar(500),
+    product_description       nvarchar(max),
+    category_id               bigint references category,
+    brand_id                  bigint references brand
 )
 go
 
-create table role
-(
+create table product_image (
+    product_image_id bigint identity primary key,
+    product_image    varchar(255),
+    product_id       bigint references product,
+)
+go
+
+create table role (
     role_id   bigint identity primary key,
     role_name nvarchar(150)
 )
 go
 
-create table [user]
-(
+create table [user] (
     user_id    bigint identity primary key,
     username   varchar(100) unique not null,
     password   varchar(100) not null,
@@ -43,8 +47,7 @@ create table [user]
 )
 go
 
-create table user_address
-(
+create table user_address (
     user_address_id   bigint identity primary key,
     user_id           bigint references [user],
     receiver_name     varchar(100),
@@ -54,19 +57,17 @@ create table user_address
 )
 go
 
-create table user_detail
-(
+create table user_detail (
     user_detail_id bigint identity primary key,
     user_id        bigint references [user],
     gender         int,
     dob            varchar(11),
-    mobile         varchar(11),
-    email          varchar(255) not null
+    mobile         varchar(15) unique ,
+    email          varchar(255) unique
 )
 go
 
-create table user_role
-(
+create table user_role (
     user_role_id bigint identity primary key,
     user_id      bigint references [user],
     role_id      bigint references role

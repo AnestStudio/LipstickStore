@@ -19,12 +19,12 @@
           </div>
           <div class="col-12 col-md-6 left">
             <div class="product-detail-info">
-              <h3 class="product-name" th:text="${product.productName}"></h3>
+              <h3 class="product-name" th:text="${product.productName + ' - ' + product.productColor}"></h3>
               <h4 class="product-price text-danger">
                 <span th:text="${#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
               </h4>
               <div class="product-description">
-                <p th:text="${product.productDescription}"></p>
+                <p th:text="${product.productShortDescription}"></p>
               </div>
               <div class="product-quantity">
                 <form>
