@@ -14,10 +14,45 @@
         <div class="row">
           <div class="col-12 col-md-6">
             <div class="product-detail-image">
-              <img th:src="@{'/images/products/' + ${product.productImage}}" class="card-img-top rounded-3" alt="...">
+<!--              <img th:src="@{'/images/products/' + ${product.productImage}}" class="card-img-top rounded-3" alt="...">-->
+
+              <div class="slides">
+                <div class="number-text">1 / 6</div>
+                <img th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox.png'}" style="width:100%" alt="">
+              </div>
+              <div class="slides">
+                <div class="number-text">2 / 6</div>
+                <img th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_1.png'}" style="width:100%" alt="">
+              </div>
+              <div class="slides">
+                <div class="number-text">3 / 6</div>
+                <img th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_2.png'}" style="width:100%" alt="">
+              </div>
+              <div class="slides">
+                <div class="number-text">4 / 6</div>
+                <img th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_3.png'}" style="width:100%" alt="">
+              </div>
+
+              <a class="prev" onclick="plusSlides(-1)">❮</a>
+              <a class="next" onclick="plusSlides(1)">❯</a>
+
+              <div class="row-image">
+                <div class="column">
+                  <img class="demo cursor" th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox.png'}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                </div>
+                <div class="column">
+                  <img class="demo cursor" th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_1.png'}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                </div>
+                <div class="column">
+                  <img class="demo cursor" th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_2.png'}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                </div>
+                <div class="column">
+                  <img class="demo cursor" th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_3.png'}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 left">
+          <div class="col-12 col-md-6 right">
             <div class="product-detail-info">
               <h3 class="product-name" th:text="${product.productName + ' - ' + product.productColor}"></h3>
               <h4 class="product-price text-danger">
@@ -99,6 +134,39 @@
 
   <th:block layout:fragment="js">
     <script th:src="@{/js/product-detail.js}"></script>
+
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slides");
+        let dots = document.getElementsByClassName("demo");
+        if (n > slides.length) {
+          slideIndex = 1
+        }
+        if (n < 1) {
+          slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+      }
+    </script>
   </th:block>
 </body>
 </html>
