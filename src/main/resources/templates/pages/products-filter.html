@@ -22,32 +22,12 @@
                   </button>
                   <div class="collapse" id="home-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li>
+                      <li th:each="brand : ${brands}">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="Chanel">
-                          <label class="form-check-label" for="Chanel">
-                            Chanel
-                          </label>
+                          <input class="form-check-input" type="checkbox" th:value="*{brand.id}" th:id="*{brand.brandName}" alt="">
+                          <label class="form-check-label" th:for="*{brand.brandName}" th:text="*{brand.brandName}"></label>
                         </div>
                       </li>
-                      <li>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="Dior">
-                          <label class="form-check-label" for="Dior">
-                            Dior
-                          </label>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="Gucci">
-                          <label class="form-check-label" for="Gucci">
-                            Gucci
-                          </label>
-                        </div>
-                      </li>
-                      <li><a th:href="@{/lipstick-brand/4}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">YSL</a></li>
-                      <li><a th:href="@{/lipstick-brand/5}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Louboutin</a></li>
                     </ul>
                   </div>
                 </li>
@@ -57,16 +37,10 @@
                   </button>
                   <div class="collapse" id="dashboard-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-                      <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                      <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                      <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
-                      <li>
+                      <li th:each="category : ${categories}">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Default checkbox
-                          </label>
+                          <input class="form-check-input" type="checkbox" th:value="*{category.id}" th:id="*{category.categoryName}" alt="">
+                          <label class="form-check-label" th:for="*{category.categoryName}" th:text="*{category.categoryName}"></label>
                         </div>
                       </li>
                     </ul>

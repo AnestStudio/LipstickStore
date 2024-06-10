@@ -13,6 +13,7 @@
 
 #product-detail .product-detail-image .slides {
   display: none;
+  cursor: pointer;
 }
 
 #product-detail .product-detail-image .slides img{
@@ -43,17 +44,6 @@
 #product-detail .product-detail-image .prev:hover,
 #product-detail .product-detail-image .next:hover {
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-#product-detail .product-detail-image .slides .number-text {
-  color: #f2f2f2;
-  font-size: 16px;
-  padding: 8px 16px;
-  position: absolute;
-  top: 0;
-  font-weight: 500;
-  background-color: rgb(0 0 0 / 50%);
-  border-radius: 12px;
 }
 
 #product-detail .product-detail-image .row-image {
@@ -91,6 +81,9 @@
 #product-detail .product-detail-image .row-image .column .demo:hover {
   opacity: 1;
 }
+
+
+/* CONTENT */
 
 #product-detail .content {
   padding-left: 60px;
@@ -167,27 +160,52 @@
   outline: none;
 }
 
-#product-detail .support {
+#product-detail .product-detail-info .product-quantity .btn {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+
+/* SUPPORT INFO */
+
+#product-detail .content .support {
   margin-top: 30px;
   padding: 10px 14px;
   border: 2px dashed #dc3545;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-#product-detail .support .title {
+#product-detail .content .support .title {
   font-weight: 500;
   font-size: 18px;
 }
 
-#product-detail .support .mobile {
+#product-detail .content .support .mobile {
   margin-top: 4px;
   font-weight: 500;
   font-size: 18px;
 }
 
-#product-detail .support .note {
+#product-detail .content .support .note {
   margin-top: 6px;
   font-size: 14px;
+}
+
+
+/* MORE INFO */
+
+#product-detail .content .tabs-info .nav-underline {
+  border-bottom: 1px solid var(--sub-nav-border-color);
+}
+
+#product-detail .content .tabs-info .nav-underline .nav-link.active, .nav-underline .show>.nav-link {
+  font-weight: 500;
+  color: var(--bs-nav-underline-link-active-color);
+  border-bottom-color: currentcolor;
+}
+
+#product-detail .content .tabs-info .nav-underline .nav-link {
+  color: var(--bs-nav-underline-link-active-color);
 }
 
 

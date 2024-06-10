@@ -6,14 +6,14 @@ drop table category;
 create table brand (
     brand_id          bigint identity primary key,
     brand_name        nvarchar(150),
-    brand_description nvarchar(1000),
+    brand_description nvarchar(2000),
 )
 go
 
 create table category (
     category_id          bigint identity primary key,
     category_name        nvarchar(150),
-    category_description nvarchar(1000)
+    category_description nvarchar(2000)
 )
 go
 
