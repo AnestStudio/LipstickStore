@@ -20,6 +20,9 @@ public class Brand {
     @Column(name = "brand_name", nullable = false)
     private String brandName;
 
+    @Column(name = "brand_description")
+    private String brandDescription;
+
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     private List<Product> products;
 }

@@ -2,10 +2,12 @@ package org.anest.mystore.controller;
 
 import org.anest.mystore.constant.IConstant;
 import org.anest.mystore.entity.Brand;
+import org.anest.mystore.entity.Category;
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.exception.BrandNotFoundException;
 import org.anest.mystore.exception.ProductNotFoundException;
 import org.anest.mystore.service.BrandService;
+import org.anest.mystore.service.CategoryService;
 import org.anest.mystore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +24,13 @@ public class ProductController {
 
     private final ProductService productService;
     private final BrandService brandService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public ProductController(ProductService productService, BrandService brandService) {
+    public ProductController(ProductService productService, BrandService brandService, CategoryService categoryService) {
         this.productService = productService;
         this.brandService = brandService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/")
@@ -50,8 +54,9 @@ public class ProductController {
         List<Product> products = productService.findByBrandId(brandId);
         Brand brand = brandService.findById(brandId).orElseThrow(() -> new BrandNotFoundException("Brand not found"));
         model.addAttribute("products", products);
-        model.addAttribute("title", "Thương hiệu " + brand.getBrandName());
-        return "pages/products";
+        model.addAttribute("brand", brand);
+        initData(model);
+        return "pages/products-filter";
     }
 
     @GetMapping("/lipstick/search")
@@ -87,5 +92,12 @@ public class ProductController {
         products.add(product);
         model.addAttribute("products", products);
         return "pages/product-detail";
+    }
+
+    private void initData(Model model) {
+        List<Category> categories = categoryService.findAll();
+        List<Brand> brands = brandService.findAll();
+        model.addAttribute("categories", categories);
+        model.addAttribute("brands", brands);
     }
 }

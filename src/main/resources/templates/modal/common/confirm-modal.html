@@ -3,12 +3,14 @@
      tabindex="-1"
      aria-labelledby="confirmModalModalLabel"
      aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false"
      th:fragment="confirm-modal"
 >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body py-4 text-center">
-        <h5 class="mb-2 fw-medium">Thông báo</h5>
+        <h5 class="mb-2 fw-medium" id="confirmModalModalLabel">Thông báo</h5>
         <div id="confirm-modal-content"></div>
       </div>
       <div class="modal-footer flex-nowrap p-0">

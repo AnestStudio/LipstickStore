@@ -12,7 +12,7 @@
     <section id="product-detail">
       <div class="container">
         <div class="row">
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-5">
             <div class="product-detail-image">
 <!--              <img th:src="@{'/images/products/' + ${product.productImage}}" class="card-img-top rounded-3" alt="...">-->
 
@@ -49,10 +49,16 @@
                 <div class="column">
                   <img class="demo cursor" th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_3.png'}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
                 </div>
+                <div class="column">
+                  <img class="demo cursor" th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_2.png'}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                </div>
+                <div class="column">
+                  <img class="demo cursor" th:src="@{'/images/products/son-ysl-slim-velvet-21-rouge-paradox_3.png'}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 right">
+          <div class="col-12 col-md-7 content">
             <div class="product-detail-info">
               <h3 class="product-name" th:text="${product.productName + ' - ' + product.productColor}"></h3>
               <h4 class="product-price text-danger">
@@ -102,6 +108,20 @@
               <div class="title">HỖ TRỢ MUA HÀNG</div>
               <div class="mobile">0973 888 678 / 0989 234 566</div>
               <div class="note">(Sản phẩm chính hãng 100%, đổi trả 30 ngày, Free ship từ 800k)</div>
+            </div>
+            <div class="mt-5">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">...</div>
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+              </div>
             </div>
           </div>
         </div>

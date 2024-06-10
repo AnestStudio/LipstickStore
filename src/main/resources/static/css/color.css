@@ -3,7 +3,7 @@
  */
 
 html[data-bs-theme='light'] {
-  --sub-nav-border-color: #c7c7c7;
+  --sub-nav-border-color: #e3e3e3;
 
   /* border-color ------------------------------------ */
   --primary-border-color: transparent;

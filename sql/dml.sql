@@ -17,11 +17,19 @@ INSERT INTO user_role (user_id, role_id) VALUES (1, 3);
 INSERT INTO user_role (user_id, role_id) VALUES (2, 3);
 
 
-INSERT INTO brand (brand_name) VALUES (N'Chanel');
-INSERT INTO brand (brand_name) VALUES (N'Dior');
-INSERT INTO brand (brand_name) VALUES (N'Gucci');
-INSERT INTO brand (brand_name) VALUES (N'YSL');
-INSERT INTO brand (brand_name) VALUES (N'Louboutin');
+INSERT INTO brand (brand_name, brand_description) VALUES (N'Chanel', N'<p><span class="fw-medium">Thương hiệu Chanel</span> là một thương hiệu được thành lập từ những năm 1909 – 1910 do Gabrielle “Coco” Chanel sáng lập. Chanel là một thương hiệu thời trang, mỹ phẩm cao cấp hàng đầu nước Pháp, mang trọn vẹn những tinh hoa, nét đẹp của đất nước này.</p>
+<p>Nhắc tới Chanel là nhắc tới thương hiệu thời trang, mỹ phẩm đẳng cấp có tiếng trong giới. <span class="fw-medium">Son Chanel</span> nói riêng và mỹ phẩm Chanel nói chung đều là những sản phẩm chất lượng và giá thành tương xứng.</p>');
+INSERT INTO brand (brand_name, brand_description) VALUES (N'Dior', N'<p><span class="fw-medium">Dior</span> là một thương của Pháp thành lập vào năm 1946 bởi Christian Dior thuộc kiểm soát của LVMH cùng một công ty với Fendi. Ngoài mảng chủ đạo là thời thì hãng còn nổi tiếng về các dòng mỹ phẩm. Mỹ phẩm của Dior được biết đến với chất lượng đi đôi cùng với vẻ ngoài sang trọng, nhã nhặn.</p>
+<p>Khi nhắc đến son Dior người ta nhắc đến vẻ ngoài sang trọng cùng với chất lượng tuyệt vời mà nó mang lại với 4 dòng son môi: Dior Addict, Dior Addict Lip Glow, Dior Rouge và Diorific.</p>
+<p>Những thỏi son của Dior được nhiều người lựa chọn cũng bởi chính chất lượng tuyệt vời của chúng. Trước hết là ở thiết kế vô cùng đẳng cấp. Khác biệt của Dior với những dòng son môi khác cùng phân khúc high-end như YSL, Chanel...</p>');
+INSERT INTO brand (brand_name, brand_description) VALUES (N'Gucci', N'<p><span class="fw-medium">Thương hiệu Gucci</span>  được thành lập từ năm 1921,Gucci là một thương hiệu thời trang Ý. Tiếp nối thành công với các sản phẩm thời trang, Gucci cho ra đời các sản phẩm mỹ phẩm cao cấp dành cho giới thượng lưu.</p>
+<p>Son Gucci xuất hiện trên thị trường một lần nữa đã khẳng định đẳng cấp là một trong những thương hiệu đắt giá nhất thế giới. Gucci không chỉ thành công trong mảng thời trang mà còn gây tiếng vang lớn với các sản phẩm mỹ phẩm, đặc biệt là son. Son Gucci là dòng sản phẩm mà từ các tiểu thư, sao hạng A đều săn đón và trở thành món đồ không thể thiếu. Với hơn 60 màu son trong bảng màu son Gucci đã chinh phục được mọi trái tim các cô gái.</p>');
+INSERT INTO brand (brand_name, brand_description) VALUES (N'YSL', N'<p><span class="fw-medium">YSL</span> là tên viết tắt của thương hiệu <span class="fw-medium">Yves Saint Laurent</span>, một thương hiệu về thời trang và mỹ phẩm cao cấp nổi tiếng đến từ Pháp, được thành lập vào năm 1961 bởi nhà thiết kế Yves Saint Laurent và Pierre Bergé.</p>
+<p>Đến nay, YSL vẫn là một thương hiệu dẫn đầu tạo ra xu hướng hiện đại, sang trọng, thanh lịch. Bên canh đó, thương hiệu còn mở rộng sang các thị trường khác như giày dép, túi xách, phụ kiện thời trang... và luôn được đông đảo mọi người ủng hộ.</p>');
+INSERT INTO brand (brand_name, brand_description) VALUES (N'Louboutin', N'<p><span class="fw-medium">Son Christian Louboutin</span> là thỏi son đáng mơ ước của mọi cô gái, chúng được ví như những món trang sức thần kỳ “hô biến” nhan sắc của bạn trở nên lộng lẫy và kiêu sa; bởi vậy dù có mức giá khá đắt nhưng son Louboutin vẫn khiến các nàng phải mê mệt và mơ ước được sở hữu thỏi son này. </p>
+<p>Louboutin được thành lập bởi nhà thiết kế tài ba cùng tên người Pháp, Nhà thiết kế tài ba cùng tên người Pháp, Christian Louboutin đã làm nên cuộc cách mạng tuyệt vời cho phái đẹp bằng những đôi giày đế đỏ vào thế kỷ 20. Đó cũng là lý do đến tận hôm nay, thương hiệu này vẫn được gọi với cái tên đầy kiêu hãnh – “Giày đế đỏ”.</p>
+<p>Từ năm 2015 đến nay, thương hiệu này liên tục cho ra mắt các dòng son với thiết kế độc đáo. Trong đó có không ít dòng son đã đi vào lịch sử ngành mỹ phẩm như một hiện tượng, tạo sức hấp dẫn đến từ Christian Louboutin mà không ai có thể xem thường.</p>');
+
 
 
 INSERT INTO category (category_name) VALUES (N'Son Thỏi');
@@ -41,4 +49,9 @@ INSERT INTO product (product_name, product_image, product_price, product_quantit
 INSERT INTO product (product_name, product_image, product_price, product_quantity, product_short_description, category_id, brand_id) VALUES (N'Son Christian Louboutin Velvet Matte Epic Brunette 318M (Mới Nhất) – Màu Đỏ Gạch', N'son-christian-louboutin-velvet-matte-epic-brunette-318m-moi-nhat-mau-do-gach-dd.jpg', N'3200000', 5, N'Son Christian Louboutin Velvet Matte Epic Brunette 318M – Màu Đỏ Gạch, một sắc đỏ đầy quyến rũ và mạnh mẽ. Sắc đỏ này không chỉ là biểu tượng của vẻ đẹp thanh lịch mà còn thể hiện sự tự tin và phong thái riêng của người phụ nữ hiện đại.', 1, 5);
 
 INSERT INTO product (product_name, product_color, product_image, product_price, product_quantity, product_short_description, category_id, brand_id) VALUES (N'Son YSL Slim Velvet 21 Rouge Paradoxe', N'Màu Đỏ Ruby', N'son-ysl-slim-velvet-21-rouge-paradox.png', N'950000', 10, N'Son YSL Slim Velvet 21 Rouge Paradoxe – Màu Đỏ Ruby ra đời đã khiến nhiều tín đồ mê làm đẹp nhanh tay đặt hàng bởi màu son đỏ ruby thời thượng cùng chất son lì với kết cấu mềm mại như nhung mịn màng khiến nàng thích thú.', 1, 4);
+
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox_1.png', 1);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox_2.png', 1);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox_3.png', 1);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox_4.png', 1);
 

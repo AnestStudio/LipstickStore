@@ -20,6 +20,9 @@ public class Category {
     @Column(name = "category_name", nullable = false)
     private String categoryName;
 
+    @Column(name = "category_description")
+    private String categoryDescription;
+
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products;
 }
