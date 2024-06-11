@@ -3,7 +3,9 @@ package org.anest.mystore.service.impl;
 import org.anest.mystore.entity.AuthUser;
 import org.anest.mystore.entity.Role;
 import org.anest.mystore.entity.User;
+import org.anest.mystore.entity.UserAddress;
 import org.anest.mystore.repository.UserRepository;
+import org.anest.mystore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,7 +19,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class UserServiceImpl implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService, UserService {
 
     private final UserRepository userRepository;
 
@@ -53,5 +55,10 @@ public class UserServiceImpl implements UserDetailsService {
                 user.isDeleted(),
                 user.getStatus()
         );
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

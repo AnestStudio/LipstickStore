@@ -44,10 +44,16 @@ create table role (
 )
 go
 
+drop table user_address;
+drop table user_detail;
+drop table user_role;
+drop table [user];
+
 create table [user] (
     user_id    bigint identity primary key,
     username   varchar(100) unique not null,
     password   varchar(100) not null,
+    full_name  nvarchar(100) not null,
     created_at datetime2(6) not null,
     status     int          not null,
     deleted    bit          not null
@@ -57,9 +63,9 @@ go
 create table user_address (
     user_address_id   bigint identity primary key,
     user_id           bigint references [user],
-    receiver_name     varchar(100),
-    receiver_mobile   varchar(11),
-    user_address_name varchar(255),
+    receiver_name     nvarchar(100),
+    receiver_mobile   varchar(12),
+    user_address_name nvarchar(500),
     default_address   bit
 )
 go

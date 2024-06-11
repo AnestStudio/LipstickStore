@@ -1,0 +1,63 @@
+/**
+ * CART ----------------------------------------------------------------------------------------------------------------
+ */
+
+#customer-info .panel {
+  border-radius: 12px;
+  border: 2px dashed var(--bs-border-color);
+  color: var(--primary-text);
+  padding: 10px 20px;
+}
+
+#checkout {
+  margin-top: 20px;
+  padding-bottom: 50px;
+}
+
+#checkout .panel {
+  border-radius: 12px;
+  border: 2px dashed var(--bs-border-color);
+  color: var(--primary-text);
+  padding: 20px;
+}
+
+#checkout table>tbody>tr>th,
+#checkout table>tfoot>tr>th,
+#checkout table>thead>tr>th {
+  font-size: 16px !important;
+  font-weight: 500;
+}
+
+#checkout table tr th {
+  padding-top: 8px;
+  padding-bottom: 16px;
+}
+
+#checkout table .d-flex {
+  max-width: 500px;
+}
+
+#checkout table .d-flex .icon-circle img {
+  border-radius: 6px;
+  margin-right: 16px;
+  width: 52px;
+  height: 52px;
+}
+
+#checkout table .d-flex .content-body {
+  text-align: left;
+  width: 100%;
+}
+
+#checkout table .d-flex .content-body a {
+  color: var(--secondary-text);
+}
+
+#checkout table .d-flex .content-body a:hover {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+}
+
+#checkout .number span {
+  font-size: 20px;
+}

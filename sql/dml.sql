@@ -1,20 +1,24 @@
-INSERT INTO [user] (deleted, status, created_at, password, username) VALUES (0, 1, N'2024-04-12 02:26:59.660000', N'$2a$10$q39wz54zjT9Qvc72N8ReHOqbbZVzAxkxl43ZgVacBzbQOJeL5TYt6', N'anhdt');
-INSERT INTO [user] (deleted, status, created_at, password, username) VALUES (0, 1, N'2024-04-12 02:26:59.660000', N'$2a$10$9UsGzpJaXEvo3RgYvIWp1OnbpvYMD6mEeL270KvUX9LIIiCj9qeaS', N'minhth');
-
-
-INSERT INTO user_detail (user_id, gender, dob, mobile, email) VALUES (1, 1, N'11/11/1994', N'0987777888', N'anhdt@gmail.com');
-INSERT INTO user_detail (user_id, gender, dob, mobile, email) VALUES (1, 1, N'18/10/2001', N'0936734833', N'minhth@gmail.com');
-
-
 INSERT INTO role (role_name) VALUES (N'ROLE_ADMIN');
 INSERT INTO role (role_name) VALUES (N'ROLE_EMPLOYEE');
 INSERT INTO role (role_name) VALUES (N'ROLE_MEMBER');
+
+
+INSERT INTO [user] (username, password, full_name, created_at, status, deleted) VALUES (N'anhdt', N'$2a$10$q39wz54zjT9Qvc72N8ReHOqbbZVzAxkxl43ZgVacBzbQOJeL5TYt6', N'Đinh Tuấn Anh', N'2024-04-12 02:26:59.660000', 1, 0);
+INSERT INTO [user] (username, password, full_name, created_at, status, deleted) VALUES (N'minhth', N'$2a$10$9UsGzpJaXEvo3RgYvIWp1OnbpvYMD6mEeL270KvUX9LIIiCj9qeaS', N'Trần Hoàng Minh', N'2024-04-12 02:26:59.660000', 1, 0);
+
+
+INSERT INTO user_detail (user_id, gender, dob, mobile, email) VALUES (1, 1, N'11/11/1994', N'0987777888', N'anhdt@gmail.com');
+INSERT INTO user_detail (user_id, gender, dob, mobile, email) VALUES (2, 1, N'18/10/2001', N'0936734833', N'minhth@gmail.com');
 
 
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
 INSERT INTO user_role (user_id, role_id) VALUES (1, 3);
 INSERT INTO user_role (user_id, role_id) VALUES (2, 3);
+
+
+INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_name, default_address) VALUES (2, N'Trần Hoàng Minh', N'0936734833', N'Fville 3, Fpt Software, Khu Công Nghệ Cao Hoà Lạc, Xã Tân Xã, Huyện Thạch Thất, Hà Nội', 1);
+INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_name, default_address) VALUES (2, N'Trần Hoàng Minh', N'0936734833', N'Fville 1, Fpt Software, Khu Công Nghệ Cao Hoà Lạc, Xã Tân Xã, Huyện Thạch Thất, Hà Nội', 0);
 
 
 INSERT INTO brand (brand_name, brand_description) VALUES (N'Chanel', N'<p><span class="fw-medium">Thương hiệu Chanel</span> là một thương hiệu được thành lập từ những năm 1909 – 1910 do Gabrielle “Coco” Chanel sáng lập. Chanel là một thương hiệu thời trang, mỹ phẩm cao cấp hàng đầu nước Pháp, mang trọn vẹn những tinh hoa, nét đẹp của đất nước này.</p>
@@ -50,46 +54,45 @@ INSERT INTO product (product_name, product_color, product_image, product_price, 
 INSERT INTO product (product_name, product_color, product_image, product_price, product_quantity, product_short_description, product_description, category_id, brand_id) VALUES (N'Son Chanel Rouge Allure Luminous Intense 212 Caractère', N'Màu Đỏ Nâu', N'son-chanel-rough-allure-luminous-intense-212-caractete.png', 1050000, 20, N'Son Chanel Rouge Allure Luminous Intense 212 Caractère – Màu Đỏ Nâu với tông màu cực trendy thời thượng chắc chắn sẽ không làm chị em thất vọng. Sở hữu thiết kế xinh đẹp, màu son thời thượng cùng chất son hoàn hảo, Chanel 212 Caractère dễ dàng trở thành gương mặt ưu tú trong những thỏi son được ưu chuộng.', null, 1, 1);
 
 
-INSERT INTO product_image (product_image, product_id) VALUES (1, N'son-ysl-slim-velvet-21-rouge-paradox.png', 1);
-INSERT INTO product_image (product_image, product_id) VALUES (2, N'son-ysl-slim-velvet-21-rouge-paradox_1.png', 1);
-INSERT INTO product_image (product_image, product_id) VALUES (3, N'son-ysl-slim-velvet-21-rouge-paradox_2.png', 1);
-INSERT INTO product_image (product_image, product_id) VALUES (4, N'son-ysl-slim-velvet-21-rouge-paradox_3.png', 1);
-INSERT INTO product_image (product_image, product_id) VALUES (5, N'son-ysl-slim-velvet-21-rouge-paradox_4.png', 1);
-INSERT INTO product_image (product_image, product_id) VALUES (6, N'son-ysl-slim-214-illicit-orange.jpg', 2);
-INSERT INTO product_image (product_image, product_id) VALUES (7, N'son-ysl-slim-214-illicit-orange_1.jpg', 2);
-INSERT INTO product_image (product_image, product_id) VALUES (8, N'son-ysl-slim-214-illicit-orange_2.jpg', 2);
-INSERT INTO product_image (product_image, product_id) VALUES (9, N'son-ysl-slim-214-illicit-orange_3.jpg', 2);
-INSERT INTO product_image (product_image, product_id) VALUES (10, N'son-ysl-slim-214-illicit-orange_4.jpg', 2);
-INSERT INTO product_image (product_image, product_id) VALUES (15, N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili.png', 3);
-INSERT INTO product_image (product_image, product_id) VALUES (16, N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili_1.png', 3);
-INSERT INTO product_image (product_image, product_id) VALUES (17, N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili_2.png', 3);
-INSERT INTO product_image (product_image, product_id) VALUES (18, N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili_3.png', 3);
-INSERT INTO product_image (product_image, product_id) VALUES (19, N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili_4.png', 3);
-INSERT INTO product_image (product_image, product_id) VALUES (20, N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion.png', 4);
-INSERT INTO product_image (product_image, product_id) VALUES (21, N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion_1.png', 4);
-INSERT INTO product_image (product_image, product_id) VALUES (22, N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion_2.png', 4);
-INSERT INTO product_image (product_image, product_id) VALUES (23, N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion_3.png', 4);
-INSERT INTO product_image (product_image, product_id) VALUES (24, N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion_4.png', 4);
-INSERT INTO product_image (product_image, product_id) VALUES (25, N'son-ysl-the-bold-07-unihibited-flame.png', 5);
-INSERT INTO product_image (product_image, product_id) VALUES (26, N'son-ysl-the-bold-07-unihibited-flame_1.jpg', 5);
-INSERT INTO product_image (product_image, product_id) VALUES (27, N'son-ysl-the-bold-07-unihibited-flame_2.jpg', 5);
-INSERT INTO product_image (product_image, product_id) VALUES (28, N'son-ysl-the-bold-07-unihibited-flame_3.jpg', 5);
-INSERT INTO product_image (product_image, product_id) VALUES (29, N'son-ysl-the-bold-07-unihibited-flame_4.jpg', 5);
-INSERT INTO product_image (product_image, product_id) VALUES (30, N'son-ysl-rouge-volupte-shine-collector.jpg', 6);
-INSERT INTO product_image (product_image, product_id) VALUES (31, N'son-ysl-rouge-volupte-shine-collector_1.jpg', 6);
-INSERT INTO product_image (product_image, product_id) VALUES (32, N'son-ysl-rouge-volupte-shine-collector_2.jpg', 6);
-INSERT INTO product_image (product_image, product_id) VALUES (33, N'son-ysl-rouge-volupte-shine-collector_3.jpg', 6);
-INSERT INTO product_image (product_image, product_id) VALUES (34, N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease.jpg', 7);
-INSERT INTO product_image (product_image, product_id) VALUES (35, N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease_1.jpg', 7);
-INSERT INTO product_image (product_image, product_id) VALUES (36, N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease_2.jpg', 7);
-INSERT INTO product_image (product_image, product_id) VALUES (37, N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease_3.jpg', 7);
-INSERT INTO product_image (product_image, product_id) VALUES (38, N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease_4.jpg', 7);
-INSERT INTO product_image (product_image, product_id) VALUES (39, N'son-chanel-rough-allure-luminous-intense-212-caractete.png', 8);
-INSERT INTO product_image (product_image, product_id) VALUES (40, N'son-chanel-rough-allure-luminous-intense-212-caractete_1.png', 8);
-INSERT INTO product_image (product_image, product_id) VALUES (41, N'son-chanel-rough-allure-luminous-intense-212-caractete_2.png', 8);
-INSERT INTO product_image (product_image, product_id) VALUES (42, N'son-chanel-rough-allure-luminous-intense-212-caractete_3.png', 8);
-INSERT INTO product_image (product_image, product_id) VALUES (43, N'son-chanel-rough-allure-luminous-intense-212-caractete_4.png', 8);
-INSERT INTO product_image (product_image, product_id) VALUES (44, N'son-chanel-rough-allure-luminous-intense-212-caractete_5.png', 8);
-INSERT INTO product_image (product_image, product_id) VALUES (45, N'son-chanel-rough-allure-luminous-intense-212-caractete_6.png', 8);
-
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox.png', 1);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox_1.png', 1);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox_2.png', 1);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox_3.png', 1);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-velvet-21-rouge-paradox_4.png', 1);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-214-illicit-orange.jpg', 2);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-214-illicit-orange_1.jpg', 2);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-214-illicit-orange_2.jpg', 2);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-214-illicit-orange_3.jpg', 2);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-slim-214-illicit-orange_4.jpg', 2);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili.png', 3);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili_1.png', 3);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili_2.png', 3);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili_3.png', 3);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili_4.png', 3);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion.png', 4);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion_1.png', 4);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion_2.png', 4);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion_3.png', 4);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-kem-ysl-vinyl-cream-lip-stain-610-nude-champion_4.png', 4);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-the-bold-07-unihibited-flame.png', 5);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-the-bold-07-unihibited-flame_1.jpg', 5);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-the-bold-07-unihibited-flame_2.jpg', 5);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-the-bold-07-unihibited-flame_3.jpg', 5);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-the-bold-07-unihibited-flame_4.jpg', 5);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-shine-collector.jpg', 6);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-shine-collector_1.jpg', 6);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-shine-collector_2.jpg', 6);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-shine-collector_3.jpg', 6);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease.jpg', 7);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease_1.jpg', 7);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease_2.jpg', 7);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease_3.jpg', 7);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-ysl-rouge-volupte-candy-glaze-9-tangerine-tease_4.jpg', 7);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete.png', 8);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_1.png', 8);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_2.png', 8);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_3.png', 8);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_4.png', 8);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_5.png', 8);
+INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_6.png', 8);
 
