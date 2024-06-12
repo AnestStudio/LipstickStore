@@ -6,7 +6,20 @@
   border-radius: 12px;
   border: 2px dashed var(--bs-border-color);
   color: var(--primary-text);
-  padding: 10px 20px;
+  padding: 12px 20px 15px;
+}
+
+#customer-info .panel .customer-name {
+  font-size: 22px;
+  font-style: italic;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+
+#customer-info .panel .customer-shipping-address {
+  font-style: italic;
 }
 
 #checkout {
@@ -60,4 +73,24 @@
 
 #checkout .number span {
   font-size: 20px;
+}
+
+#checkout input {
+  width: 360px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--sub-nav-border-color);
+  border-radius: 0;
+  padding: 12px 10px;
+  text-align: right;
+}
+
+#checkout input.form-control:focus {
+  box-shadow: none;
+}
+
+#addressListModal .address .address-info {
+  border-left: 1px solid var(--sub-nav-border-color);
+  padding-left: 16px;
+  margin-left: 8px;
 }

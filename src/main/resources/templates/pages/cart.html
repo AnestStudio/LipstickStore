@@ -33,7 +33,7 @@
                 <span class="ms-1 title-quantity text-danger" th:text="'[' + ${session.totalProductInCart} + ']'"></span>
               </h1>
               <p class="title-des">
-                Quý khách vui lòng kiểm tra lại sản phẩm, số lượng và tổng giá trị hoá đơn trước khi tiếp tục mua hàng.
+                Quý khách vui lòng kiểm tra lại sản phẩm, số lượng và tổng giá trị đơn hàng trước khi tiếp tục mua hàng.
               </p>
             </div>
           </div>
@@ -65,7 +65,7 @@
                           </div>
                           <div class="content-body">
                             <a href="javascript:void(0)">
-                              <span th:text="*{item.name}"></span>
+                              <span th:text="*{item.name + ' - ' + item.color}"></span>
                             </a>
                           </div>
                         </div>
@@ -117,7 +117,7 @@
                   <div class="d-flex align-items-center number me-4">
                     Tổng tiền:&nbsp;&nbsp;<span class="text-danger fw-medium" th:text="${#numbers.formatInteger(session.totalAmountOfCart, 3, 'POINT')}"></span><sup class="text-danger">đ</sup>
                   </div>
-                  <a href="#" class="btn btn-md btn-success py-2 px-3">
+                  <a th:href="@{/checkout}" class="btn btn-md btn-success py-2 px-3">
                     <i class="fas fa-share me-2"></i>MUA HÀNG
                   </a>
                 </div>

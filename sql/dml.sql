@@ -17,8 +17,7 @@ INSERT INTO user_role (user_id, role_id) VALUES (1, 3);
 INSERT INTO user_role (user_id, role_id) VALUES (2, 3);
 
 
-INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_name, default_address) VALUES (2, N'Trần Hoàng Minh', N'0936734833', N'Fville 3, Fpt Software, Khu Công Nghệ Cao Hoà Lạc, Xã Tân Xã, Huyện Thạch Thất, Hà Nội', 1);
-INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_name, default_address) VALUES (2, N'Trần Hoàng Minh', N'0936734833', N'Fville 1, Fpt Software, Khu Công Nghệ Cao Hoà Lạc, Xã Tân Xã, Huyện Thạch Thất, Hà Nội', 0);
+INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_detail, user_address_wards, user_address_districts, user_address_provinces, default_address) VALUES (2, N'Trần Hoàng Minh', N'0977657876', N'Fville 3, Fpt Software, Khu Công Nghệ Cao Hoà Lạc', N'Xã Tân Xã', N'Huyện Thạch Thất', N'Hà Nội', 1);
 
 
 INSERT INTO brand (brand_name, brand_description) VALUES (N'Chanel', N'<p><span class="fw-medium">Thương hiệu Chanel</span> là một thương hiệu được thành lập từ những năm 1909 – 1910 do Gabrielle “Coco” Chanel sáng lập. Chanel là một thương hiệu thời trang, mỹ phẩm cao cấp hàng đầu nước Pháp, mang trọn vẹn những tinh hoa, nét đẹp của đất nước này.</p>
@@ -96,3 +95,11 @@ INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough
 INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_5.png', 8);
 INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_6.png', 8);
 
+
+INSERT INTO order_status (order_status) VALUES (N'Chờ xác nhận');
+INSERT INTO order_status (order_status) VALUES (N'Đã xác nhận');
+INSERT INTO order_status (order_status) VALUES (N'Đang chuẩn bị hàng');
+INSERT INTO order_status (order_status) VALUES (N'Đang giao');
+INSERT INTO order_status (order_status) VALUES (N'Hoàn thành');
+INSERT INTO order_status (order_status) VALUES (N'Đã huỷ');
+INSERT INTO order_status (order_status) VALUES (N'Trả hàng');

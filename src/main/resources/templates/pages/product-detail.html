@@ -25,7 +25,7 @@
                 <div class="column" th:each="image, i : ${product.productImageList}">
                   <img class="demo cursor" th:src="@{'/images/products/' + *{image.productImage}}"
                        style="width:100%"
-                       th:onclick="'javascript:currentSlide(' + *{i.index + 1} + ')'"
+                       th:onclick="'javascript:currentSlide(' + *{i.count} + ')'"
                        alt=""
                   >
                 </div>

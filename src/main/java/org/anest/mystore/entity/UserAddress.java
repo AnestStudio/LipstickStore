@@ -22,13 +22,26 @@ public class UserAddress {
     @Column(name = "receiver_mobile", length = 15)
     private String receiverMobile;
 
+    @Column(name = "user_address_detail")
+    private String userAddressDetail;
+
+    @Column(name = "user_address_wards")
+    private String userAddressWards;
+
+    @Column(name = "user_address_districts")
+    private String userAddressDistricts;
+
+    @Column(name = "user_address_provinces")
+    private String userAddressProvinces;
+
     @Column(name = "default_address", length = 2)
     private boolean defaultAddress;
 
-    @Column(name = "user_address_name")
-    private String userAddressName;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
+
+    public String getFullAddress() {
+        return userAddressDetail + ", " + userAddressWards + ", " + userAddressDistricts + ", " + userAddressProvinces;
+    }
 }

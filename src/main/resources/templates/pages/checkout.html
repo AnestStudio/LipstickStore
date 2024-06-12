@@ -18,7 +18,7 @@
               <span class="ms-1 title-quantity text-danger" th:text="'[' + ${session.totalProductInCart} + ']'"></span>
             </h1>
             <p class="title-des">
-              Quý khách vui lòng kiểm tra lại sản phẩm, số lượng và tổng giá trị hoá đơn trước khi tiếp tục mua hàng.
+              Quý khách vui lòng kiểm tra lại địa chỉ giao hàng, sản phẩm, số lượng và tổng giá trị đơn hàng trước khi đặt hàng.
             </p>
           </div>
         </div>
@@ -30,14 +30,17 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="panel">
-              <div class="text-danger mb-1">Địa Chỉ Nhận Hàng</div>
+              <div class="text-danger fw-medium"><i class="fas fa-map-marker-alt me-2"></i>Địa Chỉ Nhận Hàng</div>
               <div>
-                <span class="fw-bold me-3" th:text="${user.fullName + ' ' + user.userDetail.mobile}"></span>
-                <span th:text="${defaultAddress.userAddressName}"></span>
+                <h3 class="customer-name" th:text="${user.fullName + ' – ' + user.userDetail.mobile}"></h3>
+                <p class="m-0">
+                  <span class="customer-shipping-address me-2" th:text="${defaultAddress.fullAddress}"></span>
+                  <sup class="badge bg-success-subtle border text-success-emphasis rounded-pill me-4">Mặc định</sup>
+                  <a href="javascript:void(0)" class="text-danger" data-bs-toggle="modal" data-bs-target="#addressListModal">
+                    Thay đổi
+                  </a>
+                </p>
               </div>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addressListModal">
-                Launch demo modal
-              </button>
             </div>
           </div>
         </div>
@@ -68,7 +71,7 @@
                       </div>
                       <div class="content-body">
                         <a href="javascript:void(0)">
-                          <span th:text="*{item.name}"></span>
+                          <span th:text="*{item.name + ' - ' + item.color}"></span>
                         </a>
                       </div>
                     </div>
@@ -85,6 +88,12 @@
                 </tr>
                 </tbody>
               </table>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <div>Ghi chú - lời nhắn</div>
+                <div class="text-end">
+                  <input type="text" class="form-control" placeholder="Nhập lời nhắn cho cửa hàng">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -115,21 +124,36 @@
   <th:block layout:fragment="modal">
     <!-- Modal -->
     <div class="modal fade" id="addressListModal" tabindex="-1" aria-labelledby="addressListModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="addressListModalLabel">Modal title</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h1 class="modal-title fs-5" id="addressListModalLabel">Danh sách địa chỉ</h1>
           </div>
           <div class="modal-body">
-            <div class="address" th:each="address : ${user.userAddressList}">
-              <span th:text="*{address.userAddressName}"></span>
-              <hr/>
+            <div class="address" th:each="address, i : ${user.userAddressList}">
+              <div class="form-check d-flex align-items-center">
+                <input class="form-check-input me-2" type="radio" th:name="*{'radio' + i.count}" th:id="*{'radio' + i.count}">
+                <div class="address-info">
+                  <label class="form-check-label fw-medium" th:for="*{'radio' + i.count}">
+                    <i class="fas fa-user fa-fw me-2"></i><span th:text="*{address.receiverName + ' - ' + address.receiverMobile}"></span>
+                    <sup class="badge bg-success-subtle border text-success-emphasis rounded-pill ms-1" th:if="*{address.defaultAddress}">Mặc định</sup>
+                  </label>
+                  <label>
+                    <i class="fas fa-map-marker-alt fa-fw me-2"></i><span th:text="*{address.fullAddress}"></span>
+                  </label>
+                </div>
+              </div>
+              <hr th:if="*{i.index != (user.userAddressList.size() - 1)}">
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal-footer d-flex justify-content-between">
+            <div>
+              <button type="button" class="btn btn-success"><i class="fas fa-plus me-2"></i>Thêm địa chỉ</button>
+            </div>
+            <div>
+              <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Đóng</button>
+              <button type="button" class="btn btn-danger"><i class="fas fa-check me-2"></i>Xác nhận</button>
+            </div>
           </div>
         </div>
       </div>

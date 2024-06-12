@@ -45,6 +45,7 @@ public class CartRestController {
             Item item = Item.builder()
                     .id(productId)
                     .name(product.getProductName())
+                    .color(product.getProductColor())
                     .image(product.getProductImage())
                     .price(product.getProductPrice())
                     .quantity(quantity)
