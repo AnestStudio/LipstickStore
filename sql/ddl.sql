@@ -99,10 +99,10 @@ go
 
 create table [order] (
     order_id           bigint identity primary key,
-    user_id            bigint not null,
-    order_shipped_date datetime2(6) not null,
+    user_id            bigint references [user],
+    order_shipped_date datetime2(6),
     order_created_at   datetime2(6) not null,
-    order_status_id    int not null,
+    order_status_id    bigint references [order_status],
     order_discount     float not null,
     order_total_amount decimal not null,
     order_note         nvarchar(1500),
@@ -114,9 +114,9 @@ go
 
 create table [order_detail] (
     order_detail_id bigint identity primary key,
-    order_id        bigint not null,
-    product_id      bigint not null,
-    product_name    nvarchar(255) unique not null,
+    order_id        bigint references [order],
+    product_id      bigint references product,
+    product_name    nvarchar(255) not null,
     product_color   nvarchar(255) not null,
     product_image   varchar(255) not null,
     product_price   decimal not null,
