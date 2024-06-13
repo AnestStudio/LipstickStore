@@ -7,12 +7,12 @@ html[data-bs-theme='light'] {
 
   /* border-color ------------------------------------ */
   --primary-border-color: transparent;
-  --secondary-border-color: #E4E6EB;
+  --secondary-border-color: #dee2e6;
   --third-border-color: #D5D6DB;
 
   /* button-background-color ------------------------- */
   --primary-button-background-color: #FFFFFF;
-  --secondary-button-background-color: #E4E6EB;
+  --secondary-button-background-color: #dee2e6;
 
   /* text-color -------------------------------------- */
   --primary-text: #050505;

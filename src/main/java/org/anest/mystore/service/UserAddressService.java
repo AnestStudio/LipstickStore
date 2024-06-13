@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface UserAddressService {
 
-    UserAddress getUserDefaultAddress(List<UserAddress> userAddresses);
+    UserAddress getUserDefaultAddress(List<UserAddress> userAddressList);
+
+    UserAddress getUserShippingAddress(List<UserAddress> userAddressList, Long userShippingAddressId);
 }

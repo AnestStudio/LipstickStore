@@ -1,6 +1,7 @@
 package org.anest.mystore.controllerrest;
 
 import jakarta.servlet.http.HttpSession;
+import org.anest.mystore.constant.IConstant;
 import org.anest.mystore.entity.Item;
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.service.ItemService;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
+
+import static org.anest.mystore.constant.IConstant.*;
 
 @RestController
 @RequestMapping("api/public/cart")
@@ -52,7 +55,7 @@ public class CartRestController {
                     .amount(product.getProductPrice() * quantity)
                     .build();
 
-            List<Item> cart = (List<Item>) session.getAttribute("cart");
+            List<Item> cart = (List<Item>) session.getAttribute(CART);
             if (cart == null) {
                 cart = new ArrayList<>();
                 cart.add(item);
@@ -69,17 +72,17 @@ public class CartRestController {
                     cart.add(item);
                 }
             }
-            session.setAttribute("cart", cart);
+            session.setAttribute(IConstant.CART, cart);
 
             int totalProduct = itemService.countTotalProductQuantity(cart);
             double totalAmount = itemService.countTotalProductAmount(cart);
-            session.setAttribute("totalProductInCart", totalProduct);
-            session.setAttribute("totalAmountOfCart", totalAmount);
+            session.setAttribute(TOTAL_PRODUCT_IN_CART, totalProduct);
+            session.setAttribute(TOTAL_AMOUNT_OF_CART, totalAmount);
 
             Map<String, Object> response = new HashMap<>();
-            response.put("cart", cart);
-            response.put("totalProductInCart", totalProduct);
-            response.put("totalAmountOfCart", totalAmount);
+            response.put(CART, cart);
+            response.put(TOTAL_PRODUCT_IN_CART, totalProduct);
+            response.put(TOTAL_AMOUNT_OF_CART, totalAmount);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

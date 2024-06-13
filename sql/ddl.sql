@@ -100,9 +100,9 @@ go
 create table [order] (
     order_id           bigint identity primary key,
     user_id            bigint references [user],
+    order_status_id    bigint references [order_status],
     order_shipped_date datetime2(6),
     order_created_at   datetime2(6) not null,
-    order_status_id    bigint references [order_status],
     order_discount     float not null,
     order_total_amount decimal not null,
     order_note         nvarchar(1500),

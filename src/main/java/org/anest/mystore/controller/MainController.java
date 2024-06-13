@@ -1,6 +1,7 @@
 package org.anest.mystore.controller;
 
 import jakarta.servlet.http.HttpSession;
+import org.anest.mystore.constant.IConstant;
 import org.anest.mystore.entity.AuthUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -36,4 +37,9 @@ public class MainController {
         model.addAttribute("customUser", customUser);
         return "auth";
     }
+
+//    @GetMapping("/thanks")
+//    public String thanks(Model model) {
+//        return "thanks";
+//    }
 }

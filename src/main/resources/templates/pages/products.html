@@ -36,20 +36,8 @@
                     Thương hiệu
                   </a>
                   <ul class="dropdown-menu dropdown-menu-start mt-1">
-                    <li>
-                      <a class="dropdown-item" th:href="@{/lipstick-brand/1}">Chanel</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" th:href="@{/lipstick-brand/2}">Dior</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" th:href="@{/lipstick-brand/3}">Gucci</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" th:href="@{/lipstick-brand/4}">YSL</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" th:href="@{/lipstick-brand/5}">Louboutin</a>
+                    <li th:each="brand : ${brands}">
+                      <a class="dropdown-item" th:href="@{'/lipstick-brand/' + *{brand.id}}" th:text="*{brand.brandName}"></a>
                     </li>
                   </ul>
                 </li>
@@ -58,14 +46,8 @@
                     Loại son
                   </a>
                   <ul class="dropdown-menu dropdown-menu-start mt-1">
-                    <li>
-                      <a class="dropdown-item" th:href="@{/lipstick-type/1}">Son Thỏi</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" th:href="@{/lipstick-type/2}">Son Kem</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" th:href="@{/lipstick-type/3}">Son Dưỡng</a>
+                    <li th:each="category : ${categories}">
+                      <a class="dropdown-item" th:href="@{'/lipstick-type/' + *{category.id}}" th:text="*{category.categoryName}"></a>
                     </li>
                   </ul>
                 </li>
@@ -77,10 +59,10 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end mt-1">
                     <li>
-                      <a class="dropdown-item" th:href="@{/lipstick/sort(type=asc)}"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá (cao - thấp)</a>
+                      <a class="dropdown-item" th:href="@{/lipstick/sort(type=desc)}"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá (cao - thấp)</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" th:href="@{/lipstick/sort(type=desc)}"><i class="fas fa-sort-amount-down fa-fw me-1"></i>Giá (thấp - cao)</a>
+                      <a class="dropdown-item" th:href="@{/lipstick/sort(type=asc)}"><i class="fas fa-sort-amount-down fa-fw me-1"></i>Giá (thấp - cao)</a>
                     </li>
                   </ul>
                 </li>

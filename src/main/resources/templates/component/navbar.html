@@ -40,13 +40,34 @@
                 <i class="fas fa-user"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end mt-2">
-                <li><a class="dropdown-item text-secondary-emphasis" href="#"><i
-                    class="fas fa-sign-in-alt fa-fw me-2"></i>Đăng nhập</a></li>
-                <li><a class="dropdown-item text-secondary-emphasis" href="#"><i class="fas fa-edit fa-fw me-2"></i>Đăng
-                  ký</a></li>
-                <!-- <li><a class="dropdown-item text-secondary-emphasis" href="#"><i class="fas fa-user fa-fw me-2"></i>Thông tin tài khoản</a></li>
-                <li><a class="dropdown-item text-secondary-emphasis" href="#"><i class="fas fa-list fa-fw me-2"></i>Lịch sử đơn hàng</a></li>
-                <li><a class="dropdown-item text-secondary-emphasis" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Đăng xuất</a></li> -->
+                <th:block sec:authorize="!isAuthenticated()">
+                <li>
+                  <a class="dropdown-item text-secondary-emphasis" th:href="@{/login}">
+                    <i class="fas fa-sign-in-alt fa-fw me-2"></i>Đăng nhập
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-secondary-emphasis" th:href="@{/register}">
+                    <i class="fas fa-edit fa-fw me-2"></i>Đăng ký
+                  </a>
+                </li>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                <li>
+                  <div class="d-flex align-items-center" style="padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);">
+                    <i class="fas fa-user fa-fw me-2"></i><span class="text-danger fw-medium" style="text-transform: uppercase;" sec:authentication="principal.username"></span>
+                  </div>
+                </li>
+                <li>
+                  <a class="dropdown-item text-secondary-emphasis" th:href="@{/}"><i class="far fa-address-card fa-fw me-2"></i>Thông tin tài khoản</a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-secondary-emphasis" th:href="@{/}"><i class="fas fa-list fa-fw me-2"></i>Quản lý đơn hàng</a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-secondary-emphasis" th:href="@{/logout}"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Đăng xuất</a>
+                </li>
+                </th:block>
               </ul>
             </div>
           </li>
@@ -90,7 +111,7 @@
               </ul>
               <ul class="dropdown-menu dropdown-menu-end items mt-2" style="width: 220px" th:if="${session.cart == null}">
                 <li class="text-end item">
-                  <div class="py-1 px-3">Giỏ hàng trống</div>
+                  <div class="py-1 px-3">Giỏ hàng trống!</div>
                 </li>
               </ul>
             </div>

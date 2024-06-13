@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "order")
+@Table(name = "[order]")
 public class Order {
 
     @Id
@@ -18,7 +18,7 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @Column(name = "order_shipped_date", nullable = false)
+    @Column(name = "order_shipped_date")
     private Date orderShippedDate;
 
     @Column(name = "order_created_at", nullable = false)

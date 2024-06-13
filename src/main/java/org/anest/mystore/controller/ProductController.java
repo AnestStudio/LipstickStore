@@ -22,6 +22,8 @@ import java.util.List;
 @Controller
 public class ProductController {
 
+    private final String PRODUCT_LIST_TEXT = "Danh sách sản phẩm";
+
     private final ProductService productService;
     private final BrandService brandService;
     private final CategoryService categoryService;
@@ -37,7 +39,8 @@ public class ProductController {
     public String index(Model model) {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
-        model.addAttribute("title", "Danh sách sản phẩm");
+        model.addAttribute("title", PRODUCT_LIST_TEXT);
+        initData(model);
         return "pages/products";
     }
 
@@ -45,7 +48,7 @@ public class ProductController {
     public String findByType(@PathVariable Long categoryId, Model model) {
         List<Product> products = productService.findByCategoryId(categoryId);
         model.addAttribute("products", products);
-        model.addAttribute("title", "Danh sách sản phẩm");
+        model.addAttribute("title", PRODUCT_LIST_TEXT);
         return "pages/products";
     }
 
@@ -74,7 +77,7 @@ public class ProductController {
         }
         List<Product> products = productService.getAllSorted(sortType);
         model.addAttribute("products", products);
-        model.addAttribute("title", "Danh sách sản phẩm");
+        model.addAttribute("title", PRODUCT_LIST_TEXT);
         return "pages/products";
     }
 

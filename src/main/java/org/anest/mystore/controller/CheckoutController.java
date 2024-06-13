@@ -1,6 +1,7 @@
 package org.anest.mystore.controller;
 
 import jakarta.servlet.http.HttpSession;
+import org.anest.mystore.constant.IConstant;
 import org.anest.mystore.entity.*;
 import org.anest.mystore.service.OrderService;
 import org.anest.mystore.service.UserAddressService;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import static org.anest.mystore.constant.IConstant.*;
 
 @Controller
 @RequestMapping("checkout")
@@ -44,12 +46,11 @@ public class CheckoutController {
         return "pages/checkout";
     }
 
-    @GetMapping("/order")
-    public String order(
+    @GetMapping("/process")
+    public String orderProcess(
             @RequestParam String orderNote,
             @RequestParam Long userShippingAddressId,
             Authentication auth,
-            Model model,
             HttpSession session
     ) {
         AuthUser authUser = (AuthUser) auth.getPrincipal();
@@ -60,16 +61,22 @@ public class CheckoutController {
         order.setOrderCreatedAt(DateTimeUtil.getCurrentDateTime());
         order.setOrderStatus(new OrderStatus(1L, null, null));
         order.setOrderDiscount(0);
-        order.setOrderTotalAmount(Double.parseDouble(session.getAttribute("totalAmountOfCart").toString()));
+        order.setOrderTotalAmount(Double.parseDouble(session.getAttribute(TOTAL_AMOUNT_OF_CART).toString()));
         order.setOrderNote(orderNote);
 
-        UserAddress userAddress = getUserShippingAddress(user.getUserAddressList(), userShippingAddressId);
+        UserAddress userAddress = userAddressService.getUserShippingAddress(user.getUserAddressList(), userShippingAddressId);
         order.setReceiverName(userAddress.getReceiverName());
         order.setReceiverMobile(userAddress.getReceiverMobile());
         order.setShippingAddress(userAddress.getFullAddress());
-        order.setOrderDetailList(getOrderDetailList((List<Item>) session.getAttribute("cart"), order));
 
-        orderService.save(order);
+        order.setOrderDetailList(getOrderDetailList((List<Item>) session.getAttribute(CART), order));
+
+        Order savedOrder = orderService.save(order);
+        if (savedOrder != null) {
+            session.removeAttribute(CART);
+            session.removeAttribute(TOTAL_PRODUCT_IN_CART);
+            session.removeAttribute(TOTAL_AMOUNT_OF_CART);
+        }
         return "thanks";
     }
 
@@ -86,17 +93,10 @@ public class CheckoutController {
             orderDetail.setQuantity(item.getQuantity());
             orderDetail.setAmount(item.getAmount());
             orderDetail.setOrder(order);
+
             orderDetailList.add(orderDetail);
         }
         return orderDetailList;
     }
 
-    private UserAddress getUserShippingAddress(List<UserAddress> userAddressList, Long userShippingAddressId) {
-        for (UserAddress userAddress : userAddressList) {
-            if (Objects.equals(userAddress.getId(), userShippingAddressId)) {
-                return userAddress;
-            }
-        }
-        return null;
-    }
 }

@@ -76,7 +76,7 @@
 }
 
 #checkout input {
-  width: 360px;
+  width: 400px;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid var(--sub-nav-border-color);

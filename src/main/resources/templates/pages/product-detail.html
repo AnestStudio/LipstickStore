@@ -39,7 +39,7 @@
                 <span th:text="${#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
               </h4>
               <div class="product-description">
-                <p th:text="${product.productShortDescription}"></p>
+                <p th:utext="${product.productShortDescription}"></p>
               </div>
               <div class="product-quantity">
                 <form>
@@ -66,9 +66,9 @@
                       <label id="quantity-stock" class="col-form-label" th:text="${product.productQuantity}"></label> sản phẩm có sẵn
                     </div>
                   </div>
-                  <div class="mt-4">
-                    <button class="btn btn-danger me-2 py-2 px-3" name="btn-buy-now" type="submit">
-                      <i class="far fa-credit-card me-2"></i>Mua ngay
+                  <div class="mt-4 d-flex">
+                    <button class="btn btn-danger me-3 py-2 px-3" name="btn-buy-now" type="submit">
+                      <i class="fas fa-share me-2"></i>Mua ngay
                     </button>
                     <button class="btn btn-success py-2 px-3"
                             th:onclick="'javascript:addToCart(' + ${product.id} + ')'"
