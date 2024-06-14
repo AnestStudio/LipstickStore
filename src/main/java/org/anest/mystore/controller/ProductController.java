@@ -41,7 +41,7 @@ public class ProductController {
         model.addAttribute("products", products);
         model.addAttribute("title", PRODUCT_LIST_TEXT);
         initData(model);
-        return "pages/products";
+        return "pages/product/products";
     }
 
     @GetMapping("/lipstick-type/{categoryId}")
@@ -49,7 +49,7 @@ public class ProductController {
         List<Product> products = productService.findByCategoryId(categoryId);
         model.addAttribute("products", products);
         model.addAttribute("title", PRODUCT_LIST_TEXT);
-        return "pages/products";
+        return "pages/product/products";
     }
 
     @GetMapping("/lipstick-brand/{brandId}")
@@ -59,7 +59,7 @@ public class ProductController {
         model.addAttribute("products", products);
         model.addAttribute("brand", brand);
         initData(model);
-        return "pages/products-filter";
+        return "pages/product/products-filter";
     }
 
     @GetMapping("/lipstick/search")
@@ -67,7 +67,7 @@ public class ProductController {
         List<Product> products = productService.findByProductNameContaining(productName);
         model.addAttribute("products", products);
         model.addAttribute("title", "Kết quả tìm kiếm: " + productName);
-        return "pages/products";
+        return "pages/product/products";
     }
 
     @GetMapping("/lipstick/sort")
@@ -78,7 +78,7 @@ public class ProductController {
         List<Product> products = productService.getAllSorted(sortType);
         model.addAttribute("products", products);
         model.addAttribute("title", PRODUCT_LIST_TEXT);
-        return "pages/products";
+        return "pages/product/products";
     }
 
     @GetMapping("/lipstick/detail/{productId}")
@@ -94,7 +94,7 @@ public class ProductController {
         products.add(product);
         products.add(product);
         model.addAttribute("products", products);
-        return "pages/product-detail";
+        return "pages/product/product-detail";
     }
 
     private void initData(Model model) {

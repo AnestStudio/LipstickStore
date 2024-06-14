@@ -1,7 +1,6 @@
 package org.anest.mystore.controller;
 
 import jakarta.servlet.http.HttpSession;
-import org.anest.mystore.constant.IConstant;
 import org.anest.mystore.entity.*;
 import org.anest.mystore.service.OrderService;
 import org.anest.mystore.service.UserAddressService;
@@ -43,7 +42,7 @@ public class CheckoutController {
 
         model.addAttribute("user", user);
         model.addAttribute("defaultAddress", defaultAddress);
-        return "pages/checkout";
+        return "pages/product/checkout";
     }
 
     @GetMapping("/process")
