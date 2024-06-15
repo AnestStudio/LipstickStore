@@ -1,14 +1,20 @@
+/*
+ * SIDEBAR -------------------------------------------------------------------------------------------------------------
+ */
+
 .sidebar {
   width: 260px;
   margin-top: 132px;
 }
 
-.btn-toggle {
+.sidebar .btn-toggle {
   padding: 8px 10px;
   font-weight: 600;
   color: var(--bs-emphasis-color);
   background-color: transparent;
   width: 100%;
+  display: inline-flex;
+  align-items: center;
 }
 
 .btn-toggle:hover,
@@ -76,11 +82,11 @@
 
 
 /*
- * CONTENT
+ * CONTENT -------------------------------------------------------------------------------------------------------------
  */
 
 .content {
-  width: calc(100% - 280px);
+  width: calc(100% - 300px);
 }
 
 #cover {
@@ -104,7 +110,7 @@
 
 
 /*
- * RESPONSIVE
+ * RESPONSIVE ----------------------------------------------------------------------------------------------------------
  */
 
 @media (max-width: 991.98px) {

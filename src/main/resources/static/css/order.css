@@ -1,0 +1,181 @@
+/*
+ * SIDEBAR -------------------------------------------------------------------------------------------------------------
+ */
+
+.fa-fw {
+  text-align: left !important;
+}
+
+.sidebar {
+  width: 260px;
+  margin-top: 132px;
+}
+
+.sidebar ul li a {
+  padding: 8px 12px;
+  font-weight: 600;
+  color: var(--bs-emphasis-color);
+  background-color: transparent;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.sidebar ul li a>div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sidebar ul li a>div .badge-number {
+  background-color: var(--bs-tertiary-bg);
+  font-size: 13px;
+  min-width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 4px;
+}
+
+.sidebar ul li a:hover .badge-number {
+  background-color: var(--badge-number-background-color);
+}
+
+.sidebar ul li a.active .badge-number {
+  background-color: var(--badge-number-background-color);
+}
+
+
+/*
+ * CONTENT -------------------------------------------------------------------------------------------------------------
+ */
+
+.content {
+  width: calc(100% - 300px);
+}
+
+#cover {
+  padding: 100px 0 20px
+}
+
+#cover .title {
+  font-size: 36px;
+}
+
+#sub-nav .sub-nav-left li {
+  display: none;
+}
+
+
+/*
+ * ORDERS --------------------------------------------------------------------------------------------------------------
+ */
+
+#orders {
+  padding: 126px 0 50px;
+}
+
+#orders>div>div {
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+
+#orders .order.panel {
+  padding: 12px 20px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--line-border-color);
+}
+
+#orders .order.panel .panel-content {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-border-color);
+  align-items: center;
+}
+
+#orders .order.panel .panel-content:last-child {
+  border-bottom: none;
+}
+
+#orders .order.panel p {
+  margin: 0;
+  width: 100%;
+}
+
+
+
+/* USER ORDER ====================================================================================== */
+
+#orders .order {
+  padding: 16px 20px 20px;
+  margin-bottom: 20px;
+}
+
+#orders .order .order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-border-color) !important;
+}
+
+#orders .order .order-header h3 {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0;
+}
+
+#orders .order .order-header .order-info .order-code {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+#orders .order .order-footer .order-status {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+#orders .order .order-footer {
+  padding-top: 16px;
+}
+
+
+/* ITEM */
+
+#orders .order .order-body .items .item {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--secondary-border-color) !important;
+}
+
+#orders .order .order-body .items .item .content-body a {
+  color: var(--bs-body-color);
+}
+
+#orders .order .order-body .items .item .content-body p {
+  font-size: 14px;
+  color: var(--secondary-text);
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+#orders .order .order-body .items .item .icon-small img {
+  width: 52px;
+  height: 52px;
+}
+
+#orders .order .order-body .items .item .icon-circle img {
+  border-radius: 6px;
+  margin-right: 16px;
+}
+
+

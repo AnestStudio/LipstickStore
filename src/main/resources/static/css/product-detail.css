@@ -139,7 +139,7 @@
 
 #product-detail .product-detail-info .product-quantity .btn-dash:hover,
 #product-detail .product-detail-info .product-quantity .btn-plus:hover {
-  background-color: var(--secondary-button-background-color);
+  background-color: var(--bs-tertiary-bg);
 }
 
 #product-detail .product-detail-info .product-quantity .quantity-number {
@@ -195,7 +195,7 @@
 /* MORE INFO */
 
 #product-detail .content .tabs-info .nav-underline {
-  border-bottom: 1px solid var(--sub-nav-border-color);
+  border-bottom: 1px solid var(--line-border-color);
 }
 
 #product-detail .content .tabs-info .nav-underline .nav-link.active, .nav-underline .show>.nav-link {

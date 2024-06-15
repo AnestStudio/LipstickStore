@@ -81,7 +81,7 @@
 
 #cart table .btn-dash:hover,
 #cart table .btn-plus:hover {
-  background-color: var(--secondary-button-background-color);
+  background-color: var(--bs-tertiary-bg);
 }
 
 #cart table .quantity-number {

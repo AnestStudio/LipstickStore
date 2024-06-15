@@ -4,9 +4,9 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout.html}">
 <head>
-  <title>Products</title>
+  <title>Trang cá nhân</title>
   <link rel="stylesheet" th:href="@{/css/products.css}"/>
-  <link rel="stylesheet" th:href="@{/css/products-filter.css}"/>
+  <link rel="stylesheet" th:href="@{/css/profile.css}"/>
 </head>
 <body>
   <th:block layout:fragment="content">
@@ -15,34 +15,155 @@
         <div class="col-12 d-flex justify-content-between">
 
           <div class="sidebar">
-              <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-
-                </li>
-                <li class="mb-1">
-
-                </li>
-              </ul>
+            <ul class="list-unstyled ps-0">
+              <li class="mb-1">
+                <a href="profile.html" class="active">
+                  <i class="fas fa-user fa-fw me-2"></i>Trang cá nhân
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="profile-update.html">
+                  <i class="fas fa-user-edit fa-fw me-2"></i>Chỉnh sửa thông tin
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="profile-update-address.html">
+                  <i class="fas fa-map-marked-alt fa-fw me-2"></i>Chỉnh sửa địa chỉ
+                </a>
+              </li>
+              <hr />
+              <li class="mb-1">
+                <a href="#">
+                  <i class="fas fa-bars fa-fw me-2"></i>
+                  <div>
+                    <div>Tất cả đơn hàng</div>
+                    <div class="badge-number">14</div>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="#">
+                  <i class="fas fa-hourglass-half fa-fw me-2"></i>
+                  <div>
+                    <div>Chờ xác nhận</div>
+                    <div class="badge-number">2</div>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="#">
+                  <i class="fas fa-check fa-fw me-2"></i>
+                  <div>
+                    <div>Đã xác nhận</div>
+                    <div class="badge-number">0</div>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="#">
+                  <i class="fas fa-history fa-fw me-2"></i>
+                  <div>
+                    <div>Đang chuẩn bị</div>
+                    <div class="badge-number">0</div>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="#">
+                  <i class="fas fa-paper-plane fa-fw me-2"></i>
+                  <div>
+                    <div>Đang giao hàng</div>
+                    <div class="badge-number">1</div>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="#">
+                  <i class="fas fa-check-double fa-fw me-2"></i>
+                  <div>
+                    <div>Đã hoàn thành</div>
+                    <div class="badge-number">12</div>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="#">
+                  <i class="fas fa-ban fa-fw me-2"></i>
+                  <div>
+                    <div>Đã huỷ</div>
+                    <div class="badge-number">2</div>
+                  </div>
+                </a>
+              </li>
+              <li class="mb-1">
+                <a href="#">
+                  <i class="fas fa-share fa-fw me-2"></i>
+                  <div>
+                    <div>Trả hàng</div>
+                    <div class="badge-number">2</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
 
           <div class="content">
-            <section id="cover">
-              <div class="container mt-4">
-                <div class="row">
-                  <div class="col">
-                    <h1 class="title mb-3">
-                      <span th:text="${'Thương hiệu ' + brand.brandName}"></span>
-                      <span class="ms-1 title-quantity text-danger" th:text="'[' + ${products.size} + ']'"></span>
-                    </h1>
-                    <p class="title-des" th:utext="${brand.brandDescription}"></p>
+            <section id="profile">
+              <div class="row">
+                <div class="col-md-12 col-lg-6 profile-info">
+                  <div class="panel">
+                    <div class="d-flex panel-content">
+                      <p><i class="fas fa-user fa-fw me-2"></i>Tên tài khoản</p>
+                      <p class="fw-medium text-end text-uppercase">anhdt</p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="far fa-address-card fa-fw me-2"></i>Họ và tên</p>
+                      <p class="fw-medium text-end">Đinh Tuấn Anh</p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="fas fa-venus-mars fa-fw me-2"></i>Giới tính</p>
+                      <p class="fw-medium text-end">Nam</p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="far fa-calendar-alt fa-fw me-2"></i>Ngày sinh</p>
+                      <p class="fw-medium text-end">11/11/1994</p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="fas fa-phone-alt fa-fw me-2" style="font-size: 15px"></i>Số điện thoại</p>
+                      <p class="fw-medium text-end">0973876107</p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="far fa-envelope fa-fw me-2"></i>Email</p>
+                      <p class="fw-medium text-end">anhdt@gmail.com</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
-
-            <section id="products">
-              <div class="container my-5">
-                <div class="row">
+                <div class="col-md-12 col-lg-6 address-list">
+                  <div class="text-end">
+                    <h1 class="name">Đinh Tuấn Anh</span></h1>
+                    <h3 class="mobile mt-1 fs-5">0973876107</span></h3>
+                    <h3 class="address mt-2">Fville 3, Fpt Software, Khu Công Nghệ Cao Hoà Lạc</h3>
+                    <h3 class="address mt-2">Xã Tân Xã</h3>
+                    <h3 class="address mt-2">Huyện Thạch Thất</h3>
+                    <h3 class="address mt-2">Hà Nội</h3>
+                    <span class="badge bg-success-subtle border text-success-emphasis rounded-pill mt-1">
+                      <i class="fas fa-check me-1"></i>Mặc định
+                    </span>
+                    <hr />
+                    <h1 class="name">Đinh Hoàng Bảo Ngọc</span></h1>
+                    <h3 class="mobile mt-1 fs-5">0936876333</span></h3>
+                    <h3 class="address mt-2">Fville 2, Fpt Software, Khu Công Nghệ Cao Hoà Lạc</h3>
+                    <h3 class="address mt-2">Xã Tân Xã</h3>
+                    <h3 class="address mt-2">Huyện Thạch Thất</h3>
+                    <h3 class="address mt-2">Hà Nội</h3>
+                    <hr />
+                    <h1 class="name">Lê Đỗ Diệp Anh</span></h1>
+                    <h3 class="mobile mt-1 fs-5">0973876234</span></h3>
+                    <h3 class="address mt-2">Fville 2, Fpt Software, Khu Công Nghệ Cao Hoà Lạc</h3>
+                    <h3 class="address mt-2">Xã Tân Xã</h3>
+                    <h3 class="address mt-2">Huyện Thạch Thất</h3>
+                    <h3 class="address mt-2">Hà Nội</h3>
+                  </div>
                 </div>
               </div>
             </section>

@@ -79,7 +79,7 @@
   width: 400px;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid var(--sub-nav-border-color);
+  border-bottom: 2px solid var(--line-border-color);
   border-radius: 0;
   padding: 12px 10px;
   text-align: right;
@@ -90,7 +90,7 @@
 }
 
 #addressListModal .address .address-info {
-  border-left: 1px solid var(--sub-nav-border-color);
+  border-left: 1px solid var(--line-border-color);
   padding-left: 16px;
   margin-left: 8px;
 }

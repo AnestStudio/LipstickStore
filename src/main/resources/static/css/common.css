@@ -17,6 +17,10 @@ h6 {
   font-weight: 400;
 }
 
+hr {
+  opacity: 0.2;
+}
+
 
 /**
  * SPACE ---------------------------------------------------------------------------------------------------------------
@@ -62,8 +66,15 @@ tbody, td, tfoot, th, thead, tr {
   vertical-align: .2em;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+  color: var(--bs-dropdown-link-color);
+  background-color: var(--bs-tertiary-bg);
+}
 
-/* MODAL ========================================================================================== */
+
+/*
+ * MODAL ---------------------------------------------------------------------------------------------------------------
+ */
 
 .modal-backdrop.show {
   opacity: .75;
@@ -125,7 +136,7 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 .border-bot-solid {
-  border-bottom: 1px solid var(--sub-nav-border-color);
+  border-bottom: 1px solid var(--line-border-color);
 }
 
 nav .key-search {
@@ -185,7 +196,7 @@ nav.navbar .bi {
 }
 
 .sub-nav .col>div {
-  border-bottom: 1px solid var(--sub-nav-border-color);
+  border-bottom: 1px solid var(--line-border-color);
 }
 
 .sub-nav.fixed-top-sub-nav .col>div {
@@ -194,7 +205,7 @@ nav.navbar .bi {
 
 
 /*
- *
+ * LINK ----------------------------------------------------------------------------------------------------------------
  */
 
 .page-link {
@@ -342,7 +353,8 @@ nav.navbar .bi {
 .btn-remove a,
 .btn-remove i {
   font-size: 16px;
-  color: var(--danger-text);
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
   display: inline-block;
   transition: 0.3s;
 }
@@ -369,7 +381,7 @@ nav.navbar .bi {
 .btn-circle {
   width: 40px;
   height: 40px;
-  background-color: var(--secondary-button-background-color);
+  background-color: var(--btn-circle-background-color);
   border-radius: 50%;
   margin-left: 8px;
   margin-right: 8px;

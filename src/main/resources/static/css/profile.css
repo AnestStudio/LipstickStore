@@ -1,0 +1,132 @@
+/*
+ * SIDEBAR -------------------------------------------------------------------------------------------------------------
+ */
+
+.fa-fw {
+  text-align: left !important;
+}
+
+.sidebar {
+  width: 260px;
+  margin-top: 132px;
+}
+
+.sidebar ul li a {
+  padding: 8px 12px;
+  font-weight: 600;
+  color: var(--bs-emphasis-color);
+  background-color: transparent;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.sidebar ul li a>div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sidebar ul li a>div .badge-number {
+  background-color: var(--bs-tertiary-bg);
+  font-size: 13px;
+  min-width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 4px;
+}
+
+.sidebar ul li a:hover .badge-number {
+  background-color: var(--badge-number-background-color);
+}
+
+.sidebar ul li a.active .badge-number {
+  background-color: var(--badge-number-background-color);
+}
+
+
+/*
+ * CONTENT -------------------------------------------------------------------------------------------------------------
+ */
+
+.content {
+  width: calc(100% - 300px);
+}
+
+#cover {
+  padding: 100px 0 20px
+}
+
+#cover .title {
+  font-size: 36px;
+}
+
+#sub-nav .sub-nav-left li {
+  display: none;
+}
+
+
+/*
+ * PROFILE -------------------------------------------------------------------------------------------------------------
+ */
+
+#profile {
+  padding: 126px 0 50px;
+}
+
+#profile .profile-info {
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+
+#profile .profile-info .panel {
+  padding: 6px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--line-border-color);
+}
+
+#profile .profile-info .panel .panel-content {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-border-color);
+  align-items: center;
+}
+
+#profile .profile-info .panel .panel-content:last-child {
+  border-bottom: none;
+}
+
+#profile .profile-info .panel p {
+  margin: 0;
+  width: 100%;
+}
+
+#profile .address-list .name {
+  font-family: "Noto Sans", "AdihausDIN", "Helvetica", Arial, sans-serif !important;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+#profile .address-list .mobile,
+#profile .address-list .address {
+  font-size: 16px;
+  font-style: normal;
+}
+
+#profile .address-list .address {
+  letter-spacing: 1px;
+}
+
+#profile .address-list .badge {
+  padding: 8px 12px;
+  font-size: 14px;
+}

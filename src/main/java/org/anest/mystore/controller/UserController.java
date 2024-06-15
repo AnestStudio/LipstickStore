@@ -13,4 +13,9 @@ public class UserController {
     public String profile(Model model) {
         return "pages/user/profile";
     }
+
+    @GetMapping("/orders")
+    public String orders(Model model) {
+        return "pages/user/orders";
+    }
 }

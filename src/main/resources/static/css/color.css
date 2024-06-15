@@ -3,16 +3,21 @@
  */
 
 html[data-bs-theme='light'] {
-  --sub-nav-border-color: #e3e3e3;
+  /* bootstrap custom -------------------------------- */
+  --bs-tertiary-bg: #F0F2F5;
+
+  /* line-border-color --------------------- */
+  --line-border-color: #E3E3E3;
 
   /* border-color ------------------------------------ */
   --primary-border-color: transparent;
-  --secondary-border-color: #dee2e6;
-  --third-border-color: #D5D6DB;
+  --secondary-border-color: #DEE2E6;
 
-  /* button-background-color ------------------------- */
-  --primary-button-background-color: #FFFFFF;
-  --secondary-button-background-color: #dee2e6;
+  /* badge-number-background-color ------------------- */
+  --badge-number-background-color: #FFFFFF;
+
+  /* button-circle-background-color ------------------ */
+  --btn-circle-background-color: #DEE2E6;
 
   /* text-color -------------------------------------- */
   --primary-text: #050505;
@@ -22,16 +27,21 @@ html[data-bs-theme='light'] {
 }
 
 html[data-bs-theme='dark'] {
-  --sub-nav-border-color: #676f79;
+  /* bootstrap custom -------------------------------- */
+  --bs-tertiary-bg: #2B3035;
+
+  /* sub-nav-border-bottom-color --------------------- */
+  --line-border-color: #676F79;
 
   /* border-color ------------------------------------ */
   --primary-border-color: transparent;
   --secondary-border-color: #3A3B3C;
-  --third-border-color: #4E4F50;
 
-  /* button-background-color ------------------------- */
-  --primary-button-background-color: #242526;
-  --secondary-button-background-color: #3A3B3C;
+  /* badge-number-background-color ------------------- */
+  --badge-number-background-color: #242526;
+
+  /* button-circle-background-color ------------------ */
+  --btn-circle-background-color: #3A3B3C;
 
   /* text-color -------------------------------------- */
   --primary-text: #E4E6EB;
