@@ -44,8 +44,8 @@ a {
  * TABLE ---------------------------------------------------------------------------------------------------------------
  */
 
-tbody, td, tfoot, th, thead, tr {
-  border-color: var(--bs-border-color) !important;
+.table {
+  --bs-table-bg: var(--secondary-bg-color);
 }
 
 
@@ -53,13 +53,14 @@ tbody, td, tfoot, th, thead, tr {
  * DROPDOWN ------------------------------------------------------------------------------------------------------------
  */
 
-.dropdown-menu .active .bi {
-  display: block !important;
-}
-
 .dropdown-menu {
   font-size: 15px;
   border-radius: 8px;
+  background-color: var(--dropdown-menu-bg-color);
+}
+
+.dropdown-menu .active .bi {
+  display: block !important;
 }
 
 .dropdown-toggle::after {
@@ -178,6 +179,7 @@ nav.navbar .bi {
   right: 0;
   left: 0;
   z-index: 1000;
+  background-color: var(--secondary-bg-color);
   box-shadow: 0 1px 5px 0 rgb(0 0 0 / 40%);
 }
 
@@ -201,6 +203,70 @@ nav.navbar .bi {
 
 .sub-nav.fixed-top-sub-nav .col>div {
   border-bottom: 1px solid transparent;
+}
+
+
+/*
+ * SIDEBAR -------------------------------------------------------------------------------------------------------------
+ */
+
+.sidebar {
+  width: 260px;
+  margin-top: 132px;
+}
+
+.sidebar ul {
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background-color: var(--secondary-bg-color);
+}
+
+.sidebar ul li a {
+  padding: 8px 12px;
+  font-weight: 600;
+  color: var(--bs-emphasis-color);
+  background-color: transparent;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.sidebar ul li a>div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sidebar ul li a>div .badge-number {
+  background-color: var(--bs-tertiary-bg);
+  font-size: 13px;
+  min-width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 4px;
+}
+
+.sidebar ul li a:hover .badge-number {
+  background-color: var(--badge-number-background-color);
+}
+
+.sidebar ul li a.active .badge-number {
+  background-color: var(--badge-number-background-color);
+}
+
+.sidebar .fa-fw {
+  text-align: left !important;
 }
 
 
@@ -402,5 +468,4 @@ nav.navbar .bi {
 
 .btn-circle:hover {
   box-shadow: 0 0 0 4px var(--shadow-button);
-  border-color: var(--secondary-border-color);
 }

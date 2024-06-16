@@ -4,9 +4,9 @@
 
 #customer-info .panel {
   border-radius: 12px;
-  border: 2px dashed var(--bs-border-color);
   color: var(--primary-text);
   padding: 12px 20px 15px;
+  background-color: var(--secondary-bg-color);
 }
 
 #customer-info .panel .customer-name {
@@ -29,9 +29,9 @@
 
 #checkout .panel {
   border-radius: 12px;
-  border: 2px dashed var(--bs-border-color);
   color: var(--primary-text);
   padding: 20px;
+  background-color: var(--secondary-bg-color);
 }
 
 #checkout table>tbody>tr>th,

@@ -138,7 +138,7 @@
                     <i class="fas fa-user fa-fw me-2"></i><span th:text="*{address.receiverName + ' - ' + address.receiverMobile}"></span>
                     <sup class="badge bg-success-subtle border text-success-emphasis rounded-pill ms-1" th:if="*{address.defaultAddress}">Mặc định</sup>
                   </label>
-                  <label>
+                  <label class="mt-1">
                     <i class="fas fa-map-marker-alt fa-fw me-2"></i><span th:text="*{address.fullAddress}"></span>
                   </label>
                 </div>

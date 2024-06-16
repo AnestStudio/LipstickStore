@@ -139,7 +139,7 @@
 
 #product-detail .product-detail-info .product-quantity .btn-dash:hover,
 #product-detail .product-detail-info .product-quantity .btn-plus:hover {
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--third-bg-color);
 }
 
 #product-detail .product-detail-info .product-quantity .quantity-number {

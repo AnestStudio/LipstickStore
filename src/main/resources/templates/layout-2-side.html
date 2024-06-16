@@ -25,7 +25,15 @@
   <div th:replace="~{component/icon :: svg}"></div>
   <div th:replace="~{component/navbar :: navbar}"></div>
 
-  <th:block layout:fragment="content"></th:block>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-between">
+        <div th:replace="~{component/sidebar-menu-user :: sidebar-menu-user}"></div>
+
+        <th:block layout:fragment="content"></th:block>
+      </div>
+    </div>
+  </div>
 
   <div th:replace="~{component/footer :: footer}"></div>
   <div th:replace="~{modal/search-product :: search-product-modal}"></div>

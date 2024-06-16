@@ -4,44 +4,58 @@
 
 html[data-bs-theme='light'] {
   /* bootstrap custom -------------------------------- */
+  --bs-body-bg: #F0F4F7;
   --bs-tertiary-bg: #F0F2F5;
 
-  /* line-border-color --------------------- */
+  /* background-color -------------------------------- */
+  --secondary-bg-color: #FFF;
+  --third-bg-color: #ECEFF3;
+
+  --dropdown-menu-bg-color: #FFF;
+
+  /* line-border-color ------------------------------- */
   --line-border-color: #E3E3E3;
 
   /* border-color ------------------------------------ */
   --primary-border-color: transparent;
-  --secondary-border-color: #DEE2E6;
+  --secondary-border-color: #E3E3E3;
 
   /* badge-number-background-color ------------------- */
   --badge-number-background-color: #FFFFFF;
 
   /* button-circle-background-color ------------------ */
-  --btn-circle-background-color: #DEE2E6;
+  --btn-circle-background-color: #E9EEF3;
 
   /* text-color -------------------------------------- */
   --primary-text: #050505;
   --secondary-text: #65676B;
 
-  --shadow-button: rgb(228 230 235 / 55%);
+  --shadow-button: rgb(231 235 244 / 55%);
 }
 
 html[data-bs-theme='dark'] {
   /* bootstrap custom -------------------------------- */
+  --bs-body-bg: #212529;
   --bs-tertiary-bg: #2B3035;
 
-  /* sub-nav-border-bottom-color --------------------- */
-  --line-border-color: #676F79;
+  /* background-color -------------------------------- */
+  --secondary-bg-color: #2C3035;
+  --third-bg-color: #3A3F45;
+
+  --dropdown-menu-bg-color: #222529;
+
+  /* line-border-color ------------------------------- */
+  --line-border-color: #495057;
 
   /* border-color ------------------------------------ */
   --primary-border-color: transparent;
-  --secondary-border-color: #3A3B3C;
+  --secondary-border-color: #444;
 
   /* badge-number-background-color ------------------- */
   --badge-number-background-color: #242526;
 
   /* button-circle-background-color ------------------ */
-  --btn-circle-background-color: #3A3B3C;
+  --btn-circle-background-color: #3C4146;
 
   /* text-color -------------------------------------- */
   --primary-text: #E4E6EB;

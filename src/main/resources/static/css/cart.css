@@ -8,9 +8,9 @@
 
 #cart .panel {
   border-radius: 12px;
-  border: 2px dashed var(--bs-border-color);
   color: var(--primary-text);
   padding: 20px;
+  background-color: var(--secondary-bg-color);
 }
 
 #cart table>tbody>tr>th,
@@ -81,7 +81,7 @@
 
 #cart table .btn-dash:hover,
 #cart table .btn-plus:hover {
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--third-bg-color);
 }
 
 #cart table .quantity-number {

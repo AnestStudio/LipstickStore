@@ -1,66 +1,9 @@
 /*
- * SIDEBAR -------------------------------------------------------------------------------------------------------------
- */
-
-.fa-fw {
-  text-align: left !important;
-}
-
-.sidebar {
-  width: 260px;
-  margin-top: 132px;
-}
-
-.sidebar ul li a {
-  padding: 8px 12px;
-  font-weight: 600;
-  color: var(--bs-emphasis-color);
-  background-color: transparent;
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  border-radius: 8px;
-}
-
-.sidebar ul li a:hover,
-.sidebar ul li a:focus {
-  color: rgba(var(--bs-emphasis-color-rgb), .85);
-  background-color: var(--bs-tertiary-bg);
-}
-
-.sidebar ul li a>div {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.sidebar ul li a>div .badge-number {
-  background-color: var(--bs-tertiary-bg);
-  font-size: 13px;
-  min-width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  padding: 4px;
-}
-
-.sidebar ul li a:hover .badge-number {
-  background-color: var(--badge-number-background-color);
-}
-
-.sidebar ul li a.active .badge-number {
-  background-color: var(--badge-number-background-color);
-}
-
-
-/*
  * CONTENT -------------------------------------------------------------------------------------------------------------
  */
 
 .content {
-  width: calc(100% - 300px);
+  width: calc(100% - 284px);
 }
 
 #cover {
@@ -86,13 +29,12 @@
 
 #orders>div>div {
   margin-top: 6px;
-  margin-bottom: 20px;
 }
 
 #orders .order.panel {
   padding: 14px 20px 18px;
   border-radius: 12px;
-  border: 1px solid var(--line-border-color);
+  background-color: var(--secondary-bg-color);
 }
 
 #orders .order.panel .panel-content {
@@ -116,7 +58,7 @@
 
 #orders .order {
   padding: 16px 20px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 #orders .order .order-header {
@@ -154,7 +96,7 @@
 #orders .order .order-body .items .item {
   padding-top: 12px;
   padding-bottom: 12px;
-  border-bottom: 1px solid var(--secondary-border-color) !important;
+  border-bottom: 1px solid var(--line-border-color) !important;
 }
 
 #orders .order .order-body .items .item .content-body a {

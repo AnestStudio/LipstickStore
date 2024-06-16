@@ -15,7 +15,7 @@
 
 .table>thead>tr>th {
   vertical-align: bottom;
-  border-bottom: 2px solid #555;
+  border-bottom: 2px solid var(--line-border-color);
   color: var(--primary-text) !important;
   font-weight: 500;
   font-size: 16px;
@@ -32,7 +32,7 @@
 .table>thead>tr>th {
   padding: 10px;
   line-height: 1.45;
-  border-top: 1px solid var(--secondary-border-color);
+  border-top: 1px solid var(--line-border-color);
   color: var(--secondary-text);
   font-size: 16px;
   vertical-align: middle;
@@ -61,7 +61,7 @@
 /* Tables - Border */
 
 .table-bordered {
-  border: 1px solid var(--secondary-border-color);
+  border: 1px solid var(--line-border-color);
 }
 
 .table-bordered>tbody>tr>td,
@@ -70,7 +70,7 @@
 .table-bordered>tfoot>tr>th,
 .table-bordered>thead>tr>td,
 .table-bordered>thead>tr>th {
-  border: 1px solid var(--secondary-border-color);
+  border: 1px solid var(--line-border-color);
 }
 
 .table-bordered>thead>tr>td,
@@ -111,7 +111,7 @@
 
 .datatable label select {
   margin: 0 5px;
-  border: 1px solid var(--secondary-border-color);
+  border: 1px solid var(--line-border-color);
   color: var(--secondary-text);
   background-color: transparent;
   padding: 5px;
@@ -131,7 +131,7 @@
 
 .datatable label input {
   margin-left: 10px;
-  border: 1px solid var(--secondary-border-color);
+  border: 1px solid var(--line-border-color);
   color: var(--secondary-text);
   background-color: transparent;
   padding: 5px 10px;
@@ -155,7 +155,7 @@
   color: var(--secondary-text);
   width: 80px;
   padding: 5px;
-  border: 1px solid var(--secondary-border-color);
+  border: 1px solid var(--line-border-color);
   display: inline-block;
   text-align: center;
   border-radius: 0 7px 7px 0;
@@ -169,7 +169,7 @@
 
 .paging_simple_numbers>span>a {
   color: var(--secondary-text);
-  border: 1px solid var(--secondary-border-color);
+  border: 1px solid var(--line-border-color);
   width: 38px;
   height: 38px;
   padding: 5px;
@@ -190,7 +190,7 @@
   height: 32px;
   padding: 5px;
   display: inline-block;
-  border: 1px solid var(--secondary-border-color);
+  border: 1px solid var(--line-border-color);
   text-align: center;
   border-right: none;
 }

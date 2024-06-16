@@ -2,7 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout.html}">
+      layout:decorate="~{layout-2-side.html}">
 <head>
   <title>Trang cá nhân</title>
   <link rel="stylesheet" th:href="@{/css/products.css}"/>
@@ -10,158 +10,55 @@
 </head>
 <body>
   <th:block layout:fragment="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-between">
-
-          <div class="sidebar">
-            <ul class="list-unstyled ps-0">
-              <li class="mb-1">
-                <a href="profile.html" class="active">
-                  <i class="fas fa-user fa-fw me-2"></i>Trang cá nhân
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="profile-update.html">
-                  <i class="fas fa-user-edit fa-fw me-2"></i>Chỉnh sửa thông tin
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="profile-update-address.html">
-                  <i class="fas fa-map-marked-alt fa-fw me-2"></i>Chỉnh sửa địa chỉ
-                </a>
-              </li>
-              <hr />
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-bars fa-fw me-2"></i>
-                  <div>
-                    <div>Tất cả đơn hàng</div>
-                    <div class="badge-number">14</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-hourglass-half fa-fw me-2"></i>
-                  <div>
-                    <div>Chờ xác nhận</div>
-                    <div class="badge-number">2</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-check fa-fw me-2"></i>
-                  <div>
-                    <div>Đã xác nhận</div>
-                    <div class="badge-number">0</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-history fa-fw me-2"></i>
-                  <div>
-                    <div>Đang chuẩn bị</div>
-                    <div class="badge-number">0</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-paper-plane fa-fw me-2"></i>
-                  <div>
-                    <div>Đang giao hàng</div>
-                    <div class="badge-number">1</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-check-double fa-fw me-2"></i>
-                  <div>
-                    <div>Đã hoàn thành</div>
-                    <div class="badge-number">12</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-ban fa-fw me-2"></i>
-                  <div>
-                    <div>Đã huỷ</div>
-                    <div class="badge-number">2</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-share fa-fw me-2"></i>
-                  <div>
-                    <div>Trả hàng</div>
-                    <div class="badge-number">2</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="content">
-            <section id="profile">
-              <div class="row">
-                <div class="col-md-12 col-lg-6 profile-info">
-                  <div class="panel">
-                    <div class="d-flex panel-content">
-                      <p><i class="fas fa-user fa-fw me-2"></i>Tên tài khoản</p>
-                      <p class="fw-medium text-end text-uppercase"><span th:text="${user.username}"></span></p>
-                    </div>
-                    <div class="d-flex panel-content">
-                      <p><i class="far fa-address-card fa-fw me-2"></i>Họ và tên</p>
-                      <p class="fw-medium text-end"><span th:text="${user.fullName}"></span></p>
-                    </div>
-                    <div class="d-flex panel-content">
-                      <p><i class="fas fa-venus-mars fa-fw me-2"></i>Giới tính</p>
-                      <p class="fw-medium text-end"><span th:text="${user.userDetail.gender == 1 ? 'Nam' : 'Nữ'}"></span></p>
-                    </div>
-                    <div class="d-flex panel-content">
-                      <p><i class="far fa-calendar-alt fa-fw me-2"></i>Ngày sinh</p>
-                      <p class="fw-medium text-end"><span th:text="${user.userDetail.dob}"></span></p>
-                    </div>
-                    <div class="d-flex panel-content">
-                      <p><i class="fas fa-phone-alt fa-fw me-2" style="font-size: 15px"></i>Số điện thoại</p>
-                      <p class="fw-medium text-end"><span th:text="${user.userDetail.mobile}"></span></p>
-                    </div>
-                    <div class="d-flex panel-content">
-                      <p><i class="far fa-envelope fa-fw me-2"></i>Email</p>
-                      <p class="fw-medium text-end"><span th:text="${user.userDetail.email}"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 col-lg-6 address-list">
-                  <div class="text-end" th:each="address, i : ${user.userAddressList}">
-                    <h1 class="name"><span th:text="*{address.receiverName}"></span></h1>
-                    <h3 class="mobile mt-1 fs-5"><span th:text="*{address.receiverMobile}">0973876107</span></h3>
-                    <h3 class="address mt-2"><span th:text="*{address.userAddressDetail}"></span></h3>
-                    <h3 class="address mt-2"><span th:text="*{address.userAddressWards}"></span></h3>
-                    <h3 class="address mt-2"><span th:text="*{address.userAddressDistricts}"></span></h3>
-                    <h3 class="address mt-2"><span th:text="*{address.userAddressProvinces}"></span></h3>
-                    <span class="badge bg-success-subtle border text-success-emphasis rounded-pill mt-1" th:if="*{address.defaultAddress}">
-                      <i class="fas fa-check me-1"></i>Mặc định
-                    </span>
-                    <hr th:if="*{i.index != (user.userAddressList.size() - 1)}">
-                  </div>
-
-                </div>
+    <div class="content">
+      <section id="profile">
+        <div class="row">
+          <div class="col-md-12 col-lg-6 profile-info">
+            <div class="panel">
+              <div class="d-flex panel-content">
+                <p><i class="fas fa-user fa-fw me-2"></i>Tên tài khoản</p>
+                <p class="fw-medium text-end text-uppercase"><span th:text="${user.username}"></span></p>
               </div>
-            </section>
+              <div class="d-flex panel-content">
+                <p><i class="far fa-address-card fa-fw me-2"></i>Họ và tên</p>
+                <p class="fw-medium text-end"><span th:text="${user.fullName}"></span></p>
+              </div>
+              <div class="d-flex panel-content">
+                <p><i class="fas fa-venus-mars fa-fw me-2"></i>Giới tính</p>
+                <p class="fw-medium text-end"><span th:text="${user.userDetail.gender == 1 ? 'Nam' : 'Nữ'}"></span></p>
+              </div>
+              <div class="d-flex panel-content">
+                <p><i class="far fa-calendar-alt fa-fw me-2"></i>Ngày sinh</p>
+                <p class="fw-medium text-end"><span th:text="${user.userDetail.dob}"></span></p>
+              </div>
+              <div class="d-flex panel-content">
+                <p><i class="fas fa-phone-alt fa-fw me-2" style="font-size: 15px"></i>Số điện thoại</p>
+                <p class="fw-medium text-end"><span th:text="${user.userDetail.mobile}"></span></p>
+              </div>
+              <div class="d-flex panel-content">
+                <p><i class="far fa-envelope fa-fw me-2"></i>Email</p>
+                <p class="fw-medium text-end"><span th:text="${user.userDetail.email}"></span></p>
+              </div>
+            </div>
           </div>
+          <div class="col-md-12 col-lg-6 address-list">
+            <div class="text-end" th:each="address, i : ${user.userAddressList}">
+              <h1 class="name"><span th:text="*{address.receiverName}"></span></h1>
+              <h3 class="mobile mt-1 fs-5"><span th:text="*{address.receiverMobile}">0973876107</span></h3>
+              <h3 class="address mt-2"><span th:text="*{address.userAddressDetail}"></span></h3>
+              <h3 class="address mt-2"><span th:text="*{address.userAddressWards}"></span></h3>
+              <h3 class="address mt-2"><span th:text="*{address.userAddressDistricts}"></span></h3>
+              <h3 class="address mt-2"><span th:text="*{address.userAddressProvinces}"></span></h3>
+              <span class="badge bg-success-subtle border text-success-emphasis rounded-pill mt-1" th:if="*{address.defaultAddress}">
+                <i class="fas fa-check me-1"></i>Mặc định
+              </span>
+              <hr th:if="*{i.index != (user.userAddressList.size() - 1)}">
+            </div>
 
+          </div>
         </div>
-      </div>
+      </section>
     </div>
-
   </th:block>
-  <th:block layout:fragment="js"></th:block>
 </body>
 </html>

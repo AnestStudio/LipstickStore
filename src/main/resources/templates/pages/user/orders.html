@@ -2,7 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout.html}">
+      layout:decorate="~{layout-2-side.html}">
 <head>
   <title>Quản lý đơn hàng</title>
   <link rel="stylesheet" th:href="@{/css/products.css}"/>
@@ -10,187 +10,83 @@
 </head>
 <body>
   <th:block layout:fragment="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-between">
-
-          <div class="sidebar">
-            <ul class="list-unstyled ps-0">
-              <li class="mb-1">
-                <a href="profile.html" class="active">
-                  <i class="fas fa-user fa-fw me-2"></i>Trang cá nhân
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="profile-update.html">
-                  <i class="fas fa-user-edit fa-fw me-2"></i>Chỉnh sửa thông tin
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="profile-update-address.html">
-                  <i class="fas fa-map-marked-alt fa-fw me-2"></i>Chỉnh sửa địa chỉ
-                </a>
-              </li>
-              <hr />
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-bars fa-fw me-2"></i>
-                  <div>
-                    <div>Tất cả đơn hàng</div>
-                    <div class="badge-number">14</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-hourglass-half fa-fw me-2"></i>
-                  <div>
-                    <div>Chờ xác nhận</div>
-                    <div class="badge-number">2</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-check fa-fw me-2"></i>
-                  <div>
-                    <div>Đã xác nhận</div>
-                    <div class="badge-number">0</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-history fa-fw me-2"></i>
-                  <div>
-                    <div>Đang chuẩn bị</div>
-                    <div class="badge-number">0</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-paper-plane fa-fw me-2"></i>
-                  <div>
-                    <div>Đang giao hàng</div>
-                    <div class="badge-number">1</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-check-double fa-fw me-2"></i>
-                  <div>
-                    <div>Đã hoàn thành</div>
-                    <div class="badge-number">12</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-ban fa-fw me-2"></i>
-                  <div>
-                    <div>Đã huỷ</div>
-                    <div class="badge-number">2</div>
-                  </div>
-                </a>
-              </li>
-              <li class="mb-1">
-                <a href="#">
-                  <i class="fas fa-share fa-fw me-2"></i>
-                  <div>
-                    <div>Trả hàng</div>
-                    <div class="badge-number">2</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="content">
-            <section id="orders">
-              <div class="row">
-                <div class="col-md-12 col-lg-12">
-
-                  <div class="order panel" th:each="order : ${user.orderList}">
-                    <div class="order-header">
-                      <h3>
-                        <span class="order-code">Mã đơn hàng:<span class="text-danger ms-1" th:text="*{order.orderNumber}"></span></span>
-                      </h3>
-                      <div class="order-info">
-                        <span class="order-time">
-                          <i class="bi bi-calendar3-week me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'dd-MM-yyyy')}"></span>
-                          <i class="far fa-clock ms-2 me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'HH:mm:ss')}"></span>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="order-body">
-                      <div class="items">
-                        <div class="item" th:each="item : *{order.orderDetailList}">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                              <div class="icon-circle icon-small">
-                                <img class="media-object" th:src="@{'/images/products/' + *{item.productImage}}" alt="">
-                              </div>
-                              <div class="content-body">
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#foodDetailModal">
-                                  <span th:text="*{item.productName + ' - ' + item.productColor}"></span>
-                                </a>
-                                <p>
-                                  <span th:text="${#numbers.formatInteger(item.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
-                                  &nbsp<i class="bi bi-x"></i>&nbsp; Số lượng: <span th:text="*{item.quantity}"></span>
-                                </p>
-                              </div>
-                            </div>
-                            <div>
-                              <p class="m-0"><span th:text="${#numbers.formatInteger(item.amount, 3, 'POINT')}"></span><sup>đ</sup></p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                              Tổng tiền đơn hàng
-                            </div>
-                            <div>
-                              <span class="fw-medium" th:text="${#numbers.formatInteger(order.orderTotalAmount, 3, 'POINT')}"></span><sup>đ</sup>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div>Ghi chú - lời nhắn</div>
-                            <div>
-                              <span th:text="*{order.orderNote}"></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="order-footer">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="secondary-text">
-                          <span class="order-status text-info" th:text="*{order.orderStatus.orderStatus}"></span>
-                        </div>
-                        <div class="text-end">
-                          <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">
-                            <i class="fas fa-times me-2"></i>Huỷ đơn hàng
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
+    <div class="content">
+      <section id="orders">
+        <div class="row">
+          <div class="col-md-12 col-lg-12">
+            <div class="order panel" th:each="order : ${user.orderList}">
+              <div class="order-header">
+                <h3>
+                  <span class="order-code">Mã đơn hàng:<span class="text-danger ms-1" th:text="*{order.orderNumber}"></span></span>
+                </h3>
+                <div class="order-info">
+                  <span class="order-time">
+                    <i class="bi bi-calendar3-week me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'dd-MM-yyyy')}"></span>
+                    <i class="far fa-clock ms-2 me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'HH:mm:ss')}"></span>
+                  </span>
                 </div>
               </div>
-            </section>
+              <div class="order-body">
+                <div class="items">
+                  <div class="item" th:each="item : *{order.orderDetailList}">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="icon-circle icon-small">
+                          <img class="media-object" th:src="@{'/images/products/' + *{item.productImage}}" alt="">
+                        </div>
+                        <div class="content-body">
+                          <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#foodDetailModal">
+                            <span th:text="*{item.productName + ' - ' + item.productColor}"></span>
+                          </a>
+                          <p>
+                            <span th:text="${#numbers.formatInteger(item.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+                            &nbsp<i class="bi bi-x"></i>&nbsp; Số lượng: <span th:text="*{item.quantity}"></span>
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="m-0"><span th:text="${#numbers.formatInteger(item.amount, 3, 'POINT')}"></span><sup>đ</sup></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        Tổng tiền đơn hàng
+                      </div>
+                      <div>
+                        <span class="fw-medium" th:text="${#numbers.formatInteger(order.orderTotalAmount, 3, 'POINT')}"></span><sup>đ</sup>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>Ghi chú - lời nhắn</div>
+                      <div>
+                        <span th:text="*{order.orderNote}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="order-footer">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="secondary-text">
+                    <span class="order-status text-info" th:text="*{order.orderStatus.orderStatus}"></span>
+                  </div>
+                  <div class="text-end">
+                    <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">
+                      Huỷ đơn hàng
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-
         </div>
-      </div>
+      </section>
     </div>
-
   </th:block>
-  <th:block layout:fragment="js"></th:block>
 </body>
 </html>

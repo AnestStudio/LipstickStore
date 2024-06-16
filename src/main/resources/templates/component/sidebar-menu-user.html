@@ -1,0 +1,93 @@
+<div class="sidebar" th:fragment="sidebar-menu-user">
+  <ul class="list-unstyled">
+    <li class="mb-1">
+      <a th:href="@{/user/account/profile}" class="active">
+        <i class="fas fa-user fa-fw me-2"></i>Trang cá nhân
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-user-edit fa-fw me-2"></i>Chỉnh sửa thông tin
+      </a>
+    </li>
+    <li>
+      <a th:href="@{/}">
+        <i class="fas fa-map-marked-alt fa-fw me-2"></i>Chỉnh sửa địa chỉ
+      </a>
+    </li>
+  </ul>
+  <ul class="list-unstyled">
+    <li class="mb-1">
+      <a th:href="@{/user/orders}">
+        <i class="fas fa-bars fa-fw me-2"></i>
+        <div>
+          <div>Tất cả đơn hàng</div>
+          <div class="badge-number">14</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-hourglass-half fa-fw me-2"></i>
+        <div>
+          <div>Chờ xác nhận</div>
+          <div class="badge-number">2</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-check fa-fw me-2"></i>
+        <div>
+          <div>Đã xác nhận</div>
+          <div class="badge-number">0</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-history fa-fw me-2"></i>
+        <div>
+          <div>Đang chuẩn bị</div>
+          <div class="badge-number">0</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-paper-plane fa-fw me-2"></i>
+        <div>
+          <div>Đang giao hàng</div>
+          <div class="badge-number">1</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-check-double fa-fw me-2"></i>
+        <div>
+          <div>Đã hoàn thành</div>
+          <div class="badge-number">12</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-ban fa-fw me-2"></i>
+        <div>
+          <div>Đã huỷ</div>
+          <div class="badge-number">2</div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a th:href="@{/}">
+        <i class="fas fa-share fa-fw me-2"></i>
+        <div>
+          <div>Trả hàng</div>
+          <div class="badge-number">2</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
