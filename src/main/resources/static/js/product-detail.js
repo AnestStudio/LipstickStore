@@ -39,7 +39,6 @@ function addToCart(productId) {
       document.getElementById("quantity-item-in-cart").innerText = data.totalProductInCart;
       document.getElementById("toast-success-content").innerText = "Thêm sản phẩm vào giỏ hàng thành công.";
       showToast("toast-success");
-      console.log(data);
       showListItemInCart(data.cart);
     })
     .catch(error => {

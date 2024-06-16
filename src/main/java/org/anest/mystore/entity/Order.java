@@ -3,9 +3,12 @@ package org.anest.mystore.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.anest.mystore.util.FormatUtil;
 
 import java.util.Date;
 import java.util.List;
+
+import static org.anest.mystore.constant.IConstants.*;
 
 @Getter
 @Setter
@@ -52,4 +55,9 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderDetail> orderDetailList;
+
+    public String getOrderNumber() {
+        //return ORDER_PREFIX + FormatUtil.leftPad(String.valueOf(id), ORDER_NUMBER_LENGTH, ORDER_NUMBER_PAD);
+        return ORDER_PREFIX + FormatUtil.leftPad(String.valueOf(id), 6, "0");
+    }
 }

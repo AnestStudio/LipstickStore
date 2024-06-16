@@ -1,3 +1,8 @@
+INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_NUMBER_LENGTH', N'6', N'DEFAULT_VALUE');
+INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_NUMBER_PAD', N'0', N'DEFAULT_VALUE');
+INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_PREFIX', N'RB', N'DEFAULT_VALUE');
+
+
 INSERT INTO role (role_name) VALUES (N'ROLE_ADMIN');
 INSERT INTO role (role_name) VALUES (N'ROLE_EMPLOYEE');
 INSERT INTO role (role_name) VALUES (N'ROLE_MEMBER');
@@ -18,6 +23,7 @@ INSERT INTO user_role (user_id, role_id) VALUES (2, 3);
 
 
 INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_detail, user_address_wards, user_address_districts, user_address_provinces, default_address) VALUES (2, N'Trần Hoàng Minh', N'0977657876', N'Fville 3, Fpt Software, Khu Công Nghệ Cao Hoà Lạc', N'Xã Tân Xã', N'Huyện Thạch Thất', N'Hà Nội', 1);
+INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_detail, user_address_wards, user_address_districts, user_address_provinces, default_address) VALUES (2, N'Lê Ngọc Hoài Anh', N'0934567656', N'Số 36, Đường Ngọc Hồi', N'Xã Ngọc Mỹ', N'Huyện Ân Thi', N'Tỉnh Hưng Yên', 0);
 
 
 INSERT INTO brand (brand_name, brand_description) VALUES (N'Chanel', N'<p><span class="fw-medium">Thương hiệu Chanel</span> là một thương hiệu được thành lập từ những năm 1909 – 1910 do Gabrielle “Coco” Chanel sáng lập. Chanel là một thương hiệu thời trang, mỹ phẩm cao cấp hàng đầu nước Pháp, mang trọn vẹn những tinh hoa, nét đẹp của đất nước này.</p>

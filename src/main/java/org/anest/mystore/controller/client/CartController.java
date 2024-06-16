@@ -1,4 +1,4 @@
-package org.anest.mystore.controller;
+package org.anest.mystore.controller.client;
 
 import jakarta.servlet.http.HttpSession;
 import org.anest.mystore.entity.Item;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-import static org.anest.mystore.constant.IConstant.*;
+import static org.anest.mystore.constant.IConstants.*;
 
 @Controller
 @RequestMapping("cart")

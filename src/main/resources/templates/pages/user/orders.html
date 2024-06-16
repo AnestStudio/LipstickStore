@@ -112,53 +112,38 @@
               <div class="row">
                 <div class="col-md-12 col-lg-12">
 
-                  <div class="order panel">
+                  <div class="order panel" th:each="order : ${user.orderList}">
                     <div class="order-header">
                       <h3>
-                        <span class="order-code">Mã đơn hàng:<span class="text-danger ms-1">HLF000044</span></span>
+                        <span class="order-code">Mã đơn hàng:<span class="text-danger ms-1" th:text="*{order.orderNumber}"></span></span>
                       </h3>
                       <div class="order-info">
                         <span class="order-time">
-                          <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-                          <i class="far fa-clock ms-2 me-1"></i>18:08:33
+                          <i class="bi bi-calendar3-week me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'dd-MM-yyyy')}"></span>
+                          <i class="far fa-clock ms-2 me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'HH:mm:ss')}"></span>
                         </span>
                       </div>
                     </div>
                     <div class="order-body">
                       <div class="items">
-                        <div class="item">
+                        <div class="item" th:each="item : *{order.orderDetailList}">
                           <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                               <div class="icon-circle icon-small">
-                                <img class="media-object" src="/images/products/son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili.png" alt="">
+                                <img class="media-object" th:src="@{'/images/products/' + *{item.productImage}}" alt="">
                               </div>
                               <div class="content-body">
                                 <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#foodDetailModal">
-                                  Son YSL Slim Velvet 21 Rouge Paradoxe - Màu Đỏ Ruby
+                                  <span th:text="*{item.productName + ' - ' + item.productColor}"></span>
                                 </a>
-                                <p>Giá: 950.000<sup>đ</sup> &nbsp;<i class="bi bi-x"></i>&nbsp; Số lượng: 1</p>
+                                <p>
+                                  <span th:text="${#numbers.formatInteger(item.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+                                  &nbsp<i class="bi bi-x"></i>&nbsp; Số lượng: <span th:text="*{item.quantity}"></span>
+                                </p>
                               </div>
                             </div>
                             <div>
-                              <p class="m-0">950.000<sup>đ</sup></p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                              <div class="icon-circle icon-small">
-                                <img class="media-object" src="/images/products/son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili.png" alt="">
-                              </div>
-                              <div class="content-body">
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#foodDetailModal">
-                                  Son YSL Slim Velvet 21 Rouge Paradoxe - Màu Đỏ Ruby
-                                </a>
-                                <p>Giá: 950.000<sup>đ</sup> &nbsp;<i class="bi bi-x"></i>&nbsp; Số lượng: 1</p>
-                              </div>
-                            </div>
-                            <div>
-                              <p class="m-0">950.000<sup>đ</sup></p>
+                              <p class="m-0"><span th:text="${#numbers.formatInteger(item.amount, 3, 'POINT')}"></span><sup>đ</sup></p>
                             </div>
                           </div>
                         </div>
@@ -168,7 +153,7 @@
                               Tổng tiền đơn hàng
                             </div>
                             <div>
-                              <span class="fw-medium">1.700.000<sup>đ</sup></span>
+                              <span class="fw-medium" th:text="${#numbers.formatInteger(order.orderTotalAmount, 3, 'POINT')}"></span><sup>đ</sup>
                             </div>
                           </div>
                         </div>
@@ -176,7 +161,7 @@
                           <div class="d-flex justify-content-between align-items-center">
                             <div>Ghi chú - lời nhắn</div>
                             <div>
-                              <span>Cho em nhiều cơm, không cần canh</span>
+                              <span th:text="*{order.orderNote}"></span>
                             </div>
                           </div>
                         </div>
@@ -185,90 +170,7 @@
                     <div class="order-footer">
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="secondary-text">
-                          <span class="order-status text-info">Chờ xác nhận</span>
-                        </div>
-                        <div class="text-end">
-                          <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">
-                            <i class="fas fa-times me-2"></i>Huỷ đơn hàng
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="order panel">
-                    <div class="order-header">
-                      <h3>
-                        <span class="order-code">Mã đơn hàng:<span class="text-danger ms-1">HLF000044</span></span>
-                      </h3>
-                      <div class="order-info">
-                        <span class="order-time">
-                          <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-                          <i class="far fa-clock ms-2 me-1"></i>18:08:33
-                        </span>
-                      </div>
-                    </div>
-                    <div class="order-body">
-                      <div class="items">
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                              <div class="icon-circle icon-small">
-                                <img class="media-object" src="/images/products/son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili.png" alt="">
-                              </div>
-                              <div class="content-body">
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#foodDetailModal">
-                                  Son YSL Slim Velvet 21 Rouge Paradoxe - Màu Đỏ Ruby
-                                </a>
-                                <p>Giá: 950.000<sup>đ</sup> &nbsp;<i class="bi bi-x"></i>&nbsp; Số lượng: 1</p>
-                              </div>
-                            </div>
-                            <div>
-                              <p class="m-0">950.000<sup>đ</sup></p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                              <div class="icon-circle icon-small">
-                                <img class="media-object" src="/images/products/son-kem-ysl-vinyl-cream-lip-stain-441-arcade-chili.png" alt="">
-                              </div>
-                              <div class="content-body">
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#foodDetailModal">
-                                  Son YSL Slim Velvet 21 Rouge Paradoxe - Màu Đỏ Ruby
-                                </a>
-                                <p>Giá: 950.000<sup>đ</sup> &nbsp;<i class="bi bi-x"></i>&nbsp; Số lượng: 1</p>
-                              </div>
-                            </div>
-                            <div>
-                              <p class="m-0">950.000<sup>đ</sup></p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                              Tổng tiền đơn hàng
-                            </div>
-                            <div>
-                              <span class="fw-medium">1.700.000<sup>đ</sup></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div>Ghi chú - lời nhắn</div>
-                            <div>
-                              <span>Cho em nhiều cơm, không cần canh</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="order-footer">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="secondary-text">
-                          <span class="order-status text-info">Chờ xác nhận</span>
+                          <span class="order-status text-info" th:text="*{order.orderStatus.orderStatus}"></span>
                         </div>
                         <div class="text-end">
                           <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">

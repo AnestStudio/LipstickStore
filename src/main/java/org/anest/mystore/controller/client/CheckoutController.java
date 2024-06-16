@@ -1,4 +1,4 @@
-package org.anest.mystore.controller;
+package org.anest.mystore.controller.client;
 
 import jakarta.servlet.http.HttpSession;
 import org.anest.mystore.entity.*;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.anest.mystore.constant.IConstant.*;
+import static org.anest.mystore.constant.IConstants.*;
 
 @Controller
 @RequestMapping("checkout")

@@ -1,3 +1,11 @@
+create table common_value (
+    id    bigint identity primary key,
+    name  nvarchar(100) not null,
+    [key] nvarchar(100) unique not null,
+    value nvarchar(1000) not null,
+    type  nvarchar(100) not null
+)
+
 drop table product_image;
 drop table product;
 drop table brand;

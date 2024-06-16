@@ -24,7 +24,6 @@ public class WebSecurityConfig {
                         .requestMatchers("/lipstick/**", "/lipstick-type/**", "/lipstick-brand/**").permitAll()
                         .requestMatchers("/cart/**").permitAll()
                         .requestMatchers("/checkout").hasRole("MEMBER")
-                        .requestMatchers("/auth/**").hasRole("ADMIN")
                         // API
                         .requestMatchers("/api/public/**").permitAll()
                         // OTHER
@@ -37,6 +36,10 @@ public class WebSecurityConfig {
                         .passwordParameter("password")
                         .defaultSuccessUrl("/")
                         .failureUrl("/login?error=true")
+                )
+                .rememberMe(rememberMe -> rememberMe
+                        .key("uniqueAndSecret")
+                        .tokenValiditySeconds(86400)
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")

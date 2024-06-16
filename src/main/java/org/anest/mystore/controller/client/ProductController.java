@@ -1,6 +1,6 @@
-package org.anest.mystore.controller;
+package org.anest.mystore.controller.client;
 
-import org.anest.mystore.constant.IConstant;
+import org.anest.mystore.constant.IConstants;
 import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Category;
 import org.anest.mystore.entity.Product;
@@ -72,7 +72,7 @@ public class ProductController {
 
     @GetMapping("/lipstick/sort")
     public String sortByPrice(@RequestParam(name = "type") String sortType, Model model) {
-        if (!sortType.toLowerCase().matches(IConstant.SORT_TYPE_REGEX)) {
+        if (!sortType.toLowerCase().matches(IConstants.SORT_TYPE_REGEX)) {
             return "error400";
         }
         List<Product> products = productService.getAllSorted(sortType);

@@ -1,7 +1,7 @@
 package org.anest.mystore.controllerrest;
 
 import jakarta.servlet.http.HttpSession;
-import org.anest.mystore.constant.IConstant;
+import org.anest.mystore.constant.IConstants;
 import org.anest.mystore.entity.Item;
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.service.ItemService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
 
-import static org.anest.mystore.constant.IConstant.*;
+import static org.anest.mystore.constant.IConstants.*;
 
 @RestController
 @RequestMapping("api/public/cart")
@@ -72,7 +72,7 @@ public class CartRestController {
                     cart.add(item);
                 }
             }
-            session.setAttribute(IConstant.CART, cart);
+            session.setAttribute(IConstants.CART, cart);
 
             int totalProduct = itemService.countTotalProductQuantity(cart);
             double totalAmount = itemService.countTotalProductAmount(cart);

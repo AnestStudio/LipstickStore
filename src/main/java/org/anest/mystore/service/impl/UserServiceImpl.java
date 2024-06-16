@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserDetailsService, UserService {
@@ -40,10 +41,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 
         if (roles != null) {
-            for (Role role : roles) {
-                GrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
-                grantedAuthorities.add(authority);
-            }
+            grantedAuthorities = roles
+                    .stream()
+                    .map(role -> new SimpleGrantedAuthority(role.getRoleName())).collect(Collectors.toList());
         }
 
         return new AuthUser(
