@@ -212,19 +212,19 @@ nav.navbar .bi {
 
 .sidebar {
   width: 260px;
-  margin-top: 132px;
+  margin-top: 110px;
 }
 
-.sidebar ul {
+.sidebar>ul {
   padding: 12px;
   border-radius: 12px;
   margin-bottom: 16px;
   background-color: var(--secondary-bg-color);
 }
 
-.sidebar ul li a {
+.sidebar>ul>li>a {
   padding: 8px 12px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--bs-emphasis-color);
   background-color: transparent;
   width: 100%;
@@ -233,19 +233,19 @@ nav.navbar .bi {
   border-radius: 8px;
 }
 
-.sidebar ul li a:hover,
-.sidebar ul li a:focus {
+.sidebar>ul li a:hover,
+.sidebar>ul li a:focus {
   color: rgba(var(--bs-emphasis-color-rgb), .85);
   background-color: var(--bs-tertiary-bg);
 }
 
-.sidebar ul li a>div {
+.sidebar>ul li a>div {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-.sidebar ul li a>div .badge-number {
+.sidebar>ul li a>div .badge-number {
   background-color: var(--bs-tertiary-bg);
   font-size: 13px;
   min-width: 26px;
@@ -257,11 +257,11 @@ nav.navbar .bi {
   padding: 4px;
 }
 
-.sidebar ul li a:hover .badge-number {
+.sidebar>ul li a:hover .badge-number {
   background-color: var(--badge-number-background-color);
 }
 
-.sidebar ul li a.active .badge-number {
+.sidebar>ul li a.active .badge-number {
   background-color: var(--badge-number-background-color);
 }
 

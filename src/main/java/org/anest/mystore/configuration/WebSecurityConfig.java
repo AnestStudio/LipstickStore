@@ -24,6 +24,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/lipstick/**", "/lipstick-type/**", "/lipstick-brand/**").permitAll()
                         .requestMatchers("/cart/**").permitAll()
                         .requestMatchers("/checkout").hasRole("MEMBER")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         // API
                         .requestMatchers("/api/public/**").permitAll()
                         // OTHER

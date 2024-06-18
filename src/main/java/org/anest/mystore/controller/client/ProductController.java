@@ -49,6 +49,7 @@ public class ProductController {
         List<Product> products = productService.findByCategoryId(categoryId);
         model.addAttribute("products", products);
         model.addAttribute("title", PRODUCT_LIST_TEXT);
+        initData(model);
         return "pages/product/products";
     }
 
@@ -67,6 +68,7 @@ public class ProductController {
         List<Product> products = productService.findByProductNameContaining(productName);
         model.addAttribute("products", products);
         model.addAttribute("title", "Kết quả tìm kiếm: " + productName);
+        initData(model);
         return "pages/product/products";
     }
 
@@ -78,6 +80,7 @@ public class ProductController {
         List<Product> products = productService.getAllSorted(sortType);
         model.addAttribute("products", products);
         model.addAttribute("title", PRODUCT_LIST_TEXT);
+        initData(model);
         return "pages/product/products";
     }
 

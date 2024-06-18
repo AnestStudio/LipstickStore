@@ -8,6 +8,7 @@ import org.anest.mystore.service.UserService;
 import org.anest.mystore.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,10 +50,9 @@ public class CheckoutController {
     public String orderProcess(
             @RequestParam String orderNote,
             @RequestParam Long userShippingAddressId,
-            Authentication auth,
+            @AuthenticationPrincipal AuthUser authUser,
             HttpSession session
     ) {
-        AuthUser authUser = (AuthUser) auth.getPrincipal();
         User user = userService.findByUsername(authUser.getUsername());
 
         Order order = new Order();
