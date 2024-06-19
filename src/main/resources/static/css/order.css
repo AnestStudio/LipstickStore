@@ -1,34 +1,13 @@
 /*
- * CONTENT -------------------------------------------------------------------------------------------------------------
- */
-
-.content {
-  width: calc(100% - 284px);
-}
-
-#cover {
-  padding: 100px 0 20px
-}
-
-#cover .title {
-  font-size: 36px;
-}
-
-#sub-nav .sub-nav-left li {
-  display: none;
-}
-
-
-/*
  * ORDERS --------------------------------------------------------------------------------------------------------------
  */
 
 #orders {
-  padding: 126px 0 50px;
+  padding: 110px 0 50px;
 }
 
-#orders>div>div {
-  margin-top: 6px;
+#orders .order {
+  margin-bottom: 16px;
 }
 
 #orders .order.panel {
@@ -45,20 +24,6 @@
 
 #orders .order.panel .panel-content:last-child {
   border-bottom: none;
-}
-
-#orders .order.panel p {
-  margin: 0;
-  width: 100%;
-}
-
-
-
-/* USER ORDER ====================================================================================== */
-
-#orders .order {
-  padding: 16px 20px 20px;
-  margin-bottom: 16px;
 }
 
 #orders .order .order-header {
@@ -119,5 +84,3 @@
   border-radius: 6px;
   margin-right: 16px;
 }
-
-

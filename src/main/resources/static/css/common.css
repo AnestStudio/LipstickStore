@@ -469,3 +469,24 @@ nav.navbar .bi {
 .btn-circle:hover {
   box-shadow: 0 0 0 4px var(--shadow-button);
 }
+
+
+/**
+ * RIGHT CONTENT -------------------------------------------------------------------------------------------------------
+ */
+
+.content {
+  width: calc(100% - 284px);
+}
+
+#cover {
+  padding: 100px 0 20px
+}
+
+#cover .title {
+  font-size: 36px;
+}
+
+#sub-nav .sub-nav-left li {
+  display: none;
+}

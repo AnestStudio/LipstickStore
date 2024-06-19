@@ -1,34 +1,12 @@
 /*
- * CONTENT -------------------------------------------------------------------------------------------------------------
- */
-
-.content {
-  width: calc(100% - 284px);
-}
-
-#cover {
-  padding: 100px 0 20px
-}
-
-#cover .title {
-  font-size: 36px;
-}
-
-#sub-nav .sub-nav-left li {
-  display: none;
-}
-
-
-/*
  * PROFILE -------------------------------------------------------------------------------------------------------------
  */
 
 #profile {
-  padding: 106px 0 50px;
+  padding: 110px 0 50px;
 }
 
 #profile .profile-info {
-  margin-top: 4px;
   margin-bottom: 20px;
 }
 
