@@ -5,6 +5,7 @@ import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Category;
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.exception.BrandNotFoundException;
+import org.anest.mystore.exception.CategoryNotFoundException;
 import org.anest.mystore.exception.ProductNotFoundException;
 import org.anest.mystore.service.BrandService;
 import org.anest.mystore.service.CategoryService;
@@ -19,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.anest.mystore.constant.IConstants.*;
+
 @Controller
 public class ProductController {
-
-    private final String PRODUCT_LIST_TEXT = "Danh sách sản phẩm";
 
     private final ProductService productService;
     private final BrandService brandService;
@@ -39,18 +40,21 @@ public class ProductController {
     public String index(Model model) {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
-        model.addAttribute("title", PRODUCT_LIST_TEXT);
-        initData(model);
+        model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
+        model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
+        initDataFilter(model);
         return "pages/product/products";
     }
 
     @GetMapping("/lipstick-type/{categoryId}")
     public String findByType(@PathVariable Long categoryId, Model model) {
         List<Product> products = productService.findByCategoryId(categoryId);
+        Category category = categoryService.findById(categoryId).orElseThrow(() -> new CategoryNotFoundException("Category not found"));
         model.addAttribute("products", products);
-        model.addAttribute("title", PRODUCT_LIST_TEXT);
-        initData(model);
-        return "pages/product/products";
+        model.addAttribute("title", category.getCategoryName());
+        model.addAttribute("description", category.getCategoryDescription());
+        initDataFilter(model);
+        return "pages/product/products-filter";
     }
 
     @GetMapping("/lipstick-brand/{brandId}")
@@ -58,8 +62,9 @@ public class ProductController {
         List<Product> products = productService.findByBrandId(brandId);
         Brand brand = brandService.findById(brandId).orElseThrow(() -> new BrandNotFoundException("Brand not found"));
         model.addAttribute("products", products);
-        model.addAttribute("brand", brand);
-        initData(model);
+        model.addAttribute("title", TITLE_BRAND_TEXT + brand.getBrandName());
+        model.addAttribute("description", brand.getBrandDescription());
+        initDataFilter(model);
         return "pages/product/products-filter";
     }
 
@@ -67,9 +72,10 @@ public class ProductController {
     public String searchByName(@RequestParam String productName, Model model) {
         List<Product> products = productService.findByProductNameContaining(productName);
         model.addAttribute("products", products);
-        model.addAttribute("title", "Kết quả tìm kiếm: " + productName);
-        initData(model);
-        return "pages/product/products";
+        model.addAttribute("title", TITLE_RESULT_SEARCH_TEXT + productName);
+        model.addAttribute("description", "");
+        initDataFilter(model);
+        return "pages/product/products-filter";
     }
 
     @GetMapping("/lipstick/sort")
@@ -79,9 +85,13 @@ public class ProductController {
         }
         List<Product> products = productService.getAllSorted(sortType);
         model.addAttribute("products", products);
-        model.addAttribute("title", PRODUCT_LIST_TEXT);
-        initData(model);
-        return "pages/product/products";
+        model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
+        model.addAttribute(
+                "description",
+                SORT_PRODUCT_DESCRIPTION + (sortType.equalsIgnoreCase("ASC") ? "tăng dần." : "giảm dần.")
+        );
+        initDataFilter(model);
+        return "pages/product/products-filter";
     }
 
     @GetMapping("/lipstick/detail/{productId}")
@@ -98,6 +108,13 @@ public class ProductController {
         products.add(product);
         model.addAttribute("products", products);
         return "pages/product/product-detail";
+    }
+
+    private void initDataFilter(Model model) {
+        List<Category> categories = categoryService.findAll();
+        List<Brand> brands = brandService.findAll();
+        model.addAttribute("categories", categories);
+        model.addAttribute("brands", brands);
     }
 
     private void initData(Model model) {

@@ -10,14 +10,14 @@
 <body>
   <th:block layout:fragment="content">
     <section id="cover">
-      <div class="container mt-4">
+      <div class="container my-4">
         <div class="row">
           <div class="col">
             <h1 class="title mb-3">
               <span>Thanh toán</span>
               <span class="ms-1 title-quantity text-danger" th:text="'[' + ${session.totalProductInCart} + ']'"></span>
             </h1>
-            <p class="title-des">
+            <p class="title-description">
               Quý khách vui lòng kiểm tra lại địa chỉ giao hàng, sản phẩm, số lượng và tổng giá trị đơn hàng trước khi đặt hàng.
             </p>
           </div>

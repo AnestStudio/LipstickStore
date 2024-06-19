@@ -81,10 +81,10 @@
                 <div class="row">
                   <div class="col">
                     <h1 class="title mb-3">
-                      <span th:text="${'Thương hiệu ' + brand.brandName}"></span>
+                      <span th:text="${title}"></span>
                       <span class="ms-1 title-quantity text-danger" th:text="'[' + ${products.size} + ']'"></span>
                     </h1>
-                    <p class="title-des" th:utext="${brand.brandDescription}"></p>
+                    <div class="title-description" style="max-width: 100%;" th:utext="${description}"></div>
                   </div>
                 </div>
               </div>
@@ -174,7 +174,7 @@
                   </th:block>
                   <th:block th:if="${products.isEmpty()}">
                     <div class="col-12">
-                      <h3 class="product-empty mb-5">Không tìm thấy sản phẩm nào.</h3>
+                      <h3 class="text-center m-0 py-5">Không tìm thấy sản phẩm nào.</h3>
                     </div>
                   </th:block>
                 </div>

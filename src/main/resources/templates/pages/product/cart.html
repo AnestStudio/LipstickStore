@@ -10,7 +10,7 @@
 <body>
   <th:block layout:fragment="content">
     <section id="cover">
-      <div class="container mt-4">
+      <div class="container my-4">
         <div class="row">
           <div class="col">
             <th:block th:if="${session.cart == null}">
@@ -28,7 +28,7 @@
                 <span>Giỏ hàng</span>
                 <span class="ms-1 title-quantity text-danger" th:text="'[' + ${session.totalProductInCart} + ']'"></span>
               </h1>
-              <p class="title-des">
+              <p class="title-description">
                 Quý khách vui lòng kiểm tra lại sản phẩm, số lượng và tổng giá trị đơn hàng trước khi tiếp tục mua hàng.
               </p>
             </th:block>

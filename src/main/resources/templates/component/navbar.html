@@ -18,6 +18,9 @@
           <li class="nav-item">
             <a class="nav-link text-secondary-emphasis" href="#">TIN TỨC</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary-emphasis" th:href="@{/admin/report/excel}">EXCEL</a>
+          </li>
         </ul>
       </div>
 
@@ -82,7 +85,7 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end items mt-2" style="width: 350px" th:if="${session.cart != null}">
                 <li>
-                  <h6 class="dropdown-header">Sản phẩm mới thêm</h6>
+                  <h6 class="dropdown-header pt-1">Sản phẩm mới thêm</h6>
                 </li>
                 <li class="px-3 item">
                   <div class="d-flex justify-content-between align-items-center py-2" th:each="item : ${session.cart}">

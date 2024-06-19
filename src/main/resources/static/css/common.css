@@ -368,8 +368,12 @@ nav.navbar .bi {
   font-weight: 300;
 }
 
-#cover .title-des {
+#cover .title-description {
   max-width: 900px;
+}
+
+#cover .title-description p {
+  margin-bottom: 12px;
 }
 
 /* RESPONSIVE */

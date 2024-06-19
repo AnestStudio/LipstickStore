@@ -120,13 +120,6 @@
   display: none;
 }
 
-#products .product-empty {
-  font-family: "Noto Sans", "AdihausDIN", "Helvetica", Arial, sans-serif !important;
-  font-size: 30px;
-  font-style: italic;
-  text-transform: uppercase;
-}
-
 
 /*
  * RESPONSIVE ----------------------------------------------------------------------------------------------------------

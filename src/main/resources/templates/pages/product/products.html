@@ -17,9 +17,7 @@
               <span th:text="${title}"></span>
               <span class="ms-1 title-quantity text-danger" th:text="'[' + ${products.size} + ']'"></span>
             </h1>
-            <p class="title-des">
-              Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.
-            </p>
+            <div class="title-description mb-3" th:utext="${description}"></div>
           </div>
         </div>
       </div>
