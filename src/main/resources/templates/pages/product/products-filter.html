@@ -10,86 +10,26 @@
 </head>
 <body>
   <th:block layout:fragment="content">
+    <section id="cover">
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col">
+            <h1 class="title mb-3">
+              <span th:text="${title}"></span>
+              <span class="ms-1 title-quantity text-danger" th:text="'[' + ${products.size} + ']'"></span>
+            </h1>
+            <div class="title-description mb-3" th:utext="${description}"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="container">
       <div class="row">
         <div class="col-12 d-flex justify-content-between">
-
-          <div class="sidebar">
-            <ul class="list-unstyled">
-              <li>
-                <button class="btn btn-toggle rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-                  Thương hiệu
-                </button>
-                <div class="collapse" id="home-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal small">
-                    <li th:each="brand : ${brands}">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" th:value="*{brand.id}" th:id="*{brand.brandName}" alt="">
-                        <label class="form-check-label" th:for="*{brand.brandName}" th:text="*{brand.brandName}"></label>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <button class="btn btn-toggle rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                  Loại son
-                </button>
-                <div class="collapse" id="dashboard-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal small">
-                    <li th:each="category : ${categories}">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" th:value="*{category.id}" th:id="*{category.categoryName}" alt="">
-                        <label class="form-check-label" th:for="*{category.categoryName}" th:text="*{category.categoryName}"></label>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <button class="btn btn-toggle rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                  Màu sắc
-                </button>
-                <div class="collapse" id="orders-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal small">
-                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
-                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
-                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
-                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <button class="btn btn-toggle rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                  Giá
-                </button>
-                <div class="collapse" id="account-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal small">
-                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New...</a></li>
-                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Profile</a></li>
-                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Settings</a></li>
-                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Sign out</a></li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
+          <div th:replace="~{component/sidebar-menu-product :: sidebar-menu-product}"></div>
 
           <div class="content">
-            <section id="cover">
-              <div class="mt-4">
-                <div class="row">
-                  <div class="col">
-                    <h1 class="title mb-3">
-                      <span th:text="${title}"></span>
-                      <span class="ms-1 title-quantity text-danger" th:text="'[' + ${products.size} + ']'"></span>
-                    </h1>
-                    <div class="title-description" style="max-width: 100%;" th:utext="${description}"></div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
             <section id="sub-nav" class="sub-nav" th:unless="${products.isEmpty()}">
               <div class="row">
                 <div class="col">
@@ -153,39 +93,32 @@
                 </div>
               </div>
             </section>
-
             <section id="products">
-              <div class="my-5">
-                <div class="row">
-                  <th:block th:unless="${products.isEmpty()}">
-                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" th:each="product : ${products}">
-                      <a class="card" th:href="@{'/lipstick/detail/' + *{product.id}}">
-                        <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title product-title">
-                            <span th:text="*{product.productName + ' - ' + product.productColor}"></span>
-                          </h5>
-                          <h5 class="product-price text-danger">
-                            <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
-                          </h5>
-                        </div>
-                      </a>
-                    </div>
-                  </th:block>
-                  <th:block th:if="${products.isEmpty()}">
-                    <div class="col-12">
-                      <h3 class="text-center m-0 py-5">Không tìm thấy sản phẩm nào.</h3>
-                    </div>
-                  </th:block>
-                </div>
+              <div class="row">
+                <th:block th:unless="${products.isEmpty()}">
+                  <div class="col-6 col-md-4 col-lg-4 col-xl-4" th:each="product : ${products}">
+                    <a class="card" th:href="@{'/lipstick/detail/' + *{product.id}}">
+                      <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title product-title">
+                          <span th:text="*{product.productName + ' - ' + product.productColor}"></span>
+                        </h5>
+                        <h5 class="product-price text-danger">
+                          <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+                        </h5>
+                      </div>
+                    </a>
+                  </div>
+                </th:block>
+                <th:block th:if="${products.isEmpty()}">
+                  <div th:replace="~{component/product-not-found :: product-not-found}"></div>
+                </th:block>
               </div>
             </section>
           </div>
-
         </div>
       </div>
     </div>
-
   </th:block>
   <th:block layout:fragment="js">
     <script th:src="@{/js/product.js}"></script>

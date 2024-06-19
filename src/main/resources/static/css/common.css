@@ -211,8 +211,8 @@ nav.navbar .bi {
  */
 
 .sidebar {
-  width: 260px;
-  margin-top: 110px;
+  width: 300px;
+  margin-top: 100px;
 }
 
 .sidebar>ul {
@@ -351,12 +351,12 @@ nav.navbar .bi {
  */
 
 #cover {
-  padding: 120px 0 50px;
+  padding: 100px 0 30px;
 }
 
 #cover .title {
   font-family: "Noto Sans", "AdihausDIN", "Helvetica", Arial, sans-serif !important;
-  font-size: 48px;
+  font-size: 40px;
   font-style: italic;
   text-transform: uppercase;
 }
@@ -369,7 +369,7 @@ nav.navbar .bi {
 }
 
 #cover .title-description {
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 #cover .title-description p {
@@ -480,17 +480,10 @@ nav.navbar .bi {
  */
 
 .content {
-  width: calc(100% - 284px);
+  width: calc(100% - 330px);
 }
 
-#cover {
-  padding: 100px 0 20px
-}
-
-#cover .title {
-  font-size: 36px;
-}
-
-#sub-nav .sub-nav-left li {
-  display: none;
+.content-my {
+  margin-top: 100px;
+  margin-bottom: 40px;
 }

@@ -3,8 +3,7 @@
  */
 
 .sidebar {
-  width: 260px;
-  margin-top: 130px;
+  margin-top: 32px;
 }
 
 .sidebar>ul>li {
@@ -49,6 +48,7 @@
   margin-top: 3px;
   font-size: 16px;
   width: calc(100% - 22px);
+  align-items: center;
 }
 
 .sidebar>ul>li .btn-toggle-nav a:hover,
@@ -105,18 +105,10 @@
  */
 
 .content {
-  width: calc(100% - 300px);
+  width: calc(100% - 330px);
 }
 
-#cover {
-  padding: 100px 0 20px
-}
-
-#cover .title {
-  font-size: 36px;
-}
-
-#sub-nav .sub-nav-left li {
+#sub-nav {
   display: none;
 }
 
@@ -134,7 +126,7 @@
     width: 100%;
   }
 
-  #sub-nav .sub-nav-left li {
-    display: inline-block;
+  #sub-nav {
+    display: block;
   }
 }

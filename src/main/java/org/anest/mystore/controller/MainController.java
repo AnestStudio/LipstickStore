@@ -37,8 +37,8 @@ public class MainController {
         return "auth";
     }
 
-//    @GetMapping("/thanks")
-//    public String thanks(Model model) {
-//        return "thanks";
-//    }
+    @GetMapping("/thanks")
+    public String thanks(Model model) {
+        return "thanks";
+    }
 }

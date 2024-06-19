@@ -2,6 +2,11 @@
  * PRODUCTS ------------------------------------------------------------------------------------------------------------
  */
 
+#products > div {
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+
 #products .product-title span {
   display: inline-block;
   font-size: 16px;

@@ -44,9 +44,17 @@ INSERT INTO brand (brand_name, brand_description) VALUES (N'3CE', N'<p><span cla
 <p>Ngoài Hàn Quốc, nhãn hàng đình đám này đã có tới hơn 150 cửa hàng ở nhiều nơi như Trung Quốc, Hong Kong, Thái Lan, Singapore và Nhật Bản. Tại Việt Nam, <span class="fw-medium">son 3CE</span> rất được đông đảo các tín đồ làm đẹp yêu thích vì giá thành phải chăng cùng chất lượng tuyệt vời.</p>');
 
 
-INSERT INTO category (category_name) VALUES (N'Son Thỏi');
-INSERT INTO category (category_name) VALUES (N'Son Kem');
-INSERT INTO category (category_name) VALUES (N'Son Dưỡng');
+INSERT INTO category (category_name, category_description) VALUES (N'Son Thỏi', N'<p><span class="fw-medium">Son thỏi</span>, hay còn gọi là son sáp, thường có dạng cây dài rất dễ bảo quản và đa dạng về màu sắc cũng như loại son. Các loại son như dưỡng môi, son bóng hầu hết các loại son lì đều là <span class="fw-medium">son thỏi</span>. Sử dụng <span class="fw-medium">son thỏi</span> khá tiện lợi, vì chị em có thể bỏ túi và khi sử dụng có thể dùng trực tiếp thoa lên môi.</p>
+<p>Son dạng thỏi cũng có loại son dưỡng, son thường và loại lì. Khi đánh lên môi, son có màu đậm và lên màu đúng khoảng 95% màu sắc thật của son. Khả năng lên màu của son không bị phụ thuộc bởi màu sắc ban đầu của môi. Tuy dễ dùng nhưng son cũng rất dễ bị gãy nếu bạn làm rơi son hoặc di chuyển quá nhiều.</p>');
+INSERT INTO category (category_name, category_description) VALUES (N'Son Kem', N'<p><span class="fw-medium">Son kem</span> (hay còn gọi là creame lipstick) là một loại son có dạng sệt được đựng trong lọ và có cọ kèm theo như son tint (son nước). Tuy nhiên hiện nay trên thị trường cũng đã xuất hiện loại <span class="fw-medium">son kem</span> dạng thỏi thay cho loại lọ son truyền thống.</p>
+<p>Trong <span class="fw-medium">son kem</span> chứa rất nhiều chất dưỡng môi. Vì thế, khi mới thoa, ta thường có cảm giác ẩm ướt. Sau đó, son sẽ từ từ khô lại.</p>
+<p><span class="fw-medium">Son kem</span> rất được nhiều chị em ưa chuộng bởi đặc tính của nó. Lên màu chuẩn đẹp là một trong những ưu điểm nổi trội của loại son này.</p>
+<p>Bên cạnh đó <span class="fw-medium">son kem</span> còn được xem như là một loại son lì bởi độ bám màu rất tốt, có thể giữ màu lâu, khó trôi, kể cả khi ăn uống son cũng không hề bị trôi.</p>');
+INSERT INTO category (category_name, category_description) VALUES (N'Son Dưỡng', N'<p><span class="fw-medium">Son dưỡng</span> là một sản phẩm chăm sóc môi rất cần thiết, đây là một loại son chứa nhiều chất dưỡng, có tác dụng dưỡng ẩm, làm mềm môi, chống nứt nẻ, khô ráp, làm hồng môi...</p>
+<p><span class="fw-medium">Son dưỡng</span> hay còn gọi là chap-stick, có màu hoặc không màu, tùy từng nhãn hàng, dùng để thoa lên môi hoặc miệng để dưỡng ẩm hoặc làm dịu môi khô hay vết nứt môi, viêm môi bong vảy, viêm miệng hay mụn rộp môi.</p>
+<p><span class="fw-medium">Son dưỡng</span> thường chứa sáp ong hoặc sáp carnauba, long não, cetyl alcohol, lanolin, parafin và petrolatum, cùng vài thành phần khác. Một số loại có chứa thuốc nhuộm, hương vị, mùi thơm, phenol, axit salicylic và kem chống nắng.</p>
+');
+
 
 
 INSERT INTO product (product_name, product_color, product_image, product_price, product_quantity, product_short_description, product_description, category_id, brand_id) VALUES (N'Son YSL Slim Velvet 21 Rouge Paradoxe', N'Đỏ Ruby', N'son-ysl-slim-velvet-21-rouge-paradox.png', 950000, 10, N'Son YSL Slim Velvet 21 Rouge Paradoxe – Màu Đỏ Ruby ra đời đã khiến nhiều tín đồ mê làm đẹp nhanh tay đặt hàng bởi màu son đỏ ruby thời thượng cùng chất son lì với kết cấu mềm mại như nhung mịn màng khiến nàng thích thú.', null, 1, 4);
