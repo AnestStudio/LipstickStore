@@ -2,9 +2,7 @@ package org.anest.mystore.service.impl;
 
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.service.ReportService;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
@@ -16,33 +14,16 @@ import java.util.List;
 public class ReportServiceImpl implements ReportService {
 
     @Override
-    public void outputExcelListProduct(ByteArrayOutputStream stream, List<Product> products) throws IOException {
+    public void outputExcel(List<Product> products, ByteArrayOutputStream stream) throws IOException {
 
-        try (XSSFWorkbook workbook = new XSSFWorkbook();) {
-            XSSFSheet sheet = workbook.createSheet("products");
+        try (Workbook workbook = new XSSFWorkbook();) {
+            Sheet sheet = workbook.createSheet(Product.class.getName());
 
-            int rowCount = 0;
-            XSSFRow headerRow = sheet.createRow(rowCount++);
-            String[] headers = {
-                    "ID",
-                    "PRODUCT NAME",
-                    "PRODUCT COLOR",
-                    "PRODUCT IMAGE",
-                    "PRODUCT PRICE",
-                    "PRODUCT QUANTITY",
-                    "PRODUCT SHORT DESCRIPTION",
-                    "PRODUCT DESCRIPTION",
-                    "CATEGORY",
-                    "BRAND",
-                    "TOTAL IMAGE"
-            };
-            for (int i = 0; i < headers.length; i++) {
-                XSSFCell cell = headerRow.createCell(i);
-                cell.setCellValue(headers[i]);
-            }
+            setHeaderFormatDisplay(workbook, sheet);
 
+            int rowCount = 1;
             for (Product product : products) {
-                XSSFRow row = sheet.createRow(rowCount++);
+                Row row = sheet.createRow(rowCount++);
 
                 int cellCount = 0;
                 row.createCell(cellCount++).setCellValue(product.getId());
@@ -58,6 +39,38 @@ public class ReportServiceImpl implements ReportService {
                 row.createCell(cellCount).setCellValue(product.getProductImageList().size());
             }
             workbook.write(stream);
+        }
+    }
+
+    private void setHeaderFormatDisplay(Workbook workbook, Sheet sheet) {
+        CellStyle style = workbook.createCellStyle();
+        Font font = workbook.createFont();
+
+        String[] headers = {
+                "ID",
+                "PRODUCT NAME",
+                "PRODUCT COLOR",
+                "PRODUCT IMAGE",
+                "PRODUCT PRICE",
+                "PRODUCT QUANTITY",
+                "PRODUCT SHORT DESCRIPTION",
+                "PRODUCT DESCRIPTION",
+                "CATEGORY",
+                "BRAND",
+                "TOTAL IMAGE"
+        };
+
+        font.setBold(true);
+        style.setFont(font);
+        style.setFillForegroundColor(IndexedColors.ORANGE.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+        Row headerRow = sheet.createRow(0);
+        for(int i = 0; i < headers.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(headers[i]);
+            cell.setCellStyle(style);
+            sheet.autoSizeColumn(i);
         }
     }
 }

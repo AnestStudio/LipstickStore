@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ReportService {
 
-    void outputExcelListProduct(ByteArrayOutputStream stream, List<Product> products) throws IOException;
+    void outputExcel(List<Product> products, ByteArrayOutputStream stream) throws IOException;
 }
