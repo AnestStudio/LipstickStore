@@ -1,0 +1,105 @@
+<div class="sidebar" th:fragment="sidebar-menu">
+  <ul class="list-unstyled">
+    <li class="mb-1">
+      <a href="javascript:void(0)">
+        <i class="fas fa-house-user fa-fw me-2"></i>
+        <div>
+          <div class="text-danger">ĐINH TUẤN ANH (ADMIN)</div>
+        </div>
+      </a>
+    </li>
+    <hr />
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-tachometer-alt fa-fw me-2"></i>
+        <div>
+          <div>Dashboard</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-chart-bar fa-fw me-2"></i>
+        <div>
+          <div>Thống kê</div>
+        </div>
+      </a>
+    </li>
+    <hr />
+    <li>
+      <a class="btn btn-toggle border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+        <i class="fas fa-list-ul fa-fw me-2"></i>
+        <div>
+          <div>Quản lý đơn hàng</div>
+          <div class="badge-number">4564</div>
+        </div>
+      </a>
+      <div class="collapse" id="orders-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+          <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Tất cả</a></li>
+          <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Chờ xác nhận</a></li>
+          <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Đang giao</a></li>
+          <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Đã giao</a></li>
+          <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Đơn huỷ</a></li>
+          <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Trả hàng / Hoàn tiền</a></li>
+          <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Giao không thành công</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-list-ul fa-fw me-2"></i>
+        <div>
+          <div>Quản lý sản phẩm</div>
+          <div class="badge-number">164</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-list-ul fa-fw me-2"></i>
+        <div>
+          <div>Quản lý thương hiệu</div>
+          <div class="badge-number">9</div>
+        </div>
+      </a>
+    </li>
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-list-ul fa-fw me-2"></i>
+        <div>
+          <div>Quản lý thể loại</div>
+          <div class="badge-number">3</div>
+        </div>
+      </a>
+    </li>
+    <hr />
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-user-friends fa-fw me-2"></i>
+        <div>
+          <div>Quản lý tài khoản</div>
+          <div class="badge-number">2312</div>
+        </div>
+      </a>
+    </li>
+    <hr />
+    <li class="mb-1">
+      <a th:href="@{/}">
+        <i class="fas fa-store fa-fw me-2"></i>
+        <div>
+          <div>Thiết lập cửa hàng</div>
+        </div>
+      </a>
+    </li>
+    <hr />
+    <li>
+      <a th:href="@{/}">
+        <i class="fas fa-sign-out-alt fa-fw me-2"></i>
+        <div>
+          <div>Đăng xuất</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

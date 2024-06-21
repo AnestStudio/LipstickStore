@@ -5,8 +5,7 @@
       layout:decorate="~{layout.html}">
 <head>
   <title>Quản lý đơn hàng</title>
-  <link rel="stylesheet" th:href="@{/css/products.css}"/>
-  <link rel="stylesheet" th:href="@{/css/order.css}"/>
+  <link rel="stylesheet" th:href="@{/css/pages/order.css}"/>
 </head>
 <body>
   <th:block layout:fragment="content">
@@ -18,77 +17,89 @@
           <div class="content content-my">
             <section id="orders">
               <div class="row">
-                <div class="col-md-12 col-lg-12">
-                  <div class="order panel" th:each="order : ${user.orderList}">
-                    <div class="order-header">
-                      <h3>
-                        <span class="order-code">Mã đơn hàng:<span class="text-danger ms-1" th:text="*{order.orderNumber}"></span></span>
-                      </h3>
-                      <div class="order-info">
-                  <span class="order-time">
-                    <i class="bi bi-calendar3-week me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'dd-MM-yyyy')}"></span>
-                    <i class="far fa-clock ms-2 me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'HH:mm:ss')}"></span>
-                  </span>
+                <th:block th:if="${user.orderList != null}">
+                  <div class="col-md-12 col-lg-12">
+                    <div class="order panel" th:each="order : ${user.orderList}">
+                      <div class="order-header">
+                        <h3>
+                          <span class="order-code">Mã đơn hàng:<span class="text-danger ms-1" th:text="*{order.orderNumber}"></span></span>
+                        </h3>
+                        <div class="order-info">
+                          <span class="order-time">
+                            <i class="bi bi-calendar3-week me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'dd-MM-yyyy')}"></span>
+                            <i class="far fa-clock ms-2 me-1"></i><span th:text="${#dates.format(order.orderCreatedAt, 'HH:mm:ss')}"></span>
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <div class="order-body">
-                      <div class="items">
-                        <div class="item" th:each="item : *{order.orderDetailList}">
-                          <div class="d-flex justify-content-between align-items-center">
+                      <div class="order-body">
+                        <div class="items">
+                          <div class="item" th:each="item : *{order.orderDetailList}">
                             <div class="d-flex justify-content-between align-items-center">
-                              <div class="icon-circle icon-small">
-                                <img class="media-object" th:src="@{'/images/products/' + *{item.productImage}}" alt="">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <div class="icon-circle icon-small">
+                                  <img class="media-object" th:src="@{'/images/products/' + *{item.productImage}}" alt="">
+                                </div>
+                                <div class="content-body">
+                                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#foodDetailModal">
+                                    <span th:text="*{item.productName + ' - ' + item.productColor}"></span>
+                                  </a>
+                                  <p>
+                                    <span th:text="${#numbers.formatInteger(item.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+                                    &nbsp<i class="bi bi-x"></i>&nbsp; Số lượng: <span th:text="*{item.quantity}"></span>
+                                  </p>
+                                </div>
                               </div>
-                              <div class="content-body">
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#foodDetailModal">
-                                  <span th:text="*{item.productName + ' - ' + item.productColor}"></span>
-                                </a>
-                                <p>
-                                  <span th:text="${#numbers.formatInteger(item.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
-                                  &nbsp<i class="bi bi-x"></i>&nbsp; Số lượng: <span th:text="*{item.quantity}"></span>
-                                </p>
+                              <div>
+                                <p class="m-0"><span th:text="${#numbers.formatInteger(item.amount, 3, 'POINT')}"></span><sup>đ</sup></p>
                               </div>
-                            </div>
-                            <div>
-                              <p class="m-0"><span th:text="${#numbers.formatInteger(item.amount, 3, 'POINT')}"></span><sup>đ</sup></p>
                             </div>
                           </div>
-                        </div>
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                              Tổng tiền đơn hàng
-                            </div>
-                            <div>
-                              <span class="fw-medium" th:text="${#numbers.formatInteger(order.orderTotalAmount, 3, 'POINT')}"></span><sup>đ</sup>
+                          <div class="item">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div>
+                                Tổng tiền đơn hàng
+                              </div>
+                              <div>
+                                <span class="fw-medium" th:text="${#numbers.formatInteger(order.orderTotalAmount, 3, 'POINT')}"></span><sup>đ</sup>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="item">
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div>Ghi chú - lời nhắn</div>
-                            <div>
-                              <span th:text="*{order.orderNote}"></span>
+                          <div class="item">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div>Ghi chú - lời nhắn</div>
+                              <div>
+                                <span th:text="*{order.orderNote}"></span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="order-footer">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="secondary-text">
-                          <span class="order-status text-info" th:text="*{order.orderStatus.orderStatus}"></span>
-                        </div>
-                        <div class="text-end">
-                          <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">
-                            Huỷ đơn hàng
-                          </a>
+                      <div class="order-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="secondary-text">
+                            <span class="order-status text-info" th:text="*{order.orderStatus.orderStatus}"></span>
+                          </div>
+                          <div class="text-end">
+                            <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">
+                              Huỷ đơn hàng
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
-                </div>
+                </th:block>
+                <th:block th:if="${user.orderList.size() == 0}">
+                  <div class="text-center d-flex justify-content-center align-items-center">
+                    <div>
+                      <i class="bi bi-list-check" style="font-size: 70px;"></i>
+                      <h3 class="text-center mb-4">Hiện tại không có đơn hàng nào.</h3>
+                      <a th:href="@{/}" type="submit" class="btn btn-danger m-0 py-2 px-3">
+                        MUA HÀNG
+                      </a>
+                    </div>
+                  </div>
+                </th:block>
               </div>
             </section>
           </div>

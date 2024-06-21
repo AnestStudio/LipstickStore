@@ -47,7 +47,7 @@ function addToCart(productId) {
 }
 
 function showListItemInCart(items) {
-  let content = `<li>
+  let content= `<li>
                           <h6 class="dropdown-header">Sản phẩm mới thêm</h6>
                         </li>
                         <li class="px-3 item">`;

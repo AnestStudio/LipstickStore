@@ -1,4 +1,37 @@
 /**
+ * GRID ----------------------------------------------------------------------------------------------------------------
+ */
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.row>* {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+@media (max-width: 576px) {
+  .row>* {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+}
+
+
+/**
  * HEADER --------------------------------------------------------------------------------------------------------------
  */
 
@@ -17,14 +50,24 @@ h6 {
   font-weight: 400;
 }
 
+
+/**
+ * HR ------------------------------------------------------------------------------------------------------------------
+ */
+
 hr {
   opacity: 0.2;
+  margin: 12px 0;
 }
 
 
 /**
  * SPACE ---------------------------------------------------------------------------------------------------------------
  */
+
+.fa-fw {
+  width: 22px;
+}
 
 .mr-12px {
   margin-right: 12px !important;
@@ -223,7 +266,7 @@ nav.navbar .bi {
 }
 
 .sidebar>ul>li>a {
-  padding: 8px 12px;
+  padding: 8px 10px 8px 12px;
   font-weight: 500;
   color: var(--bs-emphasis-color);
   background-color: transparent;
@@ -254,7 +297,7 @@ nav.navbar .bi {
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  padding: 4px;
+  padding: 4px 6px;
 }
 
 .sidebar>ul li a:hover .badge-number {
@@ -485,5 +528,5 @@ nav.navbar .bi {
 
 .content-my {
   margin-top: 100px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }

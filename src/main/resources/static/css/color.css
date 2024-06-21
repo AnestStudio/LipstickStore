@@ -36,13 +36,13 @@ html[data-bs-theme='light'] {
 html[data-bs-theme='dark'] {
   /* bootstrap custom -------------------------------- */
   --bs-body-bg: #212529;
-  --bs-tertiary-bg: #2B3035;
+  --bs-tertiary-bg: #3A3F45;
 
   /* background-color -------------------------------- */
   --secondary-bg-color: #2C3035;
   --third-bg-color: #3A3F45;
 
-  --dropdown-menu-bg-color: #222529;
+  --dropdown-menu-bg-color: #2D3035;
 
   /* line-border-color ------------------------------- */
   --line-border-color: #495057;
@@ -52,7 +52,7 @@ html[data-bs-theme='dark'] {
   --secondary-border-color: #444;
 
   /* badge-number-background-color ------------------- */
-  --badge-number-background-color: #242526;
+  --badge-number-background-color: #2D3035;
 
   /* button-circle-background-color ------------------ */
   --btn-circle-background-color: #3C4146;
