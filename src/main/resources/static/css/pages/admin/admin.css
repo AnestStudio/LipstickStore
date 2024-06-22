@@ -20,16 +20,6 @@
   margin-bottom: 0;
 }
 
-.sidebar>ul>li .btn-toggle {
-  padding: 8px 10px 8px 12px;
-  font-weight: 500;
-  color: var(--bs-emphasis-color);
-  background-color: transparent;
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-}
-
 .sidebar>ul>li .btn-toggle:hover,
 .sidebar>ul>li .btn-toggle:focus {
   color: rgba(var(--bs-emphasis-color-rgb), .85);

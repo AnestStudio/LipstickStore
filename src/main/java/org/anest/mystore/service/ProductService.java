@@ -1,6 +1,7 @@
 package org.anest.mystore.service;
 
 import org.anest.mystore.entity.Product;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,4 +19,6 @@ public interface ProductService {
     List<Product> findByProductNameContaining(String productName);
 
     List<Product> getAllSorted(String sortType);
+
+    Page<Product> findPaginated(int page, int size);
 }

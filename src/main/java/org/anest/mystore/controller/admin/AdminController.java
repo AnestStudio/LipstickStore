@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("admin")
 public class AdminController {
 
-    @GetMapping("orders")
+    @GetMapping("")
+    public String goToDashboard() {
+        return "pages/admin/dashboard";
+    }
+
+    @GetMapping("/orders")
     public String goToOrders() {
         return "pages/admin/orders";
     }

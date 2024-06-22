@@ -3,14 +3,14 @@
     <div class="col">
       <nav class="my-5">
         <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link">Previous</a>
+          <li class="page-item" th:if="${productPage.hasPrevious()}">
+            <a class="page-link" th:href="@{|/products?page=${productPage.number - 1}&size=${productPage.size}|}">Previous</a>
           </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
+          <li class="page-item" th:each="i : ${#numbers.sequence(0, productPage.totalPages - 1)}">
+            <a class="page-link" th:href="@{|/products?page=${i}&size=${productPage.size}|}" th:text="${i + 1}"></a>
+          </li>
+          <li class="page-item" th:if="${productPage.hasNext()}">
+            <a class="page-link" th:href="@{|/products?page=${productPage.number + 1}&size=${productPage.size}|}">Next</a>
           </li>
         </ul>
       </nav>

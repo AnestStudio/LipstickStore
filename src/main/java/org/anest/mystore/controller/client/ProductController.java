@@ -11,6 +11,7 @@ import org.anest.mystore.service.BrandService;
 import org.anest.mystore.service.CategoryService;
 import org.anest.mystore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,7 @@ public class ProductController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String index(Model model) {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
@@ -44,6 +45,20 @@ public class ProductController {
         model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
         initDataFilter(model);
         return "pages/product/products";
+    }
+
+    @GetMapping("/products")
+    public String listProducts(
+            Model model,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "4") int size
+    ) {
+        Page<Product> productPage = productService.findPaginated(page, size);
+        model.addAttribute("productPage", productPage);
+        model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
+        model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
+        initDataFilter(model);
+        return "pages/product/products2";
     }
 
     @GetMapping("/lipstick-type/{categoryId}")

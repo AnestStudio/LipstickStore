@@ -5,6 +5,9 @@ import org.anest.mystore.enums.SortTypeEnum;
 import org.anest.mystore.repository.ProductRepository;
 import org.anest.mystore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,5 +53,11 @@ public class ProductServiceImpl implements ProductService {
         return SortTypeEnum.ASC.getValue().equalsIgnoreCase(sortType)
             ? productRepository.findAllByOrderByProductPriceAsc()
             : productRepository.findAllByOrderByProductPriceDesc();
+    }
+
+    @Override
+    public Page<Product> findPaginated(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productRepository.findAll(pageable);
     }
 }
