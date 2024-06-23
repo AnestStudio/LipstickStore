@@ -21,7 +21,6 @@ INSERT INTO user_detail (user_id, gender, dob, mobile, email) VALUES (2, 1, N'18
 
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (1, 2);
-INSERT INTO user_role (user_id, role_id) VALUES (1, 3);
 INSERT INTO user_role (user_id, role_id) VALUES (2, 3);
 
 

@@ -165,6 +165,12 @@
   text-transform: uppercase;
 }
 
+#product-detail .product-detail-info .product-quantity .sold-products {
+  padding: 0 16px;
+  border-left: 1px solid var(--bs-body-color);
+  margin-left: 16px;
+}
+
 
 /* SUPPORT INFO */
 

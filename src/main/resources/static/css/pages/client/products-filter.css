@@ -3,7 +3,9 @@
  */
 
 .sidebar {
+  width: 280px;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .sidebar>ul>li {
@@ -43,7 +45,7 @@
 }
 
 .sidebar>ul>li .btn-toggle-nav a {
-  padding: 6px 10px;
+  padding: 3px 10px;
   margin-left: 20px;
   margin-top: 3px;
   font-size: 16px;
@@ -68,11 +70,11 @@
 }
 
 .sidebar>ul>li .form-check {
-  padding: 6px 8px;
+  padding: 3px 8px;
   margin-left: 46px;
   margin-top: 3px;
   margin-bottom: 3px;
-  font-size: 16px;
+  font-size: 15px;
   width: calc(100% - 46px);
 }
 
@@ -106,7 +108,7 @@
  */
 
 .content {
-  width: calc(100% - 264px);
+  width: calc(100% - 296px);
 }
 
 #sub-nav {

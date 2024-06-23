@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.anest.mystore.constant.IConstants.*;
@@ -48,11 +49,15 @@ public class ProductController {
     public String filterProducts(
             Model model,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "8") int size,
+            @RequestParam(defaultValue = "4") int size,
             @RequestParam(required = false) String categoryIds,
             @RequestParam(required = false) String brandIds,
             @RequestParam(required = false) String color,
-            @RequestParam(required = false) String name
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(defaultValue = "id") String sortField,
+            @RequestParam(defaultValue = "ASC") String sortDir
     ) {
         List<Long> categoryIdList = (categoryIds != null && !categoryIds.isEmpty())
                 ? Arrays.stream(categoryIds.split(",")).map(Long::parseLong).collect(Collectors.toList())
@@ -62,61 +67,33 @@ public class ProductController {
                 ? Arrays.stream(brandIds.split(",")).map(Long::parseLong).collect(Collectors.toList())
                 : null;
 
-        Page<Product> productPage = productService.findProducts(categoryIdList, brandIdList, color, name, page, size);
+        Page<Product> productPage = productService.findProducts(
+                categoryIdList, brandIdList, color, name,
+                minPrice, maxPrice,
+                sortField, sortDir,
+                page,
+                size
+        );
 
         model.addAttribute("productPage", productPage);
         model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
         model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
         initData(model);
-        pagingData(categoryIds, brandIds, color, name, model);
-        return "pages/client/product/products";
-    }
+        pagingData(categoryIds, brandIds, color, name, minPrice, maxPrice, sortField, sortDir, model);
 
-    @GetMapping("/lipstick-type/{categoryId}")
-    public String findByType(@PathVariable Long categoryId, Model model) {
-        List<Product> products = productService.findByCategoryId(categoryId);
-        Category category = categoryService.findById(categoryId).orElseThrow(() -> new CategoryNotFoundException("Category not found"));
-        model.addAttribute("products", products);
-        model.addAttribute("title", category.getCategoryName());
-        model.addAttribute("description", category.getCategoryDescription());
-        initData(model);
-        return "pages/client/product/products-filter";
-    }
-
-    @GetMapping("/lipstick-brand/{brandId}")
-    public String findByBrand(@PathVariable Long brandId, Model model) {
-        List<Product> products = productService.findByBrandId(brandId);
-        Brand brand = brandService.findById(brandId).orElseThrow(() -> new BrandNotFoundException("Brand not found"));
-        model.addAttribute("products", products);
-        model.addAttribute("title", TITLE_BRAND_TEXT + brand.getBrandName());
-        model.addAttribute("description", brand.getBrandDescription());
-        initData(model);
-        return "pages/client/product/products-filter";
-    }
-
-    @GetMapping("/lipstick/search")
-    public String searchByName(@RequestParam String productName, Model model) {
-        List<Product> products = productService.findByProductNameContaining(productName);
-        model.addAttribute("products", products);
-        model.addAttribute("title", TITLE_RESULT_SEARCH_TEXT + productName);
-        model.addAttribute("description", "");
-        initData(model);
-        return "pages/client/product/products-filter";
-    }
-
-    @GetMapping("/lipstick/sort")
-    public String sortByPrice(@RequestParam(name = "type") String sortType, Model model) {
-        if (!sortType.toLowerCase().matches(IConstants.SORT_TYPE_REGEX)) {
-            return "error400";
+        if ((categoryIds == null || categoryIds.isEmpty())
+                && (brandIds == null || brandIds.isEmpty())
+                && (color == null || color.isEmpty())
+                && (name == null || name.isEmpty())
+                && minPrice == null
+                && maxPrice == null
+                && sortField.equals("id")
+        ) {
+            return "pages/client/product/products";
         }
-        List<Product> products = productService.getAllSorted(sortType);
-        model.addAttribute("products", products);
-        model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
-        model.addAttribute(
-                "description",
-                SORT_PRODUCT_DESCRIPTION + (sortType.equalsIgnoreCase("ASC") ? "tăng dần." : "giảm dần.")
-        );
-        initData(model);
+
+        List<String> colors = productService.findDistinctColors();
+        model.addAttribute("colors", colors);
         return "pages/client/product/products-filter";
     }
 
@@ -136,11 +113,20 @@ public class ProductController {
         return "pages/client/product/product-detail";
     }
 
-    private void pagingData(String categoryIds, String brandIds, String color, String name, Model model) {
+    private void pagingData(
+            String categoryIds, String brandIds, String color, String name,
+            Double minPrice, Double maxPrice,
+            String sortField, String sortDir,
+            Model model
+    ) {
         model.addAttribute("categoryIds", categoryIds);
         model.addAttribute("brandIds", brandIds);
         model.addAttribute("color", color);
         model.addAttribute("name", name);
+        model.addAttribute("minPrice", minPrice);
+        model.addAttribute("maxPrice", maxPrice);
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
     }
 
     private void initData(Model model) {

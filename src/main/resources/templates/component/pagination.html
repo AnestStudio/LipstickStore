@@ -4,25 +4,25 @@
       <nav class="mt-2 mb-5">
         <ul class="pagination justify-content-center m-0">
           <li th:class="${productPage.number == 0} ? 'page-item disabled' : 'page-item'">
-            <a th:href="@{/products(page=0, size=${productPage.size})}" class="page-link">
+            <a th:href="@{/products(page=0, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="page-link">
               <i class="bi bi-chevron-double-left"></i>
             </a>
           </li>
           <li th:class="${!productPage.hasPrevious()} ? 'page-item disabled' : 'page-item'">
-            <a th:href="@{/products(page=${productPage.number - 1}, size=${productPage.size}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name})}" class="page-link">
+            <a th:href="@{/products(page=${productPage.number - 1}, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="page-link">
               <i class="bi bi-chevron-left"></i>
             </a>
           </li>
           <li th:each="i : ${#numbers.sequence(0, productPage.totalPages - 1)}" th:class="${productPage.number == i} ? 'page-item active' : 'page-item'">
-            <a th:href="@{/products(page=${i}, size=${productPage.size}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name})}" th:text="${i + 1}" class="page-link"></a>
+            <a th:href="@{/products(page=${i}, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" th:text="${i + 1}" class="page-link"></a>
           </li>
           <li th:class="${!productPage.hasNext()} ? 'page-item disabled' : 'page-item'">
-            <a th:href="@{/products(page=${productPage.number + 1}, size=${productPage.size}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name})}" class="page-link">
+            <a th:href="@{/products(page=${productPage.number + 1}, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="page-link">
               <i class="bi bi-chevron-right"></i>
             </a>
           </li>
           <li th:class="${productPage.number == productPage.totalPages - 1} ? 'page-item disabled' : 'page-item'">
-            <a th:href="@{/products(page=${productPage.totalPages - 1}, size=${productPage.size})}" class="page-link">
+            <a th:href="@{/products(page=${productPage.totalPages - 1}, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="page-link">
               <i class="bi bi-chevron-double-right"></i>
             </a>
           </li>

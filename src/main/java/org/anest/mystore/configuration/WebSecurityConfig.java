@@ -21,7 +21,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/css/**", "/images/**", "/js/**", "/webfonts/**").permitAll()
                         // URL
                         .requestMatchers("/", "/login", "/logout").permitAll()
-                        .requestMatchers("/lipstick/**", "/lipstick-type/**", "/lipstick-brand/**").permitAll()
+                        .requestMatchers("/products/**").permitAll()
                         .requestMatchers("/cart/**").permitAll()
                         .requestMatchers("/checkout").hasRole("MEMBER")
                         .requestMatchers("/admin/**").hasRole("ADMIN")

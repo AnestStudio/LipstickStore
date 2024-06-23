@@ -9,7 +9,14 @@ import java.util.List;
 
 public class ProductSpecification {
 
-    public static Specification<Product> findByCriteria(List<Long> categoryIds, List<Long> brandIds, String color, String name) {
+    public static Specification<Product> findByCriteria(
+            List<Long> categoryIds,
+            List<Long> brandIds,
+            String color,
+            String name,
+            Double minPrice,
+            Double maxPrice
+    ) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -27,6 +34,14 @@ public class ProductSpecification {
 
             if (name != null && !name.isEmpty()) {
                 predicates.add(criteriaBuilder.like(root.get("productName"), "%" + name + "%"));
+            }
+
+            if (minPrice != null) {
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("productPrice"), minPrice.toString()));
+            }
+
+            if (maxPrice != null) {
+                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("productPrice"), maxPrice.toString()));
             }
 
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));

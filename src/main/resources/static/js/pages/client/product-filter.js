@@ -20,3 +20,31 @@ window.onscroll = function () {
     document.getElementById("sub-nav").classList.remove("fixed-top-sub-nav");
   }
 };
+
+function setSelected(id, array) {
+  const checkboxes = document.querySelectorAll('#' + id + ' input[type="checkbox"]');
+  const values = array.split(',');
+  checkboxes.forEach(checkbox => {
+    if (values.includes(checkbox.value)) {
+      checkbox.checked = true;
+    }
+  });
+}
+
+function openCollapse(id) {
+  const element = document.querySelector('[data-bs-target="#' + id + '"]');
+  element.setAttribute("aria-expanded", "true");
+  document.getElementById(id).classList.add("show");
+}
+
+function displaySelectedFilter() {
+  if (brandIds !== '' && brandIds !== null) {
+    setSelected("brandList", brandIds);
+    openCollapse("brand-collapse");
+  }
+
+  if (categoryIds !== '' && categoryIds !== null) {
+    setSelected("categoryList", categoryIds);
+    openCollapse("category-collapse");
+  }
+}

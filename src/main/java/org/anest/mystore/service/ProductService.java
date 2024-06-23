@@ -12,21 +12,17 @@ public interface ProductService {
 
     Optional<Product> findById(Long id);
 
-    List<Product> findByCategoryId(Long id);
-
-    List<Product> findByBrandId(Long id);
-
-    List<Product> findByProductNameContaining(String productName);
-
-    List<Product> getAllSorted(String sortType);
-
-    Page<Product> findPaginated(int page, int size);
+    List<String> findDistinctColors();
 
     Page<Product> findProducts(
             List<Long> categoryIds,
             List<Long> brandIds,
             String color,
             String name,
+            Double minPrice,
+            Double maxPrice,
+            String sortField,
+            String sortDir,
             int page,
             int size
     );

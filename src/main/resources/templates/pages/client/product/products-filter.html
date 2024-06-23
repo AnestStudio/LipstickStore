@@ -16,7 +16,7 @@
           <div class="col">
             <h1 class="title mb-3">
               <span th:text="${title}"></span>
-              <span class="ms-1 title-quantity text-danger" th:text="'[' + ${products.size} + ']'"></span>
+              <span class="ms-1 title-quantity text-danger" th:text="'[' + ${productPage.content.size()} + ']'"></span>
             </h1>
             <div class="title-description mb-3" th:utext="${description}"></div>
           </div>
@@ -30,7 +30,7 @@
           <div th:replace="~{component/client/sidebar-menu-product :: sidebar-menu-product}"></div>
 
           <div class="content">
-            <section id="sub-nav" class="sub-nav" th:unless="${products.isEmpty()}">
+            <section id="sub-nav" class="sub-nav" th:unless="${productPage.isEmpty()}">
               <div class="row">
                 <div class="col">
                   <div class="d-flex justify-content-between">
@@ -41,19 +41,19 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-start mt-1">
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick-brand/1}">Chanel</a>
+                            <a class="dropdown-item" th:href="@{/}">Chanel</a>
                           </li>
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick-brand/2}">Dior</a>
+                            <a class="dropdown-item" th:href="@{/}">Dior</a>
                           </li>
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick-brand/3}">Gucci</a>
+                            <a class="dropdown-item" th:href="@{/}">Gucci</a>
                           </li>
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick-brand/4}">YSL</a>
+                            <a class="dropdown-item" th:href="@{/}">YSL</a>
                           </li>
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick-brand/5}">Louboutin</a>
+                            <a class="dropdown-item" th:href="@{/}">Louboutin</a>
                           </li>
                         </ul>
                       </li>
@@ -63,13 +63,13 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-start mt-1">
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick-type/1}">Son Thỏi</a>
+                            <a class="dropdown-item" th:href="@{/}">Son Thỏi</a>
                           </li>
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick-type/2}">Son Kem</a>
+                            <a class="dropdown-item" th:href="@{/}">Son Kem</a>
                           </li>
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick-type/3}">Son Dưỡng</a>
+                            <a class="dropdown-item" th:href="@{/}">Son Dưỡng</a>
                           </li>
                         </ul>
                       </li>
@@ -81,10 +81,10 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end mt-1">
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick/sort(type=asc)}"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá (cao - thấp)</a>
+                            <a class="dropdown-item" th:href="@{/}"><i class="fas fa-sort-amount-down-alt fa-fw me-1"></i>Giá (cao - thấp)</a>
                           </li>
                           <li>
-                            <a class="dropdown-item" th:href="@{/lipstick/sort(type=desc)}"><i class="fas fa-sort-amount-down fa-fw me-1"></i>Giá (thấp - cao)</a>
+                            <a class="dropdown-item" th:href="@{/}"><i class="fas fa-sort-amount-down fa-fw me-1"></i>Giá (thấp - cao)</a>
                           </li>
                         </ul>
                       </li>
@@ -95,8 +95,8 @@
             </section>
             <section id="products">
               <div class="row">
-                <th:block th:unless="${products.isEmpty()}">
-                  <div class="col-6 col-md-4 col-lg-3 col-xl-3" th:each="product : ${products}">
+                <th:block th:unless="${productPage.isEmpty()}">
+                  <div class="col-6 col-md-4 col-lg-3 col-xl-3" th:each="product : ${productPage.content}">
                     <a class="card" th:href="@{'/lipstick/detail/' + *{product.id}}">
                       <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
                       <div class="card-body">
@@ -110,11 +110,13 @@
                     </a>
                   </div>
                 </th:block>
-                <th:block th:if="${products.isEmpty()}">
+                <th:block th:if="${productPage.isEmpty()}">
                   <div th:replace="~{component/client/product-not-found :: product-not-found}"></div>
                 </th:block>
               </div>
             </section>
+
+            <div th:replace="~{component/pagination :: pagination}"></div>
           </div>
         </div>
       </div>
@@ -122,6 +124,18 @@
   </th:block>
   <th:block layout:fragment="js">
     <script th:src="@{/js/pages/client/product-filter.js}"></script>
+
+    <script th:inline="javascript">
+      const brandIds = /*[[${brandIds}]]*/ '';
+      const categoryIds = /*[[${categoryIds}]]*/ '';
+      const color = /*[[${color}]]*/ '';
+      const minPrice = /*[[${minPrice}]]*/ 0;
+      const maxPrice = /*[[${maxPrice}]]*/ 0;
+      const sortDir = /*[[${sortDir}]]*/ '';
+
+      displaySelectedFilter();
+    </script>
+
   </th:block>
 </body>
 </html>
