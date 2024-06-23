@@ -3,7 +3,6 @@ package org.anest.mystore.service.impl;
 import org.anest.mystore.entity.AuthUser;
 import org.anest.mystore.entity.Role;
 import org.anest.mystore.entity.User;
-import org.anest.mystore.entity.UserAddress;
 import org.anest.mystore.repository.UserRepository;
 import org.anest.mystore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

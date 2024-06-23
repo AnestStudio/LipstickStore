@@ -3,7 +3,6 @@ package org.anest.mystore.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.anest.mystore.component.DefaultValues;
 import org.anest.mystore.component.Settings;
 import org.anest.mystore.util.FormatUtil;
 

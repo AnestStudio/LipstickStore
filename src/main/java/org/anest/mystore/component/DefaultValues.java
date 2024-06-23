@@ -4,8 +4,8 @@ import jakarta.annotation.PostConstruct;
 import org.anest.mystore.entity.CommonValue;
 import org.anest.mystore.repository.CommonValueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;

@@ -109,8 +109,6 @@ INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough
 INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_2.png', 8);
 INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_3.png', 8);
 INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_4.png', 8);
-INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_5.png', 8);
-INSERT INTO product_image (product_image, product_id) VALUES (N'son-chanel-rough-allure-luminous-intense-212-caractete_6.png', 8);
 
 
 INSERT INTO order_status (order_status) VALUES (N'Chờ xác nhận');

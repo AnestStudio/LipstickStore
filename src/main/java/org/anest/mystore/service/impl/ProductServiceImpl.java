@@ -76,9 +76,4 @@ public class ProductServiceImpl implements ProductService {
         Specification<Product> spec = ProductSpecification.findByCriteria(categoryIds, brandIds, color, name);
         return productRepository.findAll(spec, pageable);
     }
-
-    @Override
-    public long countTotalProducts() {
-        return productRepository.count();
-    }
 }

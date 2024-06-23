@@ -1,6 +1,5 @@
 package org.anest.mystore.controller.client;
 
-import org.anest.mystore.component.DefaultValues;
 import org.anest.mystore.constant.IConstants;
 import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Category;
@@ -41,17 +40,8 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public String index(
-            Model model,
-            @RequestParam(name = "page", defaultValue = "0") int page,
-            @RequestParam(name = "size", defaultValue = "4") int size
-    ) {
-        Page<Product> productPage = productService.findPaginated(page, size);
-        model.addAttribute("productPage", productPage);
-        model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
-        model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
-        initData(model);
-        return "pages/product/products";
+    public String index(Model model) {
+        return "redirect:/products";
     }
 
     @GetMapping("/products")

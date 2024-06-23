@@ -1,6 +1,5 @@
 package org.anest.mystore.service;
 
-import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Category;
 
 import java.util.List;

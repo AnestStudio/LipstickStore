@@ -119,7 +119,7 @@
                 </li>
                 <li><a class="dropdown-item text-end" th:href="@{/cart}">Xem giỏ hàng</a></li>
               </ul>
-              <ul class="dropdown-menu dropdown-menu-end items mt-2" style="width: 220px" th:if="${session.cart == null}">
+              <ul class="dropdown-menu dropdown-menu-end items mt-2" th:if="${session.cart == null}">
                 <li class="text-end item">
                   <div class="py-1 px-3">Giỏ hàng trống!</div>
                 </li>
