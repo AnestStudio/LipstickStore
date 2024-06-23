@@ -9,24 +9,60 @@
 .container-sm,
 .container-xl,
 .container-xxl {
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 8px;
+  padding-left: 8px;
 }
 
 .row {
-  margin-right: -10px;
-  margin-left: -10px;
+  margin-right: -8px;
+  margin-left: -8px;
 }
 
 .row>* {
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 8px;
+  padding-left: 8px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .row>* {
     padding-right: 8px;
     padding-left: 8px;
+  }
+}
+
+
+/* CUSTOM COL */
+
+.col-xl-2-4 {
+  flex: 0 0 auto;
+  width: 20%;
+}
+
+@media (max-width: 1199.98px) {
+  .col-lg-2-4 {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .col-md-2-4 {
+    flex: 0 0 auto;
+    width: 33.33%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .col-sm-2-4 {
+    flex: 0 0 auto;
+    width: 33.33%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .col-2-4 {
+    flex: 0 0 auto;
+    width: 50%;
   }
 }
 
@@ -254,7 +290,7 @@ nav.navbar .bi {
  */
 
 .sidebar {
-  width: 300px;
+  width: 248px;
   margin-top: 100px;
 }
 

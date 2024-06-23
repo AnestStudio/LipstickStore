@@ -11,8 +11,14 @@
   display: inline-block;
   font-size: 16px;
   font-weight: 500;
-  height: 65px;
-  line-height: 1.35;
+  line-height: 1.5;
+  word-wrap: break-word;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 #products .product-title a:hover {
@@ -29,7 +35,7 @@
 #products .card {
   border-color: transparent;
   padding-top: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   border-radius: 12px;
   background-color: var(--secondary-bg-color);
 }
