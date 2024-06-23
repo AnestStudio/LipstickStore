@@ -76,7 +76,7 @@ public class CheckoutController {
             session.removeAttribute(TOTAL_PRODUCT_IN_CART);
             session.removeAttribute(TOTAL_AMOUNT_OF_CART);
         }
-        return "thanks";
+        return "pages/product/thanks";
     }
 
     private List<OrderDetail> getOrderDetailList(List<Item> items, Order order) {

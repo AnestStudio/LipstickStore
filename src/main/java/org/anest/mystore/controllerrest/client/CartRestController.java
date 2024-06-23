@@ -1,4 +1,4 @@
-package org.anest.mystore.controllerrest;
+package org.anest.mystore.controllerrest.client;
 
 import jakarta.servlet.http.HttpSession;
 import org.anest.mystore.constant.IConstants;
