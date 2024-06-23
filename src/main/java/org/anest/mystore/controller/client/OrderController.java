@@ -25,6 +25,6 @@ public class OrderController {
     public String orders(@AuthenticationPrincipal AuthUser authUser, Model model) {
         User user = userService.findByUsername(authUser.getUsername());
         model.addAttribute("user", user);
-        return "pages/user/orders";
+        return "pages/client/user/orders";
     }
 }

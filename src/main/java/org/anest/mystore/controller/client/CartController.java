@@ -27,13 +27,13 @@ public class CartController {
 
     @GetMapping("")
     public String goToCart(Model model) {
-        return "pages/product/cart";
+        return "pages/client/product/cart";
     }
 
     @GetMapping("/delete")
     public String deleteCart(HttpSession session) {
         clearCart(session);
-        return "pages/product/cart";
+        return "pages/client/product/cart";
     }
 
     @GetMapping("/item/delete/{itemId}")
@@ -47,7 +47,7 @@ public class CartController {
             session.setAttribute(TOTAL_PRODUCT_IN_CART, itemService.countTotalProductQuantity(items));
             session.setAttribute(TOTAL_AMOUNT_OF_CART, itemService.countTotalProductAmount(items));
         }
-        return "pages/product/cart";
+        return "pages/client/product/cart";
     }
 
     private void clearCart(HttpSession session) {

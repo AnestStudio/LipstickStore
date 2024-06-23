@@ -69,7 +69,7 @@ public class ProductController {
         model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
         initData(model);
         pagingData(categoryIds, brandIds, color, name, model);
-        return "pages/product/products";
+        return "pages/client/product/products";
     }
 
     @GetMapping("/lipstick-type/{categoryId}")
@@ -80,7 +80,7 @@ public class ProductController {
         model.addAttribute("title", category.getCategoryName());
         model.addAttribute("description", category.getCategoryDescription());
         initData(model);
-        return "pages/product/products-filter";
+        return "pages/client/product/products-filter";
     }
 
     @GetMapping("/lipstick-brand/{brandId}")
@@ -91,7 +91,7 @@ public class ProductController {
         model.addAttribute("title", TITLE_BRAND_TEXT + brand.getBrandName());
         model.addAttribute("description", brand.getBrandDescription());
         initData(model);
-        return "pages/product/products-filter";
+        return "pages/client/product/products-filter";
     }
 
     @GetMapping("/lipstick/search")
@@ -101,7 +101,7 @@ public class ProductController {
         model.addAttribute("title", TITLE_RESULT_SEARCH_TEXT + productName);
         model.addAttribute("description", "");
         initData(model);
-        return "pages/product/products-filter";
+        return "pages/client/product/products-filter";
     }
 
     @GetMapping("/lipstick/sort")
@@ -117,7 +117,7 @@ public class ProductController {
                 SORT_PRODUCT_DESCRIPTION + (sortType.equalsIgnoreCase("ASC") ? "tăng dần." : "giảm dần.")
         );
         initData(model);
-        return "pages/product/products-filter";
+        return "pages/client/product/products-filter";
     }
 
     @GetMapping("/lipstick/detail/{productId}")
@@ -133,7 +133,7 @@ public class ProductController {
         products.add(product);
         products.add(product);
         model.addAttribute("products", products);
-        return "pages/product/product-detail";
+        return "pages/client/product/product-detail";
     }
 
     private void pagingData(String categoryIds, String brandIds, String color, String name, Model model) {

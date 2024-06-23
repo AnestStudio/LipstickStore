@@ -25,6 +25,6 @@ public class UserController {
     public String profile(@AuthenticationPrincipal AuthUser authUser, Model model) {
         User user = userService.findByUsername(authUser.getUsername());
         model.addAttribute("user", user);
-        return "pages/user/profile";
+        return "pages/client/user/profile";
     }
 }

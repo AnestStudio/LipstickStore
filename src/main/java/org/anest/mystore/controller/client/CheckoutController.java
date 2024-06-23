@@ -43,7 +43,7 @@ public class CheckoutController {
 
         model.addAttribute("user", user);
         model.addAttribute("defaultAddress", defaultAddress);
-        return "pages/product/checkout";
+        return "pages/client/product/checkout";
     }
 
     @GetMapping("/process")
@@ -76,7 +76,7 @@ public class CheckoutController {
             session.removeAttribute(TOTAL_PRODUCT_IN_CART);
             session.removeAttribute(TOTAL_AMOUNT_OF_CART);
         }
-        return "pages/product/thanks";
+        return "pages/client/product/thanks";
     }
 
     private List<OrderDetail> getOrderDetailList(List<Item> items, Order order) {

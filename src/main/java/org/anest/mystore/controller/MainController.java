@@ -39,6 +39,6 @@ public class MainController {
 
     @GetMapping("/thanks")
     public String thanks(Model model) {
-        return "thanks";
+        return "pages/client/product/thanks";
     }
 }
