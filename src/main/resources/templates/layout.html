@@ -23,12 +23,12 @@
 </head>
 <body onkeydown="showSearchForm(event)" class="d-flex flex-column h-100">
   <div th:replace="~{component/icon :: svg}"></div>
-  <div th:replace="~{component/navbar :: navbar}"></div>
+  <div th:replace="~{component/client/navbar :: navbar}"></div>
 
   <th:block layout:fragment="content"></th:block>
 
-  <div th:replace="~{component/footer :: footer}"></div>
-  <div th:replace="~{modal/search-product :: search-product-modal}"></div>
+  <div th:replace="~{component/client/footer :: footer}"></div>
+  <div th:replace="~{modal/client/search-product :: search-product-modal}"></div>
 
   <th:block layout:fragment="modal"></th:block>
 
