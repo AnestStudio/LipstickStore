@@ -323,6 +323,35 @@ nav.navbar .bi {
 }
 
 
+/*
+ * PAGINATION ----------------------------------------------------------------------------------------------------------
+ */
+
+.page-link {
+  border-radius: 8px !important;
+}
+
+.page-item .page-link {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px !important;
+}
+
+.active>.page-link, .page-link.active {
+  background-color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity, 1)) !important;
+  border-color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity, 1)) !important;
+}
+
+.page-link:hover {
+  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity, 1));
+  background-color: var(--bs-pagination-hover-bg);
+  border-color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity, 1));
+}
+
+
 /**
  * FOOTER --------------------------------------------------------------------------------------------------------------
  */

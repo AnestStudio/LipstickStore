@@ -9,12 +9,17 @@
 >
   <div class="modal-dialog">
     <div class="modal-content">
-      <form th:action="@{/lipstick/search}" method="get">
+      <form th:action="@{/products}" method="get">
         <div class="modal-body">
           <div class="form-floating">
-            <input type="text" name="productName" class="form-control" id="floatingInput" placeholder="Nhập tên sản phẩm để tìm kiếm">
+            <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Nhập tên sản phẩm để tìm kiếm">
             <label class="text-dark-emphasis" for="floatingInput">Nhập tên sản phẩm để tìm kiếm</label>
           </div>
+<!--          <input type="hidden" name="page" th:value="${productPage.number}" />-->
+<!--          <input type="hidden" name="size" th:value="${productPage.size}" />-->
+<!--          <input type="hidden" name="categoryIds" th:value="${categoryIds}" />-->
+<!--          <input type="hidden" name="brandIds" th:value="${brandIds}" />-->
+<!--          <input type="hidden" name="color" th:value="${color}" />-->
         </div>
         <div class="modal-footer pt-0" style="border-top: none;">
           <button type="submit" class="btn btn-danger m-0">

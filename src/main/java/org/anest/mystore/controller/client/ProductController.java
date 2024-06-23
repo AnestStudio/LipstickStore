@@ -1,5 +1,6 @@
 package org.anest.mystore.controller.client;
 
+import org.anest.mystore.component.DefaultValues;
 import org.anest.mystore.constant.IConstants;
 import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Category;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.anest.mystore.constant.IConstants.*;
 
@@ -38,17 +41,7 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public String index(Model model) {
-        List<Product> products = productService.findAll();
-        model.addAttribute("products", products);
-        model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
-        model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
-        initDataFilter(model);
-        return "pages/product/products";
-    }
-
-    @GetMapping("/products")
-    public String listProducts(
+    public String index(
             Model model,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "4") int size
@@ -57,8 +50,36 @@ public class ProductController {
         model.addAttribute("productPage", productPage);
         model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
         model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
-        initDataFilter(model);
-        return "pages/product/products2";
+        initData(model);
+        return "pages/product/products";
+    }
+
+    @GetMapping("/products")
+    public String filterProducts(
+            Model model,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "2") int size,
+            @RequestParam(required = false) String categoryIds,
+            @RequestParam(required = false) String brandIds,
+            @RequestParam(required = false) String color,
+            @RequestParam(required = false) String name
+    ) {
+        List<Long> categoryIdList = (categoryIds != null && !categoryIds.isEmpty())
+                ? Arrays.stream(categoryIds.split(",")).map(Long::parseLong).collect(Collectors.toList())
+                : null;
+
+        List<Long> brandIdList = (brandIds != null && !brandIds.isEmpty())
+                ? Arrays.stream(brandIds.split(",")).map(Long::parseLong).collect(Collectors.toList())
+                : null;
+
+        Page<Product> productPage = productService.findProducts(categoryIdList, brandIdList, color, name, page, size);
+
+        model.addAttribute("productPage", productPage);
+        model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
+        model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
+        initData(model);
+        pagingData(categoryIds, brandIds, color, name, model);
+        return "pages/product/products";
     }
 
     @GetMapping("/lipstick-type/{categoryId}")
@@ -68,7 +89,7 @@ public class ProductController {
         model.addAttribute("products", products);
         model.addAttribute("title", category.getCategoryName());
         model.addAttribute("description", category.getCategoryDescription());
-        initDataFilter(model);
+        initData(model);
         return "pages/product/products-filter";
     }
 
@@ -79,7 +100,7 @@ public class ProductController {
         model.addAttribute("products", products);
         model.addAttribute("title", TITLE_BRAND_TEXT + brand.getBrandName());
         model.addAttribute("description", brand.getBrandDescription());
-        initDataFilter(model);
+        initData(model);
         return "pages/product/products-filter";
     }
 
@@ -89,7 +110,7 @@ public class ProductController {
         model.addAttribute("products", products);
         model.addAttribute("title", TITLE_RESULT_SEARCH_TEXT + productName);
         model.addAttribute("description", "");
-        initDataFilter(model);
+        initData(model);
         return "pages/product/products-filter";
     }
 
@@ -105,7 +126,7 @@ public class ProductController {
                 "description",
                 SORT_PRODUCT_DESCRIPTION + (sortType.equalsIgnoreCase("ASC") ? "tăng dần." : "giảm dần.")
         );
-        initDataFilter(model);
+        initData(model);
         return "pages/product/products-filter";
     }
 
@@ -125,11 +146,11 @@ public class ProductController {
         return "pages/product/product-detail";
     }
 
-    private void initDataFilter(Model model) {
-        List<Category> categories = categoryService.findAll();
-        List<Brand> brands = brandService.findAll();
-        model.addAttribute("categories", categories);
-        model.addAttribute("brands", brands);
+    private void pagingData(String categoryIds, String brandIds, String color, String name, Model model) {
+        model.addAttribute("categoryIds", categoryIds);
+        model.addAttribute("brandIds", brandIds);
+        model.addAttribute("color", color);
+        model.addAttribute("name", name);
     }
 
     private void initData(Model model) {

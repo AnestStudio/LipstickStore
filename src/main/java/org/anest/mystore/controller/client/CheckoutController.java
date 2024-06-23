@@ -97,5 +97,4 @@ public class CheckoutController {
         }
         return orderDetailList;
     }
-
 }

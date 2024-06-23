@@ -1,16 +1,30 @@
-<section id="pagination" class="container" th:fragment="pagination">
+<section id="pagination" class="container" th:fragment="pagination" th:if="${productPage.totalPages > 1}">
   <div class="row">
     <div class="col">
-      <nav class="my-5">
+      <nav class="mt-2 mb-5">
         <ul class="pagination justify-content-center">
-          <li class="page-item" th:if="${productPage.hasPrevious()}">
-            <a class="page-link" th:href="@{|/products?page=${productPage.number - 1}&size=${productPage.size}|}">Previous</a>
+          <li th:class="${productPage.number == 0} ? 'page-item disabled' : 'page-item'">
+            <a th:href="@{/products(page=0, size=${productPage.size})}" class="page-link">
+              <i class="bi bi-chevron-double-left"></i>
+            </a>
           </li>
-          <li class="page-item" th:each="i : ${#numbers.sequence(0, productPage.totalPages - 1)}">
-            <a class="page-link" th:href="@{|/products?page=${i}&size=${productPage.size}|}" th:text="${i + 1}"></a>
+          <li th:class="${!productPage.hasPrevious()} ? 'page-item disabled' : 'page-item'">
+            <a th:href="@{/products(page=${productPage.number - 1}, size=${productPage.size}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name})}" class="page-link">
+              <i class="bi bi-chevron-left"></i>
+            </a>
           </li>
-          <li class="page-item" th:if="${productPage.hasNext()}">
-            <a class="page-link" th:href="@{|/products?page=${productPage.number + 1}&size=${productPage.size}|}">Next</a>
+          <li th:each="i : ${#numbers.sequence(0, productPage.totalPages - 1)}" th:class="${productPage.number == i} ? 'page-item active' : 'page-item'">
+            <a th:href="@{/products(page=${i}, size=${productPage.size}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name})}" th:text="${i + 1}" class="page-link"></a>
+          </li>
+          <li th:class="${!productPage.hasNext()} ? 'page-item disabled' : 'page-item'">
+            <a th:href="@{/products(page=${productPage.number + 1}, size=${productPage.size}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name})}" class="page-link">
+              <i class="bi bi-chevron-right"></i>
+            </a>
+          </li>
+          <li th:class="${productPage.number == productPage.totalPages - 1} ? 'page-item disabled' : 'page-item'">
+            <a th:href="@{/products(page=${productPage.totalPages - 1}, size=${productPage.size})}" class="page-link">
+              <i class="bi bi-chevron-double-right"></i>
+            </a>
           </li>
         </ul>
       </nav>

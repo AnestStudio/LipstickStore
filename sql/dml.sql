@@ -1,6 +1,9 @@
-INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_NUMBER_LENGTH', N'6', N'DEFAULT_VALUE');
-INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_NUMBER_PAD', N'0', N'DEFAULT_VALUE');
-INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_PREFIX', N'RB', N'DEFAULT_VALUE');
+INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_NUMBER_LENGTH', N'6', N'SETTINGS');
+INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_NUMBER_PAD', N'0', N'SETTINGS');
+INSERT INTO common_value (name, [key], value, type) VALUES (N'ORDER', N'ORDER_PREFIX', N'RB', N'SETTINGS');
+INSERT INTO common_value (name, [key], value, type) VALUES (N'PAGINATION', N'PAGINATION_PAGE', N'0', N'DEFAULT_VALUE');
+INSERT INTO common_value (name, [key], value, type) VALUES (N'PAGINATION', N'PAGINATION_SIZE', N'10', N'DEFAULT_VALUE');
+
 
 
 INSERT INTO role (role_name) VALUES (N'ROLE_ADMIN');

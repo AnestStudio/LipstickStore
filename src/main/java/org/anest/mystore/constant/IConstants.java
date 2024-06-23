@@ -8,6 +8,12 @@ public interface IConstants {
     String SORT_TYPE_REGEX = "\\b(asc|desc)\\b";
 
     /*
+     * PAGINATION ------------------------------------------------------------------------------------------------------
+     */
+    String PAGINATION_PAGE = "PAGINATION_PAGE";
+    String PAGINATION_SIZE = "PAGINATION_SIZE";
+
+    /*
      * PRODUCT ---------------------------------------------------------------------------------------------------------
      */
     String TITLE_BRAND_TEXT = "Thương hiệu ";

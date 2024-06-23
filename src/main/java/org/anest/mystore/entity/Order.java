@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.anest.mystore.component.DefaultValues;
+import org.anest.mystore.component.Settings;
 import org.anest.mystore.util.FormatUtil;
 
 import java.util.Date;
@@ -58,10 +59,10 @@ public class Order {
     private List<OrderDetail> orderDetailList;
 
     public String getOrderNumber() {
-        return DefaultValues.properties.get(ORDER_PREFIX) + FormatUtil.leftPad(
+        return Settings.properties.get(ORDER_PREFIX) + FormatUtil.leftPad(
                 String.valueOf(id),
-                Integer.parseInt(DefaultValues.properties.get(ORDER_NUMBER_LENGTH)),
-                DefaultValues.properties.get(ORDER_NUMBER_PAD)
+                Integer.parseInt(Settings.properties.get(ORDER_NUMBER_LENGTH)),
+                Settings.properties.get(ORDER_NUMBER_PAD)
         );
     }
 }
