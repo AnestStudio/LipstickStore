@@ -48,7 +48,6 @@
       <div class="row">
         <div class="col-12 d-flex justify-content-between">
           <div th:replace="~{component/client/sidebar-menu-product :: sidebar-menu-product}"></div>
-
           <div class="content">
             <section id="sub-nav" class="sub-nav" th:unless="${productPage.isEmpty()}">
               <div class="row">
@@ -141,20 +140,19 @@
       </div>
     </div>
   </th:block>
+
   <th:block layout:fragment="js">
     <script th:src="@{/js/pages/client/product-filter.js}"></script>
-
     <script th:inline="javascript">
-      const brandIds = /*[[${brandIds}]]*/ '';
-      const categoryIds = /*[[${categoryIds}]]*/ '';
-      const color = /*[[${color}]]*/ '';
+      let brandIds = /*[[${brandIds}]]*/ '';
+      let categoryIds = /*[[${categoryIds}]]*/ '';
+      let color = /*[[${color}]]*/ '';
       const minPrice = /*[[${minPrice}]]*/ 0;
       const maxPrice = /*[[${maxPrice}]]*/ 0;
       const sortDir = /*[[${sortDir}]]*/ '';
 
-      displaySelectedFilter();
+      displaySelectedFilterSidebar();
     </script>
-
   </th:block>
 </body>
 </html>

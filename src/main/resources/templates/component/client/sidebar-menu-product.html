@@ -8,7 +8,7 @@
         <ul id="brandList" class="btn-toggle-nav list-unstyled fw-normal small">
           <li th:each="brand : ${brands}">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" th:value="*{brand.id}" th:brand="*{brand.brandName}" th:id="*{'brand-' + brand.id}" />
+              <input class="form-check-input" name="brand" type="checkbox" th:value="*{brand.id}" th:brand="*{brand.brandName}" th:id="*{'brand-' + brand.id}" />
               <label class="form-check-label" th:for="*{'brand-' + brand.id}" th:text="*{brand.brandName}"></label>
             </div>
           </li>
@@ -23,7 +23,7 @@
         <ul id="categoryList" class="btn-toggle-nav list-unstyled fw-normal small">
           <li th:each="category : ${categories}">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" th:value="*{category.id}" th:category="*{category.categoryName}" th:id="*{'category-' + category.id}" />
+              <input class="form-check-input" name="category" type="checkbox" th:value="*{category.id}" th:category="*{category.categoryName}" th:id="*{'category-' + category.id}" />
               <label class="form-check-label" th:for="*{'category-' + category.id}" th:text="*{category.categoryName}"></label>
             </div>
           </li>
@@ -35,7 +35,7 @@
         Màu sắc
       </button>
       <div class="collapse" id="orders-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+        <ul id="colorList" class="btn-toggle-nav list-unstyled fw-normal small">
           <li th:each="color, i : ${colors}">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" th:value="*{color}" th:id="*{'color-' + i.count}" />
@@ -61,22 +61,22 @@
         Giá
       </button>
       <div class="collapse" id="account-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+        <ul id="priceList" class="btn-toggle-nav list-unstyled fw-normal small">
           <li>
             <div class="form-check">
-              <input class="form-check-input" type="radio" th:value="*{'123456'}" id="x1" />
+              <input class="form-check-input" name="price" type="radio" th:value="*{'123456'}" id="x1" />
               <label class="form-check-label" for="x1" th:text="*{'Dưới 1,000,000đ'}"></label>
             </div>
           </li>
           <li>
             <div class="form-check">
-              <input class="form-check-input" type="radio" th:value="*{'123456'}" id="x2" />
+              <input class="form-check-input" name="price" type="radio" th:value="*{'123456'}" id="x2" />
               <label class="form-check-label" for="x2" th:text="*{'1,000,000đ - 2,000,000đ'}"></label>
             </div>
           </li>
           <li>
             <div class="form-check">
-              <input class="form-check-input" type="radio" th:value="*{'123456'}" id="x3" />
+              <input class="form-check-input" name="price" type="radio" th:value="*{'123456'}" id="x3" />
               <label class="form-check-label" for="x3" th:text="*{'Trên 3,000,000đ'}"></label>
             </div>
           </li>

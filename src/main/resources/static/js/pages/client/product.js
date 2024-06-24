@@ -21,4 +21,4 @@ window.onscroll = function () {
     document.getElementById("sub-nav").classList.remove("fixed-top-sub-nav");
     document.getElementById("products").classList.remove("fix-sub-nav");
   }
-};
+}

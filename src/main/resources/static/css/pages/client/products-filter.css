@@ -14,7 +14,7 @@
 #tags .tag-container {
   display: flex;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -77,7 +77,7 @@
 }
 
 #tags .tag-container .tag-list-wrapper .tag-list {
-  display: inline-flex;
+  display: flex;
   transition: transform 0.3s ease;
 }
 

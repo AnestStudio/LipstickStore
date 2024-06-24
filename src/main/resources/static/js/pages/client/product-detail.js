@@ -87,8 +87,9 @@ function formatCurrency(number) {
 }
 
 /*
- * Slide images
+ * Slide images --------------------------------------------------------------------------------------------------------
  */
+
 let slideIndex = 1;
 showSlides(slideIndex);
 
