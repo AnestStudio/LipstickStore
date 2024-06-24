@@ -11,16 +11,94 @@
  * TAGS ----------------------------------------------------------------------------------------------------------------
  */
 
-#tags .badge {
-  padding: 12px;
+#tags .tag-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#tags .tag-container button {
+  height: 37px;
+  width: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  position: relative;
+  font-size: 20px;
+}
+
+#tags .tag-container button:active {
+  outline: none;
+  border: none;
+}
+
+#tags .tag-container button:hover {
+  background-color: var(--bs-danger-bg-subtle) !important;
+}
+
+#tags .tag-container button.prev {
+  margin-right: 10px;
+}
+
+#tags .tag-container button.next {
+  margin-left: 10px;
+}
+
+#tags .tag-container button.prev:before,
+#tags .tag-container button.next:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#tags .tag-container button.prev:before {
+  left: 103%;
+  background: linear-gradient(to left, rgba(240, 242, 245, 0), rgba(240, 242, 245, 1));
+}
+
+#tags .tag-container button.next:after {
+  right: 103%;
+  background: linear-gradient(to right, rgba(240, 242, 245, 0), rgba(240, 242, 245, 1));
+}
+
+#tags .tag-container .tag-list-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
+}
+
+#tags .tag-container .tag-list-wrapper .tag-list {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+#tags .tag-container .tag-list-wrapper .tag-list .tag {
+  padding: 10px;
   font-size: 15px;
   font-weight: 400;
   border-radius: 12px;
-  margin-right: 8px;
-  margin-top: 12px;
+  margin-right: 6px;
+  margin-left: 6px;
 }
 
-#tags .badge > a {
+#tags .tag-container .tag-list-wrapper .tag-list .tag:first-child {
+  margin-left: 0;
+}
+
+#tags .tag-container .tag-list-wrapper .tag-list .tag:last-child {
+  margin-right: 0;
+}
+
+#tags .tag-container .tag-list-wrapper .tag-list .tag > a {
   color: inherit;
 }
 
