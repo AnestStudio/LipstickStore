@@ -1,3 +1,18 @@
+drop table common_value;
+drop table product_image;
+drop table order_detail;
+drop table [order];
+drop table order_status;
+drop table product;
+drop table brand;
+drop table category;
+
+drop table user_address;
+drop table user_detail;
+drop table user_role;
+drop table [user];
+drop table role;
+
 create table common_value (
     id    bigint identity primary key,
     name  nvarchar(100) not null,
@@ -5,11 +20,7 @@ create table common_value (
     value nvarchar(1000) not null,
     type  nvarchar(100) not null
 )
-
-drop table product_image;
-drop table product;
-drop table brand;
-drop table category;
+go
 
 create table brand (
     brand_id          bigint identity primary key,
@@ -52,11 +63,6 @@ create table role (
     role_name nvarchar(150)
 )
 go
-
-drop table user_address;
-drop table user_detail;
-drop table user_role;
-drop table [user];
 
 create table [user] (
     user_id    bigint identity primary key,

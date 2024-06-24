@@ -1,10 +1,37 @@
 /*
+ * COVER ---------------------------------------------------------------------------------------------------------------
+ */
+
+#cover {
+  padding: 100px 0 40px;
+}
+
+
+/*
+ * TAGS ----------------------------------------------------------------------------------------------------------------
+ */
+
+#tags .badge {
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 12px;
+  margin-right: 8px;
+  margin-top: 12px;
+}
+
+#tags .badge > a {
+  color: inherit;
+}
+
+
+/*
  * SIDEBAR -------------------------------------------------------------------------------------------------------------
  */
 
 .sidebar {
   width: 280px;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
@@ -45,7 +72,7 @@
 }
 
 .sidebar>ul>li .btn-toggle-nav a {
-  padding: 3px 10px;
+  padding: 4px 10px;
   margin-left: 20px;
   margin-top: 3px;
   font-size: 16px;
@@ -70,7 +97,7 @@
 }
 
 .sidebar>ul>li .form-check {
-  padding: 3px 8px;
+  padding: 4px 8px;
   margin-left: 46px;
   margin-top: 3px;
   margin-bottom: 3px;
@@ -111,7 +138,12 @@
   width: calc(100% - 296px);
 }
 
-#sub-nav {
+.content #products > div {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.content #sub-nav {
   display: none;
 }
 
