@@ -224,7 +224,7 @@ a {
 nav .key-search {
   font-size: 12px;
   padding: 2px 6px;
-  border-radius: 3px;
+  border-radius: 4px;
   font-weight: 500;
 }
 
@@ -329,8 +329,8 @@ nav.navbar .bi {
 .sidebar>ul li a>div .badge-number {
   background-color: var(--bs-tertiary-bg);
   font-size: 13px;
-  min-width: 26px;
-  height: 26px;
+  min-width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;

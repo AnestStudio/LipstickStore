@@ -21,12 +21,13 @@ window.onscroll = function () {
   }
 };
 
-function setSelected(id, array) {
+function setSelected(id, attr, array) {
   const checkboxes = document.querySelectorAll('#' + id + ' input[type="checkbox"]');
   const values = array.split(',');
   checkboxes.forEach(checkbox => {
     if (values.includes(checkbox.value)) {
       checkbox.checked = true;
+      getFilterList(id, checkbox.getAttribute(attr));
     }
   });
 }
@@ -37,14 +38,27 @@ function openCollapse(id) {
   document.getElementById(id).classList.add("show");
 }
 
+let array = [];
+function getFilterList(id, text) {
+  switch (id) {
+    case "brandList":
+      array.push('Thương hiệu: ' + text);
+      break;
+    case "categoryList":
+      array.push('Thể loại: ' + text);
+      break;
+  }
+  console.log(array);
+}
+
 function displaySelectedFilter() {
   if (brandIds !== '' && brandIds !== null) {
-    setSelected("brandList", brandIds);
+    setSelected("brandList", "brand", brandIds);
     openCollapse("brand-collapse");
   }
 
   if (categoryIds !== '' && categoryIds !== null) {
-    setSelected("categoryList", categoryIds);
+    setSelected("categoryList", "category", categoryIds);
     openCollapse("category-collapse");
   }
 }

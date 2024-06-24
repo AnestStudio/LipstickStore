@@ -32,6 +32,7 @@ create table product (
     product_image             varchar(255),
     product_price             decimal,
     product_quantity          int,
+    product_sold              int default 0,
     product_short_description nvarchar(500),
     product_description       nvarchar(max),
     category_id               bigint references category,
