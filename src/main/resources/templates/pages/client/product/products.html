@@ -80,7 +80,7 @@
                 <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
                 <div class="card-body">
                   <h5 class="card-title product-title">
-                    <span th:text="*{product.productName + ' - ' + product.productColor}"></span>
+                    <span th:text="*{product.productName + ' - ' + product.color.colorName}"></span>
                   </h5>
                   <h5 class="product-price text-danger">
                     <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>

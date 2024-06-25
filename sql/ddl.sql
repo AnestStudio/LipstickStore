@@ -6,6 +6,7 @@ drop table order_status;
 drop table product;
 drop table brand;
 drop table category;
+drop table color;
 
 drop table user_address;
 drop table user_detail;
@@ -39,7 +40,6 @@ go
 create table product (
     product_id                bigint identity primary key,
     product_name              nvarchar(255) not null,
-    product_color             nvarchar(255),
     product_image             varchar(255),
     product_price             decimal,
     product_quantity          int,
@@ -47,7 +47,8 @@ create table product (
     product_short_description nvarchar(500),
     product_description       nvarchar(max),
     category_id               bigint references category,
-    brand_id                  bigint references brand
+    brand_id                  bigint references brand,
+    color_id                  bigint references color
 )
 go
 
@@ -103,8 +104,7 @@ create table user_role (
     user_id      bigint references [user],
     role_id      bigint references role
 )
-
-
+go
 
 create table [order_status] (
     order_status_id bigint identity primary key,

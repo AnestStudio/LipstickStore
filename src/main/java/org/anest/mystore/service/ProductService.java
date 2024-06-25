@@ -12,8 +12,6 @@ public interface ProductService {
 
     Optional<Product> findById(Long id);
 
-    List<String> findDistinctColors();
-
     Page<Product> findProducts(
             List<Long> categoryIds,
             List<Long> brandIds,

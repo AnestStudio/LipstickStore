@@ -3,12 +3,14 @@ package org.anest.mystore.controller.client;
 import org.anest.mystore.constant.IConstants;
 import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Category;
+import org.anest.mystore.entity.Color;
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.exception.BrandNotFoundException;
 import org.anest.mystore.exception.CategoryNotFoundException;
 import org.anest.mystore.exception.ProductNotFoundException;
 import org.anest.mystore.service.BrandService;
 import org.anest.mystore.service.CategoryService;
+import org.anest.mystore.service.ColorService;
 import org.anest.mystore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,12 +34,19 @@ public class ProductController {
     private final ProductService productService;
     private final BrandService brandService;
     private final CategoryService categoryService;
+    private final ColorService colorService;
 
     @Autowired
-    public ProductController(ProductService productService, BrandService brandService, CategoryService categoryService) {
+    public ProductController(
+            ProductService productService,
+            BrandService brandService,
+            CategoryService categoryService,
+            ColorService colorService
+    ) {
         this.productService = productService;
         this.brandService = brandService;
         this.categoryService = categoryService;
+        this.colorService = colorService;
     }
 
     @GetMapping("")
@@ -92,7 +101,7 @@ public class ProductController {
             return "pages/client/product/products";
         }
 
-        List<String> colors = productService.findDistinctColors();
+        List<Color> colors = colorService.findAll();
         model.addAttribute("colors", colors);
         return "pages/client/product/products-filter";
     }

@@ -20,9 +20,6 @@ public class Product {
     @Column(name = "product_name", nullable = false, unique = true)
     private String productName;
 
-    @Column(name = "product_color", nullable = false)
-    private String productColor;
-
     @Column(name = "product_image", nullable = false)
     private String productImage;
 
@@ -48,6 +45,10 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "brand_id", referencedColumnName = "brand_id")
     private Brand brand;
+
+    @ManyToOne
+    @JoinColumn(name = "color_id", referencedColumnName = "color_id")
+    private Color color;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductImage> productImageList;

@@ -34,7 +34,7 @@
           </div>
           <div class="col-12 col-md-7 right-content">
             <div class="product-detail-info">
-              <h3 class="product-name" th:text="${product.productName + ' - ' + product.productColor}"></h3>
+              <h3 class="product-name" th:text="${product.productName + ' - ' + product.color.colorName}"></h3>
               <h4 class="product-price text-danger">
                 <span th:text="${#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
               </h4>

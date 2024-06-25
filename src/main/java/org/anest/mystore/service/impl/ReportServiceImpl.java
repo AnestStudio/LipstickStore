@@ -28,7 +28,7 @@ public class ReportServiceImpl implements ReportService {
                 int cellCount = 0;
                 row.createCell(cellCount++).setCellValue(product.getId());
                 row.createCell(cellCount++).setCellValue(product.getProductName());
-                row.createCell(cellCount++).setCellValue(product.getProductColor());
+                row.createCell(cellCount++).setCellValue(product.getColor().getColorName());
                 row.createCell(cellCount++).setCellValue(product.getProductImage());
                 row.createCell(cellCount++).setCellValue(product.getProductPrice());
                 row.createCell(cellCount++).setCellValue(product.getProductQuantity());

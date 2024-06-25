@@ -10,7 +10,4 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
-
-    @Query("SELECT DISTINCT p.productColor FROM Product p")
-    List<String> findDistinctColors();
 }

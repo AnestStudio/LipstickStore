@@ -1,7 +1,6 @@
 package org.anest.mystore.service.impl;
 
 import org.anest.mystore.entity.Product;
-import org.anest.mystore.enums.SortTypeEnum;
 import org.anest.mystore.repository.ProductRepository;
 import org.anest.mystore.service.ProductService;
 import org.anest.mystore.specification.Product2Specification;
@@ -37,11 +36,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Optional<Product> findById(Long id) {
         return productRepository.findById(id);
-    }
-
-    @Override
-    public List<String> findDistinctColors() {
-        return productRepository.findDistinctColors();
     }
 
     @Override

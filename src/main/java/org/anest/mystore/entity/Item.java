@@ -13,7 +13,7 @@ public class Item implements Serializable {
 
     private Long id;
     private String name;
-    private String color;
+    private Color color;
     private String image;
     private double price;
     private int quantity;
