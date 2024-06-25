@@ -37,6 +37,14 @@ create table category (
 )
 go
 
+create table color (
+    color_id          bigint identity primary key,
+    color_code        nvarchar(150) unique not null ,
+    color_name        nvarchar(150) not null ,
+    color_description nvarchar(2000),
+)
+go
+
 create table product (
     product_id                bigint identity primary key,
     product_name              nvarchar(255) not null,
