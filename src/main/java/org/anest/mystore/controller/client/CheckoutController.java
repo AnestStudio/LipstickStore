@@ -86,7 +86,7 @@ public class CheckoutController {
             OrderDetail orderDetail = new OrderDetail();
             orderDetail.setProductId(item.getId());
             orderDetail.setProductName(item.getName());
-            orderDetail.setProductColor(item.getColor().getColorName());
+            orderDetail.setProductColor(item.getColor());
             orderDetail.setProductImage(item.getImage());
             orderDetail.setProductPrice(item.getPrice());
             orderDetail.setQuantity(item.getQuantity());

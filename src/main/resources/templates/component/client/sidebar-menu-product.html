@@ -36,10 +36,10 @@
       </button>
       <div class="collapse" id="orders-collapse">
         <ul id="colorList" class="btn-toggle-nav list-unstyled fw-normal small">
-          <li th:each="color, i : ${colors}">
+          <li th:each="color : ${colors}">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" th:value="*{color}" th:id="*{'color-' + i.count}" />
-              <label class="form-check-label" th:for="*{'color-' + i.count}" th:text="*{color}"></label>
+              <input class="form-check-input" type="checkbox" th:value="*{color.colorCode}" th:id="*{'color-' + color.id}" />
+              <label class="form-check-label" th:for="*{'color-' + color.id}" th:text="*{color.colorName}"></label>
             </div>
           </li>
         </ul>
