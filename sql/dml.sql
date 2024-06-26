@@ -120,3 +120,4 @@ INSERT INTO order_status (order_status) VALUES (N'Đang giao');
 INSERT INTO order_status (order_status) VALUES (N'Hoàn thành');
 INSERT INTO order_status (order_status) VALUES (N'Đã huỷ');
 INSERT INTO order_status (order_status) VALUES (N'Trả hàng');
+INSERT INTO order_status (order_status) VALUES (N'Giao không thành công');

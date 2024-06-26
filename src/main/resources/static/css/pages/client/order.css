@@ -42,13 +42,16 @@
   font-weight: 400;
 }
 
-#orders .order .order-footer .order-status {
-  text-transform: uppercase;
-  font-weight: 400;
-}
-
 #orders .order .order-footer {
   padding-top: 16px;
+}
+
+#orders .order .order-footer .badge {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 11px 12px;
+  border-radius: 30px;
+  text-transform: uppercase;
 }
 
 

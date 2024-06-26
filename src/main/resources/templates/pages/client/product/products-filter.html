@@ -16,7 +16,7 @@
           <div class="col">
             <h1 class="title mb-3">
               <span th:text="${title}"></span>
-              <span class="ms-1 title-quantity text-danger" th:text="'[' + ${productPage.content.size()} + ']'"></span>
+              <span class="ms-1 title-quantity text-danger" th:text="'[' + ${resultPage.totalElements} + ']'"></span>
             </h1>
             <div class="title-description mb-3" th:utext="${description}"></div>
           </div>
@@ -49,7 +49,7 @@
         <div class="col-12 d-flex justify-content-between">
           <div th:replace="~{component/client/sidebar-menu-product :: sidebar-menu-product}"></div>
           <div class="content">
-            <section id="sub-nav" class="sub-nav" th:unless="${productPage.isEmpty()}">
+            <section id="sub-nav" class="sub-nav" th:unless="${resultPage.isEmpty()}">
               <div class="row">
                 <div class="col">
                   <div class="d-flex justify-content-between">
@@ -112,10 +112,11 @@
                 </div>
               </div>
             </section>
+
             <section id="products">
               <div class="row">
-                <th:block th:unless="${productPage.isEmpty()}">
-                  <div class="col-6 col-md-4 col-lg-3 col-xl-3" th:each="product : ${productPage.content}">
+                <th:block th:unless="${resultPage.isEmpty()}">
+                  <div class="col-6 col-md-4 col-lg-3 col-xl-3" th:each="product : ${resultPage.content}">
                     <a class="card" th:href="@{'/lipstick/detail/' + *{product.id}}">
                       <img th:src="@{'/images/products/' + *{product.productImage}}" class="card-img-top rounded-3" alt="...">
                       <div class="card-body">
@@ -129,12 +130,15 @@
                     </a>
                   </div>
                 </th:block>
-                <th:block th:if="${productPage.isEmpty()}">
+                <th:block th:if="${resultPage.isEmpty()}">
                   <div th:replace="~{component/client/product-not-found :: product-not-found}"></div>
                 </th:block>
               </div>
             </section>
-            <div th:replace="~{component/pagination :: pagination}"></div>
+
+            <section id="pagination" class="container mt-2 mb-5" th:if="${resultPage.totalPages > 1}">
+              <div th:replace="~{component/pagination :: pagination}"></div>
+            </section>
           </div>
         </div>
       </div>

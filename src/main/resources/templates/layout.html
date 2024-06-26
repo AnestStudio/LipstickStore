@@ -21,7 +21,7 @@
   <link rel="stylesheet" th:href="@{/css/table.css}"/>
   <link rel="stylesheet" th:href="@{/css/common.css}"/>
 </head>
-<body onkeydown="showSearchForm(event)" class="d-flex flex-column h-100">
+<body id="page-top" onkeydown="showSearchForm(event)" class="d-flex flex-column h-100">
   <div th:replace="~{component/icon :: svg}"></div>
   <div th:replace="~{component/client/navbar :: navbar}"></div>
 
@@ -29,6 +29,11 @@
 
   <div th:replace="~{component/client/footer :: footer}"></div>
   <div th:replace="~{modal/client/search-product :: search-product-modal}"></div>
+
+  <!-- Scroll to Top Button-->
+  <a class="btn-scroll-to-top" href="#page-top">
+    <i class="bi bi-arrow-up"></i>
+  </a>
 
   <th:block layout:fragment="modal"></th:block>
 

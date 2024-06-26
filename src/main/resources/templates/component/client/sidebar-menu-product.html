@@ -51,8 +51,8 @@
       </button>
       <div class="collapse" id="account-collapse-2">
         <ul class="btn-toggle-nav list-unstyled fw-normal small">
-          <li><a th:href="@{/products(page=${productPage.number}, size=${productPage.size}, sortField='productPrice', sortDir='ASC', categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="link-body-emphasis d-inline-flex text-decoration-none">Giá (thấp - cao)</a></li>
-          <li><a th:href="@{/products(page=${productPage.number}, size=${productPage.size}, sortField='productPrice', sortDir='DESC', categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="link-body-emphasis d-inline-flex text-decoration-none">Giá (cao - thấp)</a></li>
+          <li><a href="javascript:void(0)" th:onclick="'javascript:sort(\'productPrice\', \'ASC\')'" class="link-body-emphasis d-inline-flex text-decoration-none">Giá (thấp - cao)</a></li>
+          <li><a href="javascript:void(0)" th:onclick="'javascript:sort(\'productPrice\', \'DESC\')'" class="link-body-emphasis d-inline-flex text-decoration-none">Giá (cao - thấp)</a></li>
         </ul>
       </div>
     </li>

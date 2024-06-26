@@ -58,7 +58,7 @@ public class ProductController {
     public String filterProducts(
             Model model,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "4") int size,
+            @RequestParam(defaultValue = "2") int size,
             @RequestParam(required = false) String categoryIds,
             @RequestParam(required = false) String brandIds,
             @RequestParam(required = false) String color,
@@ -97,7 +97,7 @@ public class ProductController {
             );
         }
 
-        model.addAttribute("productPage", productPage);
+        model.addAttribute("resultPage", productPage);
         model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
         model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
         initData(model);

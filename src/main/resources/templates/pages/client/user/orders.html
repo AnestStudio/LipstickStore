@@ -17,9 +17,9 @@
           <div class="content content-my">
             <section id="orders">
               <div class="row">
-                <th:block th:if="${user.orderList != null}">
+                <th:block th:unless="${resultPage.isEmpty()}">
                   <div class="col-md-12 col-lg-12">
-                    <div class="order panel" th:each="order : ${user.orderList}">
+                    <div class="order panel" th:each="order : ${resultPage.content}">
                       <div class="order-header">
                         <h3>
                           <span class="order-code">Mã đơn hàng:<span class="text-danger ms-1" th:text="*{order.orderNumber}"></span></span>
@@ -64,10 +64,10 @@
                               </div>
                             </div>
                           </div>
-                          <div class="item">
+                          <div class="item" th:unless="*{order.orderNote.isEmpty()}">
                             <div class="d-flex justify-content-between align-items-center">
                               <div>Ghi chú - lời nhắn</div>
-                              <div>
+                              <div class="w-75 text-end">
                                 <span th:text="*{order.orderNote}"></span>
                               </div>
                             </div>
@@ -77,7 +77,9 @@
                       <div class="order-footer">
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="secondary-text">
-                            <span class="order-status text-info" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 1 || order.orderStatus.id == 2 || order.orderStatus.id == 3 || order.orderStatus.id == 4}" class="badge bg-primary-subtle border-primary-subtle text-primary-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 5}" class="badge bg-success-subtle border-success-subtle text-success-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 6}" class="badge bg-danger-subtle border-danger-subtle text-danger-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
                           </div>
                           <div class="text-end">
                             <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">
@@ -89,7 +91,7 @@
                     </div>
                   </div>
                 </th:block>
-                <th:block th:if="${user.orderList.size() == 0}">
+                <th:block th:if="${resultPage.isEmpty()}">
                   <div class="text-center d-flex justify-content-center align-items-center">
                     <div>
                       <i class="bi bi-list-check" style="font-size: 70px;"></i>
@@ -102,10 +104,31 @@
                 </th:block>
               </div>
             </section>
+
+            <section id="pagination" class="container mt-4 mb-4" th:if="${resultPage.totalPages > 1}">
+              <div th:replace="~{component/pagination :: pagination}"></div>
+            </section>
           </div>
         </div>
       </div>
     </div>
+  </th:block>
+  <th:block layout:fragment="js">
+    <script th:inline="javascript">
+      let orderStatusCountList = /*[[${orderStatusCountList}]]*/ [];
+      let totalOrders = 0;
+      orderStatusCountList.forEach(item => {
+        const statusId = item[0];
+        const count = item[1];
+        totalOrders += parseInt(count);
+        const badge = document.getElementById(`status-${statusId}`);
+        if (badge) {
+          badge.textContent = count;
+        }
+      });
+      document.getElementById("status-all").textContent = totalOrders;
+    </script>
+    <script th:src="@{/js/pages/client/order.js}"></script>
   </th:block>
 </body>
 </html>

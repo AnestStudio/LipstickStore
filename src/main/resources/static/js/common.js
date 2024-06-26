@@ -71,8 +71,19 @@ function handlerCommonError(error){
  */
 
 function goToPage(page, size) {
-  const currentUrl = window.location.href;
+  let currentUrl = window.location.href;
+  currentUrl = updateQueryStringParameter(currentUrl, 'page', page);
+  currentUrl = updateQueryStringParameter(currentUrl, 'size', size);
+  window.location.href = currentUrl;
 }
+
+function sort(sortField, sortDir) {
+  let currentUrl = window.location.href;
+  currentUrl = updateQueryStringParameter(currentUrl, 'sortField', sortField);
+  currentUrl = updateQueryStringParameter(currentUrl, 'sortDir', sortDir);
+  window.location.href = currentUrl;
+}
+
 
 /*
  * UTILS ---------------------------------------------------------------------------------------------------------------
@@ -97,3 +108,21 @@ function updateQueryStringParameter(uri, key, value) {
     return uri + separator + key + '=' + value;
   }
 }
+
+
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 300) {
+    document.querySelector('.btn-scroll-to-top').style.display = 'block';
+  } else {
+    document.querySelector('.btn-scroll-to-top').style.display = 'none';
+  }
+});
+
+document.querySelector('.btn-scroll-to-top').addEventListener('click', function() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  return false;
+});
+

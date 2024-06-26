@@ -1,33 +1,31 @@
-<section id="pagination" class="container" th:fragment="pagination" th:if="${productPage.totalPages > 1}">
-  <div class="row">
-    <div class="col">
-      <nav class="mt-2 mb-5">
-        <ul class="pagination justify-content-center m-0">
-          <li th:class="${productPage.number == 0} ? 'page-item disabled' : 'page-item'">
-            <a th:href="@{/products(page=0, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="page-link">
-              <i class="bi bi-chevron-double-left"></i>
-            </a>
-          </li>
-          <li th:class="${!productPage.hasPrevious()} ? 'page-item disabled' : 'page-item'">
-            <a th:href="@{/products(page=${productPage.number - 1}, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="page-link">
-              <i class="bi bi-chevron-left"></i>
-            </a>
-          </li>
-          <li th:each="i : ${#numbers.sequence(0, productPage.totalPages - 1)}" th:class="${productPage.number == i} ? 'page-item active' : 'page-item'">
-            <a th:href="@{/products(page=${i}, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" th:text="${i + 1}" class="page-link"></a>
-          </li>
-          <li th:class="${!productPage.hasNext()} ? 'page-item disabled' : 'page-item'">
-            <a th:href="@{/products(page=${productPage.number + 1}, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="page-link">
-              <i class="bi bi-chevron-right"></i>
-            </a>
-          </li>
-          <li th:class="${productPage.number == productPage.totalPages - 1} ? 'page-item disabled' : 'page-item'">
-            <a th:href="@{/products(page=${productPage.totalPages - 1}, size=${productPage.size}, sortField=${sortField}, sortDir=${sortDir}, categoryIds=${categoryIds}, brandIds=${brandIds}, color=${color}, name=${name}, minPrice=${minPrice}, maxPrice=${maxPrice})}" class="page-link">
-              <i class="bi bi-chevron-double-right"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+<div class="row" th:fragment="pagination">
+  <div class="col">
+    <nav>
+      <ul class="pagination justify-content-center m-0">
+        <li th:class="${resultPage.number == 0} ? 'page-item disabled' : 'page-item'">
+          <a href="javascript:void(0)" th:onclick="'javascript:goToPage(0,' + ${resultPage.size} + ')'" class="page-link">
+            <i class="bi bi-chevron-double-left"></i>
+          </a>
+        </li>
+        <li th:class="${!resultPage.hasPrevious()} ? 'page-item disabled' : 'page-item'">
+          <a href="javascript:void(0)" th:onclick="'javascript:goToPage(' + ${resultPage.number - 1} + ',' + ${resultPage.size} + ')'" class="page-link">
+            <i class="bi bi-chevron-left"></i>
+          </a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(0, resultPage.totalPages - 1)}" th:class="${resultPage.number == i} ? 'page-item active' : 'page-item'">
+          <a href="javascript:void(0)" th:onclick="'javascript:goToPage(' + ${i} + ',' + ${resultPage.size} + ')'" th:text="${i + 1}" class="page-link"></a>
+        </li>
+        <li th:class="${!resultPage.hasNext()} ? 'page-item disabled' : 'page-item'">
+          <a href="javascript:void(0)" th:onclick="'javascript:goToPage(' + ${resultPage.number + 1} + ',' + ${resultPage.size} + ')'" class="page-link">
+            <i class="bi bi-chevron-right"></i>
+          </a>
+        </li>
+        <li th:class="${resultPage.number == resultPage.totalPages - 1} ? 'page-item disabled' : 'page-item'">
+          <a href="javascript:void(0)" th:onclick="'javascript:goToPage(' + ${resultPage.totalPages - 1} + ',' + ${resultPage.size} + ')'" class="page-link">
+            <i class="bi bi-chevron-double-right"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
-</section>
+</div>

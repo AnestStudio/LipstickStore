@@ -16,13 +16,13 @@
       </a>
     </li>
   </ul>
-  <ul class="list-unstyled">
+  <ul id="order-status" class="list-unstyled">
     <li class="mb-1">
       <a th:href="@{/user/orders}">
         <i class="fas fa-bars fa-fw me-2"></i>
         <div>
           <div>Tất cả đơn hàng</div>
-          <div class="badge-number">14</div>
+          <div class="badge-number" id="status-all">0</div>
         </div>
       </a>
     </li>
@@ -31,7 +31,7 @@
         <i class="fas fa-hourglass-half fa-fw me-2"></i>
         <div>
           <div>Chờ xác nhận</div>
-          <div class="badge-number">2</div>
+          <div class="badge-number" id="status-1">0</div>
         </div>
       </a>
     </li>
@@ -40,7 +40,7 @@
         <i class="fas fa-check fa-fw me-2"></i>
         <div>
           <div>Đã xác nhận</div>
-          <div class="badge-number">0</div>
+          <div class="badge-number" id="status-2">0</div>
         </div>
       </a>
     </li>
@@ -49,7 +49,7 @@
         <i class="fas fa-history fa-fw me-2"></i>
         <div>
           <div>Đang chuẩn bị</div>
-          <div class="badge-number">0</div>
+          <div class="badge-number" id="status-3">0</div>
         </div>
       </a>
     </li>
@@ -58,7 +58,7 @@
         <i class="fas fa-paper-plane fa-fw me-2"></i>
         <div>
           <div>Đang giao hàng</div>
-          <div class="badge-number">1</div>
+          <div class="badge-number" id="status-4">0</div>
         </div>
       </a>
     </li>
@@ -67,7 +67,7 @@
         <i class="fas fa-check-double fa-fw me-2"></i>
         <div>
           <div>Đã hoàn thành</div>
-          <div class="badge-number">12</div>
+          <div class="badge-number" id="status-5">0</div>
         </div>
       </a>
     </li>
@@ -76,7 +76,7 @@
         <i class="fas fa-ban fa-fw me-2"></i>
         <div>
           <div>Đã huỷ</div>
-          <div class="badge-number">2</div>
+          <div class="badge-number" id="status-6">0</div>
         </div>
       </a>
     </li>
@@ -85,7 +85,7 @@
         <i class="fas fa-share fa-fw me-2"></i>
         <div>
           <div>Trả hàng / Hoàn tiền</div>
-          <div class="badge-number">2</div>
+          <div class="badge-number" id="status-7">0</div>
         </div>
       </a>
     </li>
@@ -94,7 +94,7 @@
         <i class="fas fa-exclamation-circle fa-fw me-2"></i>
         <div>
           <div>Giao không thành công</div>
-          <div class="badge-number">2</div>
+          <div class="badge-number" id="status-8">0</div>
         </div>
       </a>
     </li>

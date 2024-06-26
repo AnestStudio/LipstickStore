@@ -56,40 +56,40 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll(spec, pageable);
     }
 
-    public Page<Product> findProducts2(
-            List<Long> categoryIds,
-            List<Long> brandIds,
-            String color,
-            Double minPrice,
-            Double maxPrice,
-            String sortField,
-            String sortDir,
-            int page,
-            int size
-    ) {
-        List<Specification<Product>> specs = new ArrayList<>();
-
-        if (brandIds != null && !brandIds.isEmpty()) {
-            specs.add(new Product2Specification(new FilterCriteria("brand.id", "in", brandIds)));
-        }
-        if (categoryIds != null && !categoryIds.isEmpty()) {
-            specs.add(new Product2Specification(new FilterCriteria("category.id", "in", categoryIds)));
-        }
-        if (color != null && !color.isEmpty()) {
-            specs.add(new Product2Specification(new FilterCriteria("productColor", ":", color)));
-        }
-        if (minPrice != null) {
-            specs.add(new Product2Specification(new FilterCriteria("productPrice", ">", minPrice)));
-        }
-        if (maxPrice != null) {
-            specs.add(new Product2Specification(new FilterCriteria("productPrice", "<", maxPrice)));
-        }
-
-        Specification<Product> spec = specs.stream()
-                .reduce(Specification::and)
-                .orElse(null);
-
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sortField);
-        return productRepository.findAll(spec, pageable);
-    }
+//    public Page<Product> findProducts2(
+//            List<Long> categoryIds,
+//            List<Long> brandIds,
+//            String color,
+//            Double minPrice,
+//            Double maxPrice,
+//            String sortField,
+//            String sortDir,
+//            int page,
+//            int size
+//    ) {
+//        List<Specification<Product>> specs = new ArrayList<>();
+//
+//        if (brandIds != null && !brandIds.isEmpty()) {
+//            specs.add(new Product2Specification(new FilterCriteria("brand.id", "in", brandIds)));
+//        }
+//        if (categoryIds != null && !categoryIds.isEmpty()) {
+//            specs.add(new Product2Specification(new FilterCriteria("category.id", "in", categoryIds)));
+//        }
+//        if (color != null && !color.isEmpty()) {
+//            specs.add(new Product2Specification(new FilterCriteria("productColor", ":", color)));
+//        }
+//        if (minPrice != null) {
+//            specs.add(new Product2Specification(new FilterCriteria("productPrice", ">", minPrice)));
+//        }
+//        if (maxPrice != null) {
+//            specs.add(new Product2Specification(new FilterCriteria("productPrice", "<", maxPrice)));
+//        }
+//
+//        Specification<Product> spec = specs.stream()
+//                .reduce(Specification::and)
+//                .orElse(null);
+//
+//        Pageable pageable = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sortField);
+//        return productRepository.findAll(spec, pageable);
+//    }
 }
