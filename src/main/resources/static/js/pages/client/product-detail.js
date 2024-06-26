@@ -78,6 +78,9 @@ function showListItemInCart(items) {
                 <li><a class="dropdown-item text-end" href="/cart">Xem giỏ hàng</a></li>`;
   document.querySelector(".items").style.width = "350px";
   document.querySelector(".items").innerHTML = content;
+
+  const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle='tooltip']");
+  [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 }
 
 function formatCurrency(number) {
@@ -85,6 +88,7 @@ function formatCurrency(number) {
   let reversedFormattedNumber = reversedNumber.replace(/(\d{3})(?=\d)/g, '$1.');
   return reversedFormattedNumber.split('').reverse().join('');
 }
+
 
 /*
  * Slide images --------------------------------------------------------------------------------------------------------

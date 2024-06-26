@@ -51,8 +51,9 @@ function displaySelectedFilterTags() {
 }
 
 function remoteSelectedFilterTag(text) {
-  let index = tags.findIndex(obj => obj.text === text);
+  const currentUrl = window.location.href;
 
+  const index = tags.findIndex(obj => obj.text === text);
   const obj = tags[index];
   switch (obj.type) {
     case "brand":
@@ -68,16 +69,6 @@ function remoteSelectedFilterTag(text) {
   }
   displaySelectedFilterTags();
   updateScroll();
-}
-
-function removeValueFromString(str, value) {
-  let arr = str.split(',');
-
-  let index = arr.indexOf(value.toString());
-  if (index !== -1) {
-    arr.splice(index, 1);
-  }
-  return arr.join(',');
 }
 
 function displaySelectedFilterSidebar() {
@@ -167,8 +158,6 @@ window.onload = () => {
  * ACTION CHECKBOX -----------------------------------------------------------------------------------------------------
  */
 
-let currentUrl = window.location.href;
-
 function getCheckedValues(name) {
   const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
   const values = [];
@@ -176,6 +165,7 @@ function getCheckedValues(name) {
     values.push(checkbox.value);
   });
 
+  const currentUrl = window.location.href;
   switch (name) {
     case "brand":
       window.location.href = updateQueryStringParameter(currentUrl, 'brandIds', values.join(','));
@@ -183,16 +173,6 @@ function getCheckedValues(name) {
     case "category":
       window.location.href = updateQueryStringParameter(currentUrl, 'categoryIds', values.join(','));
       break;
-  }
-}
-
-function updateQueryStringParameter(uri, key, value) {
-  const re = new RegExp(`([?&])${key}=.*?(&|$)`, 'i');
-  const separator = uri.indexOf('?') !== -1 ? '&' : '?';
-  if (uri.match(re)) {
-    return uri.replace(re, `$1${key}=${value}$2`);
-  } else {
-    return uri + separator + key + '=' + value;
   }
 }
 

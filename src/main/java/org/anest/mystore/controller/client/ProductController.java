@@ -76,6 +76,7 @@ public class ProductController {
                 ? Arrays.stream(brandIds.split(",")).map(Long::parseLong).collect(Collectors.toList())
                 : null;
 
+        page = (page <= 0) ? 0 : page;
         Page<Product> productPage = productService.findProducts(
                 categoryIdList, brandIdList, color, name,
                 minPrice, maxPrice,
@@ -83,6 +84,18 @@ public class ProductController {
                 page,
                 size
         );
+
+        // If the user enters a page number in the url is greater than the calculated page number
+        if (!productPage.hasContent() && productPage.getTotalElements() != 0) {
+            page = 0;
+            productPage = productService.findProducts(
+                    categoryIdList, brandIdList, color, name,
+                    minPrice, maxPrice,
+                    sortField, sortDir,
+                    page,
+                    size
+            );
+        }
 
         model.addAttribute("productPage", productPage);
         model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
