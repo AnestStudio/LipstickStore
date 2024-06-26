@@ -249,6 +249,10 @@ nav.navbar .bi {
   display: inline-flex;
 }
 
+nav.navbar #search-product {
+  display: none;
+}
+
 
 /**
  * SUB NAV -------------------------------------------------------------------------------------------------------------

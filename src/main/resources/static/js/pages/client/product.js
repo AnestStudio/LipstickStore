@@ -1,4 +1,4 @@
-window.onscroll = function () {
+window.onscroll = () => {
   if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
     document.getElementById("navbar").classList.add("border-bot-shadow");
   } else {

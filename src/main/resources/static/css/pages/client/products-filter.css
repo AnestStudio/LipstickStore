@@ -61,12 +61,12 @@
 
 #tags .tag-container button.prev:before {
   left: 103%;
-  background: linear-gradient(to left, rgba(240, 242, 245, 0), rgba(240, 242, 245, 1));
+  background: linear-gradient(to left, rgba(240, 242, 245, 0), var(--bs-body-bg));
 }
 
 #tags .tag-container button.next:after {
   right: 103%;
-  background: linear-gradient(to right, rgba(240, 242, 245, 0), rgba(240, 242, 245, 1));
+  background: linear-gradient(to right, rgba(240, 242, 245, 0), var(--bs-body-bg));
 }
 
 #tags .tag-container .tag-list-wrapper {
@@ -100,6 +100,10 @@
 
 #tags .tag-container .tag-list-wrapper .tag-list .tag > a {
   color: inherit;
+}
+
+#tags .tag-container .tag-list-wrapper .tag-list .tag > a:hover {
+  color: rgba(var(--bs-danger-rgb), 1) !important;
 }
 
 

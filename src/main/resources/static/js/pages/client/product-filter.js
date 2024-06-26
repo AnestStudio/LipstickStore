@@ -1,26 +1,3 @@
-window.onscroll = function () {
-  if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-    document.getElementById("navbar").classList.add("border-bot-shadow");
-  } else {
-    document.getElementById("navbar").classList.remove("border-bot-shadow");
-    document.getElementById("navbar").classList.remove("border-bot-solid");
-  }
-
-  const b = document.body;
-  let d = document.documentElement;
-  d = (d.clientHeight) ? d : b;
-
-  if (d.scrollTop >= 276) {
-    document.getElementById("navbar").classList.add("border-bot-solid");
-    document.getElementById("navbar").classList.remove("border-bot-shadow");
-
-    document.getElementById("sub-nav").classList.add("fixed-top-sub-nav");
-  }
-  if (d.scrollTop < 276) {
-    document.getElementById("sub-nav").classList.remove("fixed-top-sub-nav");
-  }
-};
-
 function setSelected(id, attr, array) {
   const checkboxes = document.querySelectorAll(`#${id} input[type="checkbox"]`);
   const values = array.split(',');
@@ -181,6 +158,8 @@ window.onload = () => {
 
   prevBtn.style.display = "none";
   nextBtn.style.display = (maxScroll < 0) ? "flex" : "none";
+
+  displaySearchForm();
 }
 
 
