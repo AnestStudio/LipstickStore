@@ -77,9 +77,12 @@
                       <div class="order-footer">
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="secondary-text">
-                            <span th:if="*{order.orderStatus.id == 1 || order.orderStatus.id == 2 || order.orderStatus.id == 3 || order.orderStatus.id == 4}" class="badge bg-primary-subtle border-primary-subtle text-primary-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 1}" class="badge bg-info-subtle border-info-subtle text-info-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 2}" class="badge bg-primary-subtle border-primary-subtle text-primary-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 3 || order.orderStatus.id == 4}" class="badge bg-warning-subtle border-warning-subtle text-warning-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
                             <span th:if="*{order.orderStatus.id == 5}" class="badge bg-success-subtle border-success-subtle text-success-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
                             <span th:if="*{order.orderStatus.id == 6}" class="badge bg-danger-subtle border-danger-subtle text-danger-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 7 || order.orderStatus.id == 8}" class="badge bg-secondary-subtle border-secondary-subtle text-secondary-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
                           </div>
                           <div class="text-end">
                             <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">
@@ -96,9 +99,9 @@
                     <div>
                       <i class="bi bi-list-check" style="font-size: 70px;"></i>
                       <h3 class="text-center mb-4">Hiện tại không có đơn hàng nào.</h3>
-                      <a th:href="@{/}" type="submit" class="btn btn-danger m-0 py-2 px-3">
-                        MUA HÀNG
-                      </a>
+<!--                      <a th:href="@{/}" type="submit" class="btn btn-danger m-0 py-2 px-3">-->
+<!--                        MUA HÀNG-->
+<!--                      </a>-->
                     </div>
                   </div>
                 </th:block>

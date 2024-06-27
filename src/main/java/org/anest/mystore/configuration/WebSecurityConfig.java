@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -24,6 +25,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/products/**").permitAll()
                         .requestMatchers("/cart/**").permitAll()
                         .requestMatchers("/checkout").hasRole("MEMBER")
+                        .requestMatchers("/user/**").hasRole("MEMBER")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         // API
                         .requestMatchers("/api/public/**").permitAll()
@@ -47,6 +49,10 @@ public class WebSecurityConfig {
                         .logoutSuccessUrl("/login?logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
+                )
+                .sessionManagement(sessionManagement -> sessionManagement
+                        .invalidSessionUrl("/login")
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 );
         return http.build();
     }
