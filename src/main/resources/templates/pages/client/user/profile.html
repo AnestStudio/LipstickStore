@@ -52,13 +52,12 @@
                     <h3 class="address mt-2"><span th:text="*{address.userAddressDetail}"></span></h3>
                     <h3 class="address mt-2"><span th:text="*{address.userAddressWards}"></span></h3>
                     <h3 class="address mt-2"><span th:text="*{address.userAddressDistricts}"></span></h3>
-                    <h3 class="address mt-2"><span th:text="*{address.userAddressProvinces}"></span></h3>
-                    <span class="badge bg-success-subtle border text-success-emphasis rounded-pill mt-1" th:if="*{address.defaultAddress}">
-                <i class="fas fa-check me-1"></i>Mặc định
-              </span>
-                    <hr th:if="*{i.index != (user.userAddressList.size() - 1)}">
+                    <h3 class="address mt-2 mb-3"><span th:text="*{address.userAddressProvinces}"></span></h3>
+                    <span class="badge bg-success-subtle text-success-emphasis rounded-pill mb-1" th:if="*{address.defaultAddress}">
+                      <i class="fas fa-check me-1"></i>Mặc định
+                    </span>
+                    <hr style="margin: 18px 0;" th:if="*{i.index != (user.userAddressList.size() - 1)}">
                   </div>
-
                 </div>
               </div>
             </section>

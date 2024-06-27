@@ -6,12 +6,12 @@
       </a>
     </li>
     <li class="mb-1">
-      <a th:href="@{/}">
+      <a th:href="@{/user/account/update}">
         <i class="fas fa-user-edit fa-fw me-2"></i>Chỉnh sửa thông tin
       </a>
     </li>
     <li>
-      <a th:href="@{/}">
+      <a th:href="@{/user/account/address}">
         <i class="fas fa-map-marked-alt fa-fw me-2"></i>Chỉnh sửa địa chỉ
       </a>
     </li>
@@ -96,6 +96,13 @@
           <div>Giao không thành công</div>
           <div class="badge-number" id="status-8">0</div>
         </div>
+      </a>
+    </li>
+  </ul>
+  <ul class="list-unstyled">
+    <li>
+      <a th:href="@{/user/account/address}">
+        <i class="fas fa-chart-line fa-fw me-2"></i>Thống kê
       </a>
     </li>
   </ul>

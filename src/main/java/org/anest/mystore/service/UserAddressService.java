@@ -8,5 +8,7 @@ public interface UserAddressService {
 
     UserAddress getUserDefaultAddress(List<UserAddress> userAddressList);
 
-    UserAddress getUserShippingAddress(List<UserAddress> userAddressList, Long userShippingAddressId);
+    UserAddress getAddressById(List<UserAddress> userAddressList, Long addressId);
+
+    void changeDefaultAddress(List<UserAddress> userAddressList, Long addressId);
 }

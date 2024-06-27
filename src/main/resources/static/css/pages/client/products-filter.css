@@ -205,12 +205,6 @@
   --bs-form-check-bg: var(--secondary-bg-color);
 }
 
-.sidebar>ul>li .form-check-input:checked {
-  --bs-text-opacity: 1;
-  background-color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity));
-  border-color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity));
-}
-
 
 /*
  * CONTENT -------------------------------------------------------------------------------------------------------------

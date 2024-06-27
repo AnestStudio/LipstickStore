@@ -40,6 +40,10 @@ public class UserAddress {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
+    public String getBaseAddress() {
+        return userAddressWards + ", " + userAddressDistricts + ", " + userAddressProvinces;
+    }
+
     public String getFullAddress() {
         return userAddressDetail + ", " + userAddressWards + ", " + userAddressDistricts + ", " + userAddressProvinces;
     }

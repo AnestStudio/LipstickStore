@@ -6,34 +6,58 @@
   margin-bottom: 20px;
 }
 
-#profile .profile-info .panel {
+#profile .profile-info .panel,
+#profile .change-password .panel {
   padding: 6px 20px;
   border-radius: 12px;
   background-color: var(--secondary-bg-color);
 }
 
-#profile .profile-info .panel .panel-content {
+#profile .profile-info .panel .panel-content,
+#profile .change-password .panel .panel-content {
   padding: 12px 0;
   border-bottom: 1px solid var(--line-border-color);
   align-items: center;
 }
 
-#profile .profile-info .panel .panel-content:last-child {
+#profile .profile-info .panel .panel-content:last-child,
+#profile .change-password .panel .panel-content:last-child {
   border-bottom: none;
 }
 
-#profile .profile-info .panel p {
+#profile .profile-info .panel p,
+#profile .change-password .panel p{
   margin: 0;
   width: 100%;
 }
 
+#profile .change-password .panel .panel-content input {
+  min-width: 300px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  text-align: right;
+  height: 24px;
+  padding: 0;
+}
+
+#profile .change-password .panel .panel-content input.form-control:focus {
+  box-shadow: none;
+}
+
+#profile .change-password .panel .panel-content .view-password:hover {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+}
+
+
+/* Address List */
+
 #profile .address-list .name {
-  font-family: "Noto Sans", "AdihausDIN", "Helvetica", Arial, sans-serif !important;
-  font-size: 28px;
+  font-size: 24px;
   text-transform: uppercase;
 }
 
-#profile .address-list .mobile,
 #profile .address-list .address {
   font-size: 16px;
   font-style: normal;
@@ -46,4 +70,60 @@
 #profile .address-list .badge {
   padding: 8px 12px;
   font-size: 14px;
+  font-weight: 600;
+}
+
+
+/*
+ * ADDRESS -------------------------------------------------------------------------------------------------------------
+ */
+
+#address-list {
+  margin-bottom: 20px;
+}
+
+#address-list .panel {
+  padding: 6px 20px;
+  border-radius: 12px;
+  background-color: var(--secondary-bg-color);
+}
+
+#address-list .panel .panel-content {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line-border-color);
+  align-items: center;
+}
+
+#address-list .panel .panel-content:last-child {
+  border-bottom: none;
+  padding-bottom: 14px;
+}
+
+#address-list .panel .panel-content .name {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+#address-list .panel .panel-content .mobile {
+  font-size: 18px;
+}
+
+#address-list .panel .panel-content .address {
+  font-size: 16px;
+  font-style: normal;
+}
+
+#address-list .panel .panel-content span.badge {
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-bottom: 4px;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+#address-list .panel .panel-content .btn-address-default {
+  border-radius: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: var(--btn-circle-background-color);
 }

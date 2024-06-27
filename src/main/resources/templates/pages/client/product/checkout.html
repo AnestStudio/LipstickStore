@@ -132,7 +132,7 @@
           <div class="modal-body">
             <div class="address" th:each="address, i : ${user.userAddressList}">
               <div class="form-check d-flex align-items-center">
-                <input class="form-check-input me-2" type="radio" th:name="*{'radio' + i.count}" th:id="*{'radio' + i.count}">
+                <input class="form-check-input me-2" type="radio" name="address" th:id="*{'radio' + i.count}">
                 <div class="address-info">
                   <label class="form-check-label fw-medium" th:for="*{'radio' + i.count}">
                     <i class="fas fa-user fa-fw me-2"></i><span th:text="*{address.receiverName + ' - ' + address.receiverMobile}"></span>
@@ -143,12 +143,12 @@
                   </label>
                 </div>
               </div>
-              <hr th:if="*{i.index != (user.userAddressList.size() - 1)}">
+              <hr style="margin: 16px 0;" th:if="*{i.index != (user.userAddressList.size() - 1)}">
             </div>
           </div>
           <div class="modal-footer d-flex justify-content-between">
             <div>
-              <button type="button" class="btn btn-success"><i class="fas fa-plus me-2"></i>Thêm địa chỉ</button>
+              <button type="button" class="btn btn-success"><i class="bi bi-plus-lg me-2"></i>Thêm địa chỉ</button>
             </div>
             <div>
               <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Đóng</button>

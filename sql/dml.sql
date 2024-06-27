@@ -22,6 +22,7 @@ INSERT INTO user_role (user_id, role_id) VALUES (2, 3);
 
 INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_detail, user_address_wards, user_address_districts, user_address_provinces, default_address) VALUES (2, N'Trần Hoàng Minh', N'0977657876', N'Fville 3, Fpt Software, Khu Công Nghệ Cao Hoà Lạc', N'Xã Tân Xã', N'Huyện Thạch Thất', N'Hà Nội', 1);
 INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_detail, user_address_wards, user_address_districts, user_address_provinces, default_address) VALUES (2, N'Lê Ngọc Hoài Anh', N'0934567656', N'Số 36, Đường Ngọc Hồi', N'Xã Ngọc Mỹ', N'Huyện Ân Thi', N'Tỉnh Hưng Yên', 0);
+INSERT INTO user_address (user_id, receiver_name, receiver_mobile, user_address_detail, user_address_wards, user_address_districts, user_address_provinces, default_address) VALUES (2, N'Trần Hoàng Minh', N'0977657876', N'Big C Thăng Long, Cổng Trần Duy Hưng, Số 222, Trần Duy Hưng', N'Phường Trung Hòa', N'Quận Cầu Giấy', N'Hà Nội', 0);
 
 
 

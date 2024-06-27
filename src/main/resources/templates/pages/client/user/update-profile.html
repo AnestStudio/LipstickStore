@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+  <title>Chỉnh sửa thông tin</title>
+  <link rel="stylesheet" th:href="@{/css/pages/client/profile.css}"/>
+</head>
+<body>
+  <th:block layout:fragment="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-between">
+          <div th:replace="~{component/client/sidebar-menu-user :: sidebar-menu-user}"></div>
+
+          <div class="content content-my">
+            <section id="profile">
+              <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 profile-info">
+                  <div class="panel">
+                    <div class="d-flex panel-content">
+                      <p><i class="fas fa-user fa-fw me-2"></i>Tên tài khoản</p>
+                      <p class="fw-medium text-end text-uppercase"><span th:text="${user.username}"></span></p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="far fa-address-card fa-fw me-2"></i>Họ và tên</p>
+                      <p class="fw-medium text-end"><span th:text="${user.fullName}"></span></p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="fas fa-venus-mars fa-fw me-2"></i>Giới tính</p>
+                      <p class="fw-medium text-end"><span th:text="${user.userDetail.gender == 1 ? 'Nam' : 'Nữ'}"></span></p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="far fa-calendar-alt fa-fw me-2"></i>Ngày sinh</p>
+                      <p class="fw-medium text-end"><span th:text="${user.userDetail.dob}"></span></p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="fas fa-phone-alt fa-fw me-2" style="font-size: 15px"></i>Số điện thoại</p>
+                      <p class="fw-medium text-end"><span th:text="${user.userDetail.mobile}"></span></p>
+                    </div>
+                    <div class="d-flex panel-content">
+                      <p><i class="far fa-envelope fa-fw me-2"></i>Email</p>
+                      <p class="fw-medium text-end"><span th:text="${user.userDetail.email}"></span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 change-password">
+                  <h3 class="title-sm">Thay đổi mật khẩu</h3>
+                  <div class="panel">
+                    <div class="d-flex justify-content-between panel-content">
+                      <p><i class="fas fa-ellipsis-h fa-fw me-2"></i>Mật khẩu hiện tại</p>
+                      <div class="text-end d-flex align-items-center">
+                        <input type="password" id="current-password" class="form-control" placeholder="Nhập mật khẩu hiện tại">
+                        <a class="text-secondary-emphasis view-password"
+                           href="javascript:void(0)"
+                           th:onclick="'javascript:togglePasswordVisibility(\'current-password\')'">
+                          <i class="far fa-eye ms-3"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between panel-content">
+                      <p><i class="fas fa-ellipsis-h fa-fw me-2"></i>Mật khẩu mới</p>
+                      <div class="text-end d-flex align-items-center">
+                        <input type="password" id="new-password" class="form-control" placeholder="Nhập mật khẩu mới">
+                        <a class="text-secondary-emphasis view-password"
+                           href="javascript:void(0)"
+                           th:onclick="'javascript:togglePasswordVisibility(\'new-password\')'">
+                          <i class="far fa-eye ms-3"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between panel-content">
+                      <p><i class="fas fa-ellipsis-h fa-fw me-2"></i>Xác nhận mật khẩu mới</p>
+                      <div class="text-end d-flex align-items-center">
+                        <input type="password" id="confirm-new-password" class="form-control" placeholder="Nhập lại mật khẩu mới">
+                        <a class="text-secondary-emphasis view-password"
+                           href="javascript:void(0)"
+                           th:onclick="'javascript:togglePasswordVisibility(\'confirm-new-password\')'">
+                          <i class="far fa-eye ms-3"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+  <th:block layout:fragment="js">
+    <script>
+      function togglePasswordVisibility(id) {
+        const element = document.getElementById(id);
+        if (element.type === "password") {
+          element.type = "text";
+        } else {
+          element.type = "password";
+        }
+      }
+    </script>
+  </th:block>
+</body>
+</html>

@@ -1,12 +1,9 @@
 package org.anest.mystore.controller.client;
 
-import org.anest.mystore.constant.IConstants;
 import org.anest.mystore.entity.Brand;
 import org.anest.mystore.entity.Category;
 import org.anest.mystore.entity.Color;
 import org.anest.mystore.entity.Product;
-import org.anest.mystore.exception.BrandNotFoundException;
-import org.anest.mystore.exception.CategoryNotFoundException;
 import org.anest.mystore.exception.ProductNotFoundException;
 import org.anest.mystore.service.BrandService;
 import org.anest.mystore.service.CategoryService;
@@ -23,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.anest.mystore.constant.IConstants.*;

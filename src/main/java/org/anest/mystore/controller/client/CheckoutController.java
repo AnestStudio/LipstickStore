@@ -36,8 +36,7 @@ public class CheckoutController {
     }
 
     @GetMapping("")
-    public String checkout(Authentication auth, Model model) {
-        AuthUser authUser = (AuthUser) auth.getPrincipal();
+    public String checkout(@AuthenticationPrincipal AuthUser authUser, Model model) {
         User user = userService.findByUsername(authUser.getUsername());
         UserAddress defaultAddress = userAddressService.getUserDefaultAddress(user.getUserAddressList());
 
@@ -48,7 +47,7 @@ public class CheckoutController {
 
     @GetMapping("/process")
     public String orderProcess(
-            @RequestParam String orderNote,
+            @RequestParam(required = false, defaultValue = "") String orderNote,
             @RequestParam Long userShippingAddressId,
             @AuthenticationPrincipal AuthUser authUser,
             HttpSession session
@@ -63,7 +62,7 @@ public class CheckoutController {
         order.setOrderTotalAmount(Double.parseDouble(session.getAttribute(TOTAL_AMOUNT_OF_CART).toString()));
         order.setOrderNote(orderNote);
 
-        UserAddress userAddress = userAddressService.getUserShippingAddress(user.getUserAddressList(), userShippingAddressId);
+        UserAddress userAddress = userAddressService.getAddressById(user.getUserAddressList(), userShippingAddressId);
         order.setReceiverName(userAddress.getReceiverName());
         order.setReceiverMobile(userAddress.getReceiverMobile());
         order.setShippingAddress(userAddress.getFullAddress());
