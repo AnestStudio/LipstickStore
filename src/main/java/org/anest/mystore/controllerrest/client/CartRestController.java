@@ -1,7 +1,6 @@
 package org.anest.mystore.controllerrest.client;
 
 import jakarta.servlet.http.HttpSession;
-import org.anest.mystore.constant.IConstants;
 import org.anest.mystore.entity.Item;
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.service.ItemService;
@@ -75,7 +74,7 @@ public class CartRestController {
                     cart.add(item);
                 }
             }
-            session.setAttribute(IConstants.CART, cart);
+            session.setAttribute(CART, cart);
 
             int totalProduct = itemService.countTotalProductQuantity(cart);
             double totalAmount = itemService.countTotalProductAmount(cart);
