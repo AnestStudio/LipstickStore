@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-admin.html}">
+<head>
+  <title>Quản lý sản phẩm</title>
+</head>
+<body>
+  <th:block layout:fragment="content">
+    <section id="products">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="panel">
+            <div class="d-flex justify-content-between panel-content" style="padding-bottom: 20px; padding-top: 14px;">
+              <div style="font-size: 20px; font-weight: 400;">
+                Danh sách sản phẩm
+              </div>
+              <div class="text-end">
+                <button class="btn btn-danger" type="button"><i class="bi bi-plus-lg me-2"></i>Thêm sản phẩm mới (coming soon)</button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table mb-2">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th style="min-width: 360px">Hình ảnh - Tên sản phẩm</th>
+                  <th class="text-center">Giá</th>
+                  <th class="text-end" style="width: 90px">Số lượng</th>
+                  <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product, i : ${products}">
+                  <td>
+                    <span th:text="*{i.count}"></span>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-between align-items-center" style="max-width: 500px;">
+                      <div class="icon-circle">
+                        <img class="media-object" th:src="@{'/images/products/' + *{product.productImage}}" alt="">
+                      </div>
+                      <div class="content-body">
+                        <a href="javascript:void(0)">
+                          <span th:text="*{product.productName}"></span>
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-end">
+                    <span th:text="*{#numbers.formatInteger(product.productPrice, 3, 'POINT')}"></span><sup>đ</sup>
+                  </td>
+                  <td class="text-end pe-4">
+                    <span th:text="*{product.productQuantity}"></span>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center justify-content-end">
+                      <a href="javascript:void(0)" class="btn-circle me-0" style="margin-left: 12px;">
+                        <i class="fas fa-pencil-alt text-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cập nhật"></i>
+                      </a>
+                      <a href="javascript:void(0)" class="btn-circle me-0" style="margin-left: 12px;" th:onclick="'javascript:confirmDeleteProduct(' + *{product.id} + ')'">
+                        <i class="far fa-trash-alt text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xoá"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </th:block>
+
+  <th:block layout:fragment="modal">
+    <div th:replace="~{modal/common/confirm-modal :: confirm-modal}"></div>
+  </th:block>
+</body>
+</html>

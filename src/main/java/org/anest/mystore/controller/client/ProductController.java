@@ -49,7 +49,7 @@ public class ProductController {
     public String filterProducts(
             Model model,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "2") int size,
+            @RequestParam(defaultValue = "15") int size,
             @RequestParam(required = false) String categoryIds,
             @RequestParam(required = false) String brandIds,
             @RequestParam(required = false) String color,

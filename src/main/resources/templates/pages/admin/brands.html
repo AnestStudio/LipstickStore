@@ -7,58 +7,68 @@
   <title>Quản lý thương hiệu</title>
 </head>
 <body>
-<th:block layout:fragment="content">
-  <section id="brands">
-    <div class="row">
-      <div class="col-md-12 col-lg-12">
-        <div class="panel">
-          <div class="d-flex justify-content-between panel-content mb-3" style="padding-bottom: 20px; padding-top: 14px;">
-            <div style="font-size: 20px; font-weight: 400;">
-              Danh sách thương hiệu
+  <th:block layout:fragment="content">
+    <section id="brands">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="panel">
+            <div class="d-flex justify-content-between panel-content" style="padding-bottom: 20px; padding-top: 14px;">
+              <div style="font-size: 20px; font-weight: 400;">
+                Danh sách thương hiệu
+              </div>
+              <div class="text-end">
+                <button class="btn btn-danger" type="button"><i class="bi bi-plus-lg me-2"></i>Thêm thương hiệu mới (coming soon)</button>
+              </div>
             </div>
-            <div class="text-end">
-              <button class="btn btn-danger" type="button"><i class="bi bi-plus-lg me-2"></i>Thêm thương hiệu mới</button>
+            <div class="table-responsive">
+              <table class="table mb-2">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col" style="min-width: 120px;">Thương hiệu</th>
+                  <th scope="col" class="text-center">Mô tả</th>
+                  <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="brand, i : ${brands}">
+                  <td>
+                    <span th:text="*{i.count}"></span>
+                  </td>
+                  <td>
+                    <span class="name fw-medium" th:text="*{brand.brandName}"></span>
+                  </td>
+                  <td>
+                    <span th:class="*{'collapse-' + brand.id + ' description'}" th:utext="*{brand.brandDescription}"></span>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center justify-content-end">
+                      <a href="javascript:void(0)"
+                         class="btn-circle me-0" style="margin-left: 12px;"
+                         th:onclick="'javascript:collapseDescription(\'collapse-' + *{brand.id} + '\',' + this +')'"
+                      >
+                        <i class="fas fa-caret-down text-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Mở rộng"></i>
+                      </a>
+                      <a href="javascript:void(0)" class="btn-circle me-0" style="margin-left: 12px;">
+                        <i class="fas fa-pencil-alt text-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cập nhật"></i>
+                      </a>
+                      <a href="javascript:void(0)" class="btn-circle me-0" style="margin-left: 12px;" th:onclick="'javascript:confirmDeleteBrand(' + *{brand.id} + ')'">
+                        <i class="far fa-trash-alt text-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xoá"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
             </div>
-          </div>
-          <div class="table-responsive">
-            <table class="table mb-2">
-              <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Handle</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@http://localhost/admin/brands</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@http://localhost/admin/brands</td>
-              </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</th:block>
+    </section>
+  </th:block>
+
+  <th:block layout:fragment="modal">
+    <div th:replace="~{modal/common/confirm-modal :: confirm-modal}"></div>
+  </th:block>
 </body>
 </html>

@@ -10,7 +10,7 @@
       </a>
       <div class="collapse" id="orders-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal small">
-          <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Tất cả</a></li>
+          <li><a th:href="@{/admin/orders}" class="link-body-emphasis d-inline-flex text-decoration-none">Tất cả</a></li>
           <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Chờ xác nhận</a></li>
           <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Đang giao</a></li>
           <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none">Đã giao</a></li>
@@ -39,7 +39,7 @@
       </a>
     </li>
     <li class="mb-1">
-      <a th:href="@{/}">
+      <a th:href="@{/admin/categories}">
         <i class="fas fa-list-ul fa-fw me-2"></i>
         <div>
           <div>Quản lý thể loại</div>

@@ -595,6 +595,7 @@ a.page-link:hover {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  transition: 0.2s;
 }
 
 .btn-circle:hover {

@@ -47,7 +47,7 @@ go
 
 create table product (
     product_id                bigint identity primary key,
-    product_name              nvarchar(255) not null,
+    product_name              nvarchar(255) unique not null,
     product_image             varchar(255),
     product_price             decimal,
     product_quantity          int,
@@ -62,7 +62,7 @@ go
 
 create table product_image (
     product_image_id bigint identity primary key,
-    product_image    varchar(255),
+    product_image    varchar(255) unique not null,
     product_id       bigint references product,
 )
 go
