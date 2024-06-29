@@ -25,6 +25,11 @@ public class MainController {
         return "login";
     }
 
+    @GetMapping("")
+    public String index() {
+        return "redirect:/products";
+    }
+
     @GetMapping("/auth")
     @Transactional(propagation = Propagation.REQUIRED)
     public String auth(Model model, Principal principal, Authentication authentication) {

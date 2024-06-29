@@ -17,4 +17,9 @@ public class AdminController {
     public String goToOrders() {
         return "pages/admin/orders";
     }
+
+    @GetMapping("/brands")
+    public String goToBrands() {
+        return "pages/admin/brands";
+    }
 }

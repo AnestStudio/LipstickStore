@@ -398,7 +398,7 @@ nav.navbar #search-product {
   border-color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
-.page-link:hover {
+a.page-link:hover {
   color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity, 1));
   background-color: var(--bs-pagination-hover-bg);
   border-color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity, 1));
@@ -524,9 +524,8 @@ nav.navbar #search-product {
 
 .title-sm {
   padding: 0 20px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
-  margin-top: 2px;
   margin-bottom: 16px;
 }
 

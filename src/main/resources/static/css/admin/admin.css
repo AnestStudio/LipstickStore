@@ -88,3 +88,15 @@
 .content-my {
   margin-top: 80px;
 }
+
+#brands .panel {
+  padding: 6px 20px 16px;
+  border-radius: 12px;
+  background-color: var(--secondary-bg-color);
+}
+
+#brands .panel .panel-content {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-border-color);
+  align-items: center;
+}

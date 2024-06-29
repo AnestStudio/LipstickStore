@@ -41,9 +41,7 @@ function addToCart(productId) {
       showToast("toast-success");
       showListItemInCart(data.cart);
     })
-    .catch(error => {
-      handlerCommonError(error);
-    });
+    .catch(error => handlerCommonError(error));
 }
 
 function showListItemInCart(items) {

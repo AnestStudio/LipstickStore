@@ -12,9 +12,16 @@
             <i class="bi bi-chevron-left"></i>
           </a>
         </li>
-        <li th:each="i : ${#numbers.sequence(0, resultPage.totalPages - 1)}" th:class="${resultPage.number == i} ? 'page-item active' : 'page-item'">
-          <a href="javascript:void(0)" th:onclick="'javascript:goToPage(' + ${i} + ',' + ${resultPage.size} + ')'" th:text="${i + 1}" class="page-link"></a>
+
+<!--        <li th:each="i : ${#numbers.sequence(0, resultPage.totalPages - 1)}" th:class="${resultPage.number == i} ? 'page-item active' : 'page-item'">-->
+<!--          <a href="javascript:void(0)" th:onclick="'javascript:goToPage(' + ${i} + ',' + ${resultPage.size} + ')'" th:text="${i + 1}" class="page-link"></a>-->
+<!--        </li>-->
+
+        <li th:each="page, stat : ${displayPages}" th:class="${resultPage.number == page} ? 'page-item active' : 'page-item'">
+          <span th:if="${page == 999999}" class="page-link justify-content-between" style="letter-spacing: 2px">...</span>
+          <a href="javascript:void(0)" th:if="${page != 999999}" th:onclick="'javascript:goToPage(' + ${page} + ',' + ${resultPage.size} + ')'" th:text="${page + 1}" class="page-link"></a>
         </li>
+
         <li th:class="${!resultPage.hasNext()} ? 'page-item disabled' : 'page-item'">
           <a href="javascript:void(0)" th:onclick="'javascript:goToPage(' + ${resultPage.number + 1} + ',' + ${resultPage.size} + ')'" class="page-link">
             <i class="bi bi-chevron-right"></i>

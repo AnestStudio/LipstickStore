@@ -35,7 +35,7 @@ public class CartController {
         return "pages/client/product/cart";
     }
 
-    @GetMapping("/item/delete/{itemId}")
+    @GetMapping("/delete/{itemId}")
     public String deleteItemInCart(@PathVariable Long itemId, HttpSession session) {
         List<Item> items = (List<Item>) session.getAttribute(CART);
         items.removeIf(item -> item.getId().equals(itemId));

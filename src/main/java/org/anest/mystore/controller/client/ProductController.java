@@ -45,11 +45,6 @@ public class ProductController {
         this.colorService = colorService;
     }
 
-    @GetMapping("")
-    public String index(Model model) {
-        return "redirect:/products";
-    }
-
     @GetMapping("/products")
     public String filterProducts(
             Model model,
@@ -91,6 +86,13 @@ public class ProductController {
                     page,
                     size
             );
+        }
+
+        int totalPages = productPage.getTotalPages();
+        if (totalPages > LIMIT_PAGE_DISPLAY) {
+            model.addAttribute("displayPages", getDisplayPages(page, totalPages));
+        } else {
+            model.addAttribute("displayPages", getSimpleDisplayPages(totalPages));
         }
 
         model.addAttribute("resultPage", productPage);
@@ -152,5 +154,40 @@ public class ProductController {
         List<Brand> brands = brandService.findAll();
         model.addAttribute("categories", categories);
         model.addAttribute("brands", brands);
+    }
+
+    private List<Integer> getSimpleDisplayPages(int totalPages) {
+        List<Integer> displayPages = new ArrayList<>();
+        for (int i = 0; i < totalPages; i++) {
+            displayPages.add(i);
+        }
+        return displayPages;
+    }
+
+    private List<Integer> getDisplayPages(int currentPage, int totalPages) {
+        List<Integer> displayPages = new ArrayList<>();
+
+        if (currentPage <= 3) {
+            for (int i = 0; i < 5; i++) {
+                displayPages.add(i);
+            }
+            displayPages.add(LIMIT_PAGE);
+            displayPages.add(totalPages - 1);
+        } else if (currentPage >= totalPages - 4) {
+            displayPages.add(0);
+            displayPages.add(LIMIT_PAGE);
+            for (int i = totalPages - 5; i < totalPages; i++) {
+                displayPages.add(i);
+            }
+        } else {
+            displayPages.add(0);
+            displayPages.add(LIMIT_PAGE);
+            for (int i = currentPage - 1; i <= currentPage + 1; i++) {
+                displayPages.add(i);
+            }
+            displayPages.add(LIMIT_PAGE);
+            displayPages.add(totalPages - 1);
+        }
+        return displayPages;
     }
 }

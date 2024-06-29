@@ -40,7 +40,8 @@
 
 .table>thead>tr>th:hover {
   cursor: pointer;
-  color: #ffc107 !important;
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
 }
 
 .table>thead>tr>th:focus {

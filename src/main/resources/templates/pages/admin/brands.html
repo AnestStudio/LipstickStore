@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-admin.html}">
+<head>
+  <title>Quản lý thương hiệu</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <section id="brands">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <div class="panel">
+          <div class="d-flex justify-content-between panel-content mb-3" style="padding-bottom: 20px; padding-top: 14px;">
+            <div style="font-size: 20px; font-weight: 400;">
+              Danh sách thương hiệu
+            </div>
+            <div class="text-end">
+              <button class="btn btn-danger" type="button"><i class="bi bi-plus-lg me-2"></i>Thêm thương hiệu mới</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table mb-2">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+                <th scope="col">Handle</th>
+                <th scope="col">Handle</th>
+                <th scope="col">Handle</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@http://localhost/admin/brands</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@http://localhost/admin/brands</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</th:block>
+</body>
+</html>

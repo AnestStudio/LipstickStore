@@ -16,12 +16,11 @@ public interface IConstants {
     /*
      * PRODUCT ---------------------------------------------------------------------------------------------------------
      */
-    String TITLE_BRAND_TEXT = "Thương hiệu ";
-    String TITLE_RESULT_SEARCH_TEXT = "Kết quả tìm kiếm: ";
     String TITLE_PRODUCT_LIST_TEXT = "Danh sách sản phẩm";
-
     String PRODUCT_LIST_DESCRIPTION = "Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.";
-    String SORT_PRODUCT_DESCRIPTION = "Sắp xếp danh sách sản phẩm theo mức giá ";
+
+    Integer LIMIT_PAGE_DISPLAY = 8;
+    Integer LIMIT_PAGE = 999999;
 
     /*
      * CART ------------------------------------------------------------------------------------------------------------
