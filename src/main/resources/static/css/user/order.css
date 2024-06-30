@@ -7,7 +7,7 @@
 }
 
 #orders .order.panel {
-  padding: 14px 20px 18px;
+  padding: 16px 20px 20px;
   border-radius: 12px;
   background-color: var(--secondary-bg-color);
 }
@@ -43,7 +43,7 @@
 }
 
 #orders .order .order-footer {
-  padding-top: 16px;
+  padding-top: 18px;
 }
 
 #orders .order .order-footer .badge {

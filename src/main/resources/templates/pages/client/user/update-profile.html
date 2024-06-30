@@ -23,7 +23,7 @@
                       <i class="fas fa-exclamation-triangle fa-fw me-2"></i>Vui lòng cập nhật đầy đủ thông tin cá nhân trước khi mua hàng.
                     </div>
                   </th:block>
-                  <div class="panel">
+                  <form class="panel">
                     <div class="d-flex panel-content">
                       <p><i class="fas fa-user fa-fw me-2"></i>Tên tài khoản</p>
                       <p class="fw-medium text-end text-uppercase"><span th:text="${user.username}"></span></p>
@@ -48,13 +48,18 @@
                       <p><i class="far fa-envelope fa-fw me-2"></i>Email</p>
                       <p class="fw-medium text-end"><span th:text="${user.email}"></span></p>
                     </div>
-                  </div>
+                    <div class="d-flex panel-content">
+                      <div class="w-100 text-end" style="margin-bottom: 2px; margin-top: 6px;">
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-check me-2"></i>Cập nhật</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 col-lg-12 col-xl-12 change-password">
                   <h3 class="title-sm">Thay đổi mật khẩu</h3>
-                  <div class="panel">
+                  <form class="panel">
                     <div class="d-flex justify-content-between panel-content">
                       <p><i class="fas fa-ellipsis-h fa-fw me-2"></i>Mật khẩu hiện tại</p>
                       <div class="text-end d-flex align-items-center">
@@ -88,7 +93,12 @@
                         </a>
                       </div>
                     </div>
-                  </div>
+                    <div class="d-flex panel-content">
+                      <div class="w-100 text-end" style="margin-bottom: 2px; margin-top: 6px;">
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-check me-2"></i>Cập nhật</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </section>
