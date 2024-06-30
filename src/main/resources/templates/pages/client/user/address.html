@@ -21,7 +21,8 @@
                   <div class="panel">
                     <div class="d-flex justify-content-between panel-content" style="padding-bottom: 20px; padding-top: 14px;">
                       <div style="font-size: 20px; font-weight: 400;">
-                        Danh sách địa chỉ
+                        <span th:unless="${user.userAddressList.isEmpty()}">Danh sách địa chỉ</span>
+                        <span th:if="${user.userAddressList.isEmpty()}">Chưa có địa chỉ nào được thêm</span>
                       </div>
                       <div class="text-end">
                         <button class="btn btn-danger" type="button"><i class="bi bi-plus-lg me-2"></i>Thêm địa chỉ mới</button>

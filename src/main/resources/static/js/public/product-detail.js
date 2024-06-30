@@ -46,7 +46,7 @@ function addToCart(productId) {
 
 function showListItemInCart(items) {
   let content= `<li>
-                          <h6 class="dropdown-header">Sản phẩm mới thêm</h6>
+                          <h6 class="dropdown-header pt-1">Sản phẩm mới thêm</h6>
                         </li>
                         <li class="px-3 item">`;
   items.forEach(item => {
@@ -55,7 +55,7 @@ function showListItemInCart(items) {
                     <img class="rounded-2" src="/images/products/${item.image}" width="50" alt="" />
                     <div>
                       <p class="ms-2 my-0 text-secondary-emphasis" data-bs-toggle="tooltip" title="${item.name}">
-                        <span>${item.name.substring(0, 35) + '...'}</span>
+                        <span class="item-name">${item.name}</span>
                       </p>
                       <p class="ms-2 my-0 text-secondary-emphasis" style="font-size: 14px;">
                         Số lượng: <span>${item.quantity}</span>

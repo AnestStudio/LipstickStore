@@ -18,6 +18,11 @@
             <section id="profile">
               <div class="row">
                 <div class="col-md-12 col-lg-12 col-xl-12 profile-info">
+                  <th:block th:if="${user.userAddressList.isEmpty() || user.userDetail.mobile == null}">
+                    <div class="alert alert-danger" role="alert" style="border-radius: 12px; margin-bottom: 20px; padding: 12px 20px;">
+                      <i class="fas fa-exclamation-triangle fa-fw me-2"></i>Vui lòng cập nhật đầy đủ thông tin cá nhân trước khi mua hàng.
+                    </div>
+                  </th:block>
                   <div class="panel">
                     <div class="d-flex panel-content">
                       <p><i class="fas fa-user fa-fw me-2"></i>Tên tài khoản</p>
@@ -33,15 +38,15 @@
                     </div>
                     <div class="d-flex panel-content">
                       <p><i class="far fa-calendar-alt fa-fw me-2"></i>Ngày sinh</p>
-                      <p class="fw-medium text-end"><span th:text="${user.userDetail.dob}"></span></p>
+                      <p class="fw-medium text-end"><span th:text="${user.userDetail.dob != null ? user.userDetail.dob : '—'}"></span></p>
                     </div>
                     <div class="d-flex panel-content">
                       <p><i class="fas fa-phone-alt fa-fw me-2" style="font-size: 15px"></i>Số điện thoại</p>
-                      <p class="fw-medium text-end"><span th:text="${user.userDetail.mobile}"></span></p>
+                      <p class="fw-medium text-end"><span th:text="${user.userDetail.mobile != null ? user.userDetail.mobile : '—'}"></span></p>
                     </div>
                     <div class="d-flex panel-content">
                       <p><i class="far fa-envelope fa-fw me-2"></i>Email</p>
-                      <p class="fw-medium text-end"><span th:text="${user.userDetail.email}"></span></p>
+                      <p class="fw-medium text-end"><span th:text="${user.email}"></span></p>
                     </div>
                   </div>
                 </div>

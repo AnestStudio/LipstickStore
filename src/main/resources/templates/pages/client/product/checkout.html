@@ -30,8 +30,8 @@
         <div class="row">
           <div class="col-lg-12">
             <th:block th:unless="${defaultAddress != null && user.userDetail.mobile != null}">
-              <div class="alert alert-danger" role="alert" style="border-radius: 12px; margin-bottom: 20px; padding: 12px 20px;">
-                Vui lòng cập nhật đầy đủ thông tin trước khi mua hàng.
+              <div class="alert alert-danger mb-20px" role="alert" style="border-radius: 12px; padding: 12px 20px;">
+                <i class="fas fa-exclamation-triangle me-2"></i>Vui lòng cập nhật đầy đủ thông tin cá nhân trước khi mua hàng.
               </div>
             </th:block>
             <div class="panel">
@@ -106,7 +106,7 @@
         <!-- Total money -->
         <div class="row">
           <div class="col-lg-12">
-            <div class="d-flex justify-content-between align-items-center mt-4">
+            <div class="d-flex justify-content-between align-items-center mt-20px">
               <div></div>
               <div class="d-flex">
                 <div class="d-flex align-items-center number me-4">
@@ -116,12 +116,12 @@
                   Tổng tiền:&nbsp;&nbsp;<span class="text-danger fw-medium" th:text="${#numbers.formatInteger(session.totalAmountOfCart, 3, 'POINT')}"></span><sup class="text-danger">đ</sup>
                 </div>
                 <th:block th:if="${defaultAddress != null && user.userDetail.mobile != null}">
-                  <a href="javascript:void(0)" class="btn btn-md btn-success py-2 px-3" th:onclick="'javascript:orderProcess()'">
+                  <a href="javascript:void(0)" class="btn btn-md btn-success py-2 px-3" th:onclick="'javascript:orderProcess(' + ${defaultAddress.id} + ')'">
                     <i class="fas fa-share me-2"></i>ĐẶT HÀNG
                   </a>
                 </th:block>
                 <th:block th:unless="${defaultAddress != null && user.userDetail.mobile != null}">
-                  <a th:href="@{/user/account/profile}" class="btn btn-md btn-success py-2 px-3">
+                  <a th:href="@{/user/account/update}" class="btn btn-md btn-success py-2 px-3">
                     <i class="fas fa-pencil-alt me-2"></i>CẬP NHẬT THÔNG TIN
                   </a>
                 </th:block>
