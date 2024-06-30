@@ -3,29 +3,93 @@ body {
   height: 100%;
 }
 
-.form-signin {
-  max-width: 350px;
-  padding: 1rem;
+.alert {
+  border-radius: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
-.form-signin .form-floating:focus-within {
+.form-login,
+.form-register,
+.form-active {
+  max-width: 350px;
+  padding: 16px 16px 100px;
+}
+
+.form-login h1,
+.form-register h1,
+.form-active h1 {
+  font-size: 22px;
+}
+
+.form-login a,
+.form-register a,
+.form-active a {
+  color: var(--bs-body-color);
+}
+
+.form-login a:hover,
+.form-register a:hover,
+.form-active a:hover {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+}
+
+.form-login .form-floating:focus-within,
+.form-register .form-floating:focus-within,
+.form-active .form-floating:focus-within {
   z-index: 2;
 }
 
-.form-signin input[type="text"] {
+.form-login #floating-username {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-login #floating-password {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
+.form-register #floating-email {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-register #floating-fullName,
+.form-register #floating-username,
+.form-register #floating-password {
+  margin-bottom: -1px;
+  border-radius: 0;
+}
+
+.form-register #floating-confirm-password {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-active #floating-active-code {
+  margin-bottom: 20px;
+}
+
+.form-check-input:checked {
+  --bs-text-opacity: 1;
+  background-color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity));
+  border-color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity));
+}
+
+.form-check-input:focus {
+  border-color: rgba(var(--bs-danger-rgb), 1);
+  box-shadow: 0 0 0 .25rem rgb(209 0 0 / 25%);
+}
+
+
 .form-control {
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .form-control:focus {
@@ -33,13 +97,15 @@ body {
   box-shadow: 0 0 0 .25rem rgb(209 0 0 / 25%);
 }
 
+
 .form-floating>label,
 .form-floating>.form-control, .form-floating>.form-control-plaintext {
   padding: 16px;
 }
 
+
 .btn {
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .btn-bd-primary {
@@ -74,8 +140,8 @@ body {
  * TOAST ---------------------------------------------------------------------------------------------------------------
  */
 
-#toast-info,
-#toast-error {
+.toast-info,
+.toast-error {
   visibility: hidden;
   min-width: 220px;
   margin-left: -110px;
@@ -90,22 +156,22 @@ body {
   font-size: 16px;
 }
 
-#toast-error {
+.toast-error {
   min-width: 320px;
   margin-left: -160px;
 }
 
-#toast-info.show,
-#toast-error.show {
+.toast-info.show,
+.toast-error.show {
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-#toast-error.danger {
+.toast-error.danger {
   background-color: #dc3545;
 }
 
-#toast-info.success {
+.toast-info.success {
   background-color: #198754;
 }

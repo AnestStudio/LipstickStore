@@ -29,14 +29,19 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
+            <th:block th:unless="${defaultAddress != null && user.userDetail.mobile != null}">
+              <div class="alert alert-danger" role="alert" style="border-radius: 12px; margin-bottom: 20px; padding: 12px 20px;">
+                Vui lòng cập nhật đầy đủ thông tin trước khi mua hàng.
+              </div>
+            </th:block>
             <div class="panel">
               <div class="text-danger fw-medium"><i class="fas fa-map-marker-alt me-2"></i>Địa Chỉ Nhận Hàng</div>
               <div>
-                <h3 class="customer-name" th:text="${user.fullName + ' – ' + user.userDetail.mobile}"></h3>
+                <h3 class="customer-name" th:text="${user.fullName + (user.userDetail.mobile != null ? ' - ' + user.userDetail.mobile : '')}"></h3>
                 <p class="m-0">
-                  <span class="customer-shipping-address me-2" th:text="${defaultAddress.fullAddress}"></span>
-                  <sup class="badge bg-success-subtle border text-success-emphasis rounded-pill me-4">Mặc định</sup>
-                  <a href="javascript:void(0)" class="text-danger" data-bs-toggle="modal" data-bs-target="#addressListModal">
+                  <span class="customer-shipping-address me-2" th:text="${defaultAddress != null ? defaultAddress.fullAddress : 'Không có địa chỉ giao hàng.'}"></span>
+                  <sup th:if="${defaultAddress != null}" class="badge bg-success-subtle border text-success-emphasis rounded-pill me-4">Mặc định</sup>
+                  <a th:if="${defaultAddress != null}" href="javascript:void(0)" class="text-danger" data-bs-toggle="modal" data-bs-target="#addressListModal">
                     Thay đổi
                   </a>
                 </p>
@@ -110,9 +115,16 @@
                 <div class="d-flex align-items-center number me-4">
                   Tổng tiền:&nbsp;&nbsp;<span class="text-danger fw-medium" th:text="${#numbers.formatInteger(session.totalAmountOfCart, 3, 'POINT')}"></span><sup class="text-danger">đ</sup>
                 </div>
-                <a href="javascript:void(0)" class="btn btn-md btn-success py-2 px-3" th:onclick="'javascript:orderProcess()'">
-                  <i class="fas fa-share me-2"></i>ĐẶT HÀNG
-                </a>
+                <th:block th:if="${defaultAddress != null && user.userDetail.mobile != null}">
+                  <a href="javascript:void(0)" class="btn btn-md btn-success py-2 px-3" th:onclick="'javascript:orderProcess()'">
+                    <i class="fas fa-share me-2"></i>ĐẶT HÀNG
+                  </a>
+                </th:block>
+                <th:block th:unless="${defaultAddress != null && user.userDetail.mobile != null}">
+                  <a th:href="@{/user/account/profile}" class="btn btn-md btn-success py-2 px-3">
+                    <i class="fas fa-pencil-alt me-2"></i>CẬP NHẬT THÔNG TIN
+                  </a>
+                </th:block>
               </div>
             </div>
           </div>

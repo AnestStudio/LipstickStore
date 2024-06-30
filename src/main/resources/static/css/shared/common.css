@@ -77,6 +77,11 @@
   border-color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity));
 }
 
+.form-check-input:focus {
+  border-color: rgba(var(--bs-danger-rgb), 1);
+  box-shadow: 0 0 0 .25rem rgb(209 0 0 / 25%);
+}
+
 
 /**
  * HEADER --------------------------------------------------------------------------------------------------------------

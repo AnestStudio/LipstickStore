@@ -37,7 +37,7 @@ public class WebSecurityConfig {
                         .loginPage("/login")
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/")
+                        .successHandler(new CustomAuthenticationSuccessHandler())
                         .failureUrl("/login?error=true")
                 )
                 .rememberMe(rememberMe -> rememberMe

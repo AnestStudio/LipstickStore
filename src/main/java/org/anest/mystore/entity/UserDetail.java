@@ -21,11 +21,8 @@ public class UserDetail {
     @Column(name = "dob", length = 11)
     private String dob;
 
-    @Column(name = "mobile", length = 15, nullable = false, unique = true)
+    @Column(name = "mobile", length = 15, unique = true)
     private String mobile;
-
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")

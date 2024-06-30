@@ -75,6 +75,7 @@ go
 
 create table [user] (
     user_id    bigint identity primary key,
+    email      varchar(255) unique not null,
     username   varchar(100) unique not null,
     password   varchar(100) not null,
     full_name  nvarchar(100) not null,
@@ -102,8 +103,7 @@ create table user_detail (
     user_id        bigint references [user],
     gender         int,
     dob            varchar(11),
-    mobile         varchar(15) unique ,
-    email          varchar(255) unique
+    mobile         varchar(15) unique
 )
 go
 
