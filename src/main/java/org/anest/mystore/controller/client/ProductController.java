@@ -5,10 +5,7 @@ import org.anest.mystore.entity.Category;
 import org.anest.mystore.entity.Color;
 import org.anest.mystore.entity.Product;
 import org.anest.mystore.exception.ProductNotFoundException;
-import org.anest.mystore.service.BrandService;
-import org.anest.mystore.service.CategoryService;
-import org.anest.mystore.service.ColorService;
-import org.anest.mystore.service.ProductService;
+import org.anest.mystore.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -31,18 +28,21 @@ public class ProductController {
     private final BrandService brandService;
     private final CategoryService categoryService;
     private final ColorService colorService;
+    private final PaginationService paginationService;
 
     @Autowired
     public ProductController(
             ProductService productService,
             BrandService brandService,
             CategoryService categoryService,
-            ColorService colorService
+            ColorService colorService,
+            PaginationService paginationService
     ) {
         this.productService = productService;
         this.brandService = brandService;
         this.categoryService = categoryService;
         this.colorService = colorService;
+        this.paginationService = paginationService;
     }
 
     @GetMapping("/products")
@@ -89,12 +89,11 @@ public class ProductController {
         }
 
         int totalPages = productPage.getTotalPages();
-        if (totalPages > LIMIT_PAGE_DISPLAY) {
-            model.addAttribute("displayPages", getDisplayPages(page, totalPages));
-        } else {
-            model.addAttribute("displayPages", getSimpleDisplayPages(totalPages));
-        }
+        List<Integer> dataDisplayPages = (totalPages > LIMIT_PAGE_DISPLAY)
+                ? paginationService.getDisplayPages(page, totalPages)
+                : paginationService.getSimpleDisplayPages(totalPages);
 
+        model.addAttribute("displayPages", dataDisplayPages);
         model.addAttribute("resultPage", productPage);
         model.addAttribute("title", TITLE_PRODUCT_LIST_TEXT);
         model.addAttribute("description", PRODUCT_LIST_DESCRIPTION);
@@ -154,40 +153,5 @@ public class ProductController {
         List<Brand> brands = brandService.findAll();
         model.addAttribute("categories", categories);
         model.addAttribute("brands", brands);
-    }
-
-    private List<Integer> getSimpleDisplayPages(int totalPages) {
-        List<Integer> displayPages = new ArrayList<>();
-        for (int i = 0; i < totalPages; i++) {
-            displayPages.add(i);
-        }
-        return displayPages;
-    }
-
-    private List<Integer> getDisplayPages(int currentPage, int totalPages) {
-        List<Integer> displayPages = new ArrayList<>();
-
-        if (currentPage <= 3) {
-            for (int i = 0; i < 5; i++) {
-                displayPages.add(i);
-            }
-            displayPages.add(LIMIT_PAGE);
-            displayPages.add(totalPages - 1);
-        } else if (currentPage >= totalPages - 4) {
-            displayPages.add(0);
-            displayPages.add(LIMIT_PAGE);
-            for (int i = totalPages - 5; i < totalPages; i++) {
-                displayPages.add(i);
-            }
-        } else {
-            displayPages.add(0);
-            displayPages.add(LIMIT_PAGE);
-            for (int i = currentPage - 1; i <= currentPage + 1; i++) {
-                displayPages.add(i);
-            }
-            displayPages.add(LIMIT_PAGE);
-            displayPages.add(totalPages - 1);
-        }
-        return displayPages;
     }
 }

@@ -101,7 +101,7 @@ go
 create table user_detail (
     user_detail_id bigint identity primary key,
     user_id        bigint references [user],
-    gender         int,
+    gender         int default 3,
     dob            varchar(11),
     mobile         varchar(15) unique
 )

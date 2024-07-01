@@ -13,7 +13,6 @@
     }
   </style>
 </head>
-
 <body>
   <th:block layout:fragment="content">
     <section id="cover">
@@ -42,6 +41,19 @@
         </div>
       </div>
     </section>
+  </th:block>
+
+  <th:block layout:fragment="js">
+    <script>
+      const EXPIRATION_TIME = 5 * 60 * 1000;
+      fetch("/api/user/orders/status-count")
+        .then(response => response.json())
+        .then(data => {
+          const expirationTime = new Date().getTime() + EXPIRATION_TIME;
+          localStorage.setItem("ORDER_STATUS_COUNT", JSON.stringify({ data, expirationTime }));
+        })
+        .catch(error => handlerCommonError(error));
+    </script>
   </th:block>
 </body>
 </html>

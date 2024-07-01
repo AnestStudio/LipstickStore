@@ -5,39 +5,30 @@ body {
 
 .alert {
   border-radius: 10px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
 }
 
-.form-login,
-.form-register,
-.form-active {
+.form {
   max-width: 350px;
   padding: 16px 16px 100px;
 }
 
-.form-login h1,
-.form-register h1,
-.form-active h1 {
+.form h1 {
   font-size: 22px;
 }
 
-.form-login a,
-.form-register a,
-.form-active a {
+.form a {
   color: var(--bs-body-color);
 }
 
-.form-login a:hover,
-.form-register a:hover,
-.form-active a:hover {
+.form a:hover {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
 }
 
-.form-login .form-floating:focus-within,
-.form-register .form-floating:focus-within,
-.form-active .form-floating:focus-within {
+.form .form-floating:focus-within {
   z-index: 2;
 }
 
@@ -53,26 +44,28 @@ body {
   border-top-right-radius: 0;
 }
 
-.form-register #floating-email {
+.form-register #floating-fullName {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.form-register #floating-fullName,
+.form-register #floating-email,
 .form-register #floating-username,
-.form-register #floating-password {
+.form-register #floating-password,
+.form-register #floating-confirm-password {
   margin-bottom: -1px;
   border-radius: 0;
 }
 
-.form-register #floating-confirm-password {
-  margin-bottom: 20px;
+.form-register #floating-mobile {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  margin-bottom: 20px;
 }
 
-.form-active #floating-active-code {
+.form-active #floating-active-code,
+.form-forgot-password #floating-email {
   margin-bottom: 20px;
 }
 

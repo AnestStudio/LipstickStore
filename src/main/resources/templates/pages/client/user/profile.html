@@ -29,7 +29,7 @@
                     </div>
                     <div class="d-flex panel-content">
                       <p><i class="fas fa-venus-mars fa-fw me-2"></i>Giới tính</p>
-                      <p class="fw-medium text-end"><span th:text="${user.userDetail.gender == 1 ? 'Nam' : 'Nữ'}"></span></p>
+                      <p class="fw-medium text-end"><span th:text="${user.userDetail.genderAsString}"></span></p>
                     </div>
                     <div class="d-flex panel-content">
                       <p><i class="far fa-calendar-alt fa-fw me-2"></i>Ngày sinh</p>
@@ -46,18 +46,25 @@
                   </div>
                 </div>
                 <div class="col-md-12 col-lg-6 address-list">
-                  <div class="text-end" th:each="address, i : ${user.userAddressList}">
-                    <h1 class="name"><span th:text="*{address.receiverName}"></span></h1>
-                    <h3 class="mobile mt-1 fs-5"><span th:text="*{address.receiverMobile}">0973876107</span></h3>
-                    <h3 class="address mt-2"><span th:text="*{address.userAddressDetail}"></span></h3>
-                    <h3 class="address mt-2"><span th:text="*{address.userAddressWards}"></span></h3>
-                    <h3 class="address mt-2"><span th:text="*{address.userAddressDistricts}"></span></h3>
-                    <h3 class="address mt-2 mb-3"><span th:text="*{address.userAddressProvinces}"></span></h3>
-                    <span class="badge bg-success-subtle text-success-emphasis rounded-pill mb-1" th:if="*{address.defaultAddress}">
+                  <th:block th:unless="${user.userAddressList.isEmpty()}">
+                    <div class="text-end" th:each="address, i : ${user.userAddressList}">
+                      <h1 class="name"><span th:text="*{address.receiverName}"></span></h1>
+                      <h3 class="mobile mt-1 fs-5"><span th:text="*{address.receiverMobile}">0973876107</span></h3>
+                      <h3 class="address mt-2"><span th:text="*{address.userAddressDetail}"></span></h3>
+                      <h3 class="address mt-2"><span th:text="*{address.userAddressWards}"></span></h3>
+                      <h3 class="address mt-2"><span th:text="*{address.userAddressDistricts}"></span></h3>
+                      <h3 class="address mt-2 mb-3"><span th:text="*{address.userAddressProvinces}"></span></h3>
+                      <span class="badge bg-success-subtle text-success-emphasis rounded-pill mb-1" th:if="*{address.defaultAddress}">
                       <i class="fas fa-check me-1"></i>Mặc định
                     </span>
-                    <hr style="margin: 18px 0;" th:if="*{i.index != (user.userAddressList.size() - 1)}">
-                  </div>
+                      <hr style="margin: 18px 0;" th:if="*{i.index != (user.userAddressList.size() - 1)}">
+                    </div>
+                  </th:block>
+                  <th:block th:if="${user.userAddressList.isEmpty()}">
+                    <div class="text-end">
+                      <h3 class="name">Danh sách địa chỉ trống</h3>
+                    </div>
+                  </th:block>
                 </div>
               </div>
             </section>
@@ -68,7 +75,7 @@
   </th:block>
 
   <th:block layout:fragment="js">
-    <script th:src="@{/js/user/user.js}"></script>
+    <script th:src="@{/js/user/user2.js}"></script>
   </th:block>
 </body>
 </html>

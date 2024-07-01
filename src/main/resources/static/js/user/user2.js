@@ -27,8 +27,6 @@ function confirmDeleteAddress(addressId) {
  * USER ORDERS ---------------------------------------------------------------------------------------------------------
  */
 
-orderStatusCount();
-
 function getOrdersByStatus(statusId) {
   window.location.href = updateQueryStringParameter(window.location.origin + "/user/orders", 'statusIds', statusId);
 }
@@ -48,7 +46,7 @@ function renderOrderStatus(orderStatusCount) {
 }
 
 function fetchOrderStatusCount() {
-  const EXPIRATION_TIME = 15 * 60 * 1000; // 15 min
+  const EXPIRATION_TIME = 5 * 60 * 1000;
   fetch("/api/user/orders/status-count")
     .then(response => response.json())
     .then(data => {
@@ -77,3 +75,5 @@ function orderStatusCount() {
     fetchOrderStatusCount();
   }
 }
+
+orderStatusCount();

@@ -9,19 +9,22 @@ import lombok.Setter;
 @Setter
 public class UserDto {
 
-    @NotEmpty
-    @Email
+    @NotEmpty(message = "Email không được để trống")
+    @Email(message = "Email không hợp lệ")
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "Họ và tên không được để trống")
     private String fullName;
 
-    @NotEmpty
+    @NotEmpty(message = "Tên người dùng không được để trống")
     private String username;
 
-    @NotEmpty
+    @NotEmpty(message = "Mật khẩu không được để trống")
     private String password;
 
-    @NotEmpty
+    @NotEmpty(message = "Xác nhận mật khẩu không được để trống")
     private String confirmPassword;
+
+    @NotEmpty(message = "Số điện thoại không được để trống")
+    private String mobile;
 }

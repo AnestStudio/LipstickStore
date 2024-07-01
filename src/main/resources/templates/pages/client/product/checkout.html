@@ -29,9 +29,9 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <th:block th:unless="${defaultAddress != null && user.userDetail.mobile != null}">
+            <th:block th:unless="${defaultAddress != null}">
               <div class="alert alert-danger mb-20px" role="alert" style="border-radius: 12px; padding: 12px 20px;">
-                <i class="fas fa-exclamation-triangle me-2"></i>Vui lòng cập nhật đầy đủ thông tin cá nhân trước khi mua hàng.
+                <i class="fas fa-exclamation-triangle me-2"></i>Vui lòng cập nhật đầy đủ địa chỉ giao hàng trước khi mua hàng.
               </div>
             </th:block>
             <div class="panel">
@@ -120,8 +120,8 @@
                     <i class="fas fa-share me-2"></i>ĐẶT HÀNG
                   </a>
                 </th:block>
-                <th:block th:unless="${defaultAddress != null && user.userDetail.mobile != null}">
-                  <a th:href="@{/user/account/update}" class="btn btn-md btn-success py-2 px-3">
+                <th:block th:unless="${defaultAddress != null}">
+                  <a th:href="@{/user/account/address}" class="btn btn-md btn-success py-2 px-3">
                     <i class="fas fa-pencil-alt me-2"></i>CẬP NHẬT THÔNG TIN
                   </a>
                 </th:block>

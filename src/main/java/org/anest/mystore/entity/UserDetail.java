@@ -27,4 +27,13 @@ public class UserDetail {
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
+
+    public String getGenderAsString() {
+        return switch (gender) {
+            case 0 -> "Nữ";
+            case 1 -> "Nam";
+            case 2 -> "Khác";
+            default -> "Chưa xác định";
+        };
+    }
 }

@@ -18,11 +18,16 @@
             <section id="address-list">
               <div class="row">
                 <div class="col-md-12 col-lg-12 col-xl-12">
+                  <th:block th:if="${user.userAddressList.isEmpty()}">
+                    <div class="alert alert-danger" role="alert" style="border-radius: 12px; margin-bottom: 20px; padding: 12px 20px;">
+                      <i class="fas fa-exclamation-triangle fa-fw me-2"></i>Vui lòng cập nhật đầy đủ địa chỉ giao hàng trước khi mua hàng.
+                    </div>
+                  </th:block>
                   <div class="panel">
                     <div class="d-flex justify-content-between panel-content" style="padding-bottom: 20px; padding-top: 14px;">
                       <div style="font-size: 20px; font-weight: 400;">
                         <span th:unless="${user.userAddressList.isEmpty()}">Danh sách địa chỉ</span>
-                        <span th:if="${user.userAddressList.isEmpty()}">Chưa có địa chỉ nào được thêm</span>
+                        <span th:if="${user.userAddressList.isEmpty()}">Danh sách địa chỉ trống</span>
                       </div>
                       <div class="text-end">
                         <button class="btn btn-danger" type="button"><i class="bi bi-plus-lg me-2"></i>Thêm địa chỉ mới</button>
@@ -69,7 +74,7 @@
   </th:block>
 
   <th:block layout:fragment="js">
-    <script th:src="@{/js/user/user.js}"></script>
+    <script th:src="@{/js/user/user2.js}"></script>
   </th:block>
 </body>
 </html>
