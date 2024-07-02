@@ -19,6 +19,7 @@ html[data-bs-theme='light'] {
   /* border-color ------------------------------------ */
   --primary-border-color: transparent;
   --secondary-border-color: #E3E3E3;
+  --bs-border-color: #E3E3E3;
 
   /* badge-number-background-color ------------------- */
   --badge-number-background-color: #FFFFFF;
@@ -53,6 +54,7 @@ html[data-bs-theme='dark'] {
   /* border-color ------------------------------------ */
   --primary-border-color: transparent;
   --secondary-border-color: #444;
+  --bs-border-color: #495057;
 
   /* badge-number-background-color ------------------- */
   --badge-number-background-color: #2D3035;
@@ -68,4 +70,8 @@ html[data-bs-theme='dark'] {
   --shadow-1: rgb(0 0 0 / 10%);
   --shadow-2: rgb(0 0 0 / 20%);
   --shadow-inset: rgb(255 255 255 / 5%);
+}
+
+.text-irish {
+  color: #52b76c;
 }

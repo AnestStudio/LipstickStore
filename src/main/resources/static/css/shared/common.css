@@ -86,6 +86,26 @@
   --bs-alert-border-color: none;
 }
 
+.popover {
+  --bs-popover-max-width: 350px;
+  --bs-popover-font-size: 15px;
+  --bs-popover-header-bg: var(--bs-tertiary-bg);
+  --bs-popover-bg: var(--secondary-bg-color);
+  box-shadow: 0 12px 28px 0 var(--shadow-2), 0 2px 4px 0 var(--shadow-1), inset 0 0 0 1px var(--shadow-inset);
+}
+
+.popover-header {
+  padding: 8px 12px;
+}
+
+.popover-body {
+  padding: 10px 12px;
+}
+
+.pagination {
+  --bs-pagination-bg: var(--secondary-bg-color);
+}
+
 
 /**
  * HEADER --------------------------------------------------------------------------------------------------------------
@@ -252,7 +272,7 @@ a {
 nav .key-search {
   font-size: 12px;
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 12px;
   font-weight: 500;
 }
 
@@ -563,7 +583,19 @@ a.page-link:hover {
  */
 
 .btn {
-  border-radius: 8px;
+  border-radius: 50px;
+}
+
+.btn-small-medium {
+  padding: 6px 14px;
+}
+
+.btn-medium {
+  padding: 8px 16px;
+}
+
+.btn-large {
+  padding: 10px 20px;
 }
 
 /* BUTTON ACTION - REMOTE */

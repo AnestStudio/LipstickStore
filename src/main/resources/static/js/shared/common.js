@@ -5,6 +5,9 @@
 const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle='tooltip']");
 [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+[...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
 window.onscroll = () => {
   if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
     document.getElementById("navbar").classList.add("border-bot-shadow");

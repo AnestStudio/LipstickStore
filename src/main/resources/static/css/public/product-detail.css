@@ -128,12 +128,12 @@
 }
 
 #product-detail .product-detail-info .product-quantity .btn-dash {
-  border-radius: 4px 0 0 4px;
+  border-radius: 6px 0 0 6px;
   text-decoration: none;
 }
 
 #product-detail .product-detail-info .product-quantity .btn-plus {
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 6px 6px 0;
   text-decoration: none;
 }
 

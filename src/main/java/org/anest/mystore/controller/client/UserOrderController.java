@@ -2,8 +2,10 @@ package org.anest.mystore.controller.client;
 
 import org.anest.mystore.entity.AuthUser;
 import org.anest.mystore.entity.Order;
+import org.anest.mystore.entity.User;
 import org.anest.mystore.service.OrderService;
 import org.anest.mystore.service.PaginationService;
+import org.anest.mystore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -23,13 +25,15 @@ import static org.anest.mystore.constant.IConstants.LIMIT_PAGE_DISPLAY;
 @RequestMapping("user")
 public class UserOrderController {
 
+    private final UserService userService;
     private final OrderService orderService;
     private final PaginationService paginationService;
 
     @Autowired
-    public UserOrderController(OrderService orderService, PaginationService paginationService) {
+    public UserOrderController(OrderService orderService, PaginationService paginationService, UserService userService) {
         this.orderService = orderService;
         this.paginationService = paginationService;
+        this.userService = userService;
     }
 
     @GetMapping("/orders")
@@ -51,6 +55,8 @@ public class UserOrderController {
                 ? paginationService.getDisplayPages(page, totalPages)
                 : paginationService.getSimpleDisplayPages(totalPages);
 
+        User user = userService.findByUsername(authUser.getUsername());
+        model.addAttribute("user", user);
         model.addAttribute("displayPages", dataDisplayPages);
         model.addAttribute("resultPage", orderPage);
         return "pages/client/user/orders";

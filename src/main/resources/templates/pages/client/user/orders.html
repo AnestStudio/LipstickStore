@@ -64,6 +64,31 @@
                               </div>
                             </div>
                           </div>
+                          <div class="item">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div>
+                                Địa chỉ giao hàng
+                              </div>
+                              <div class="d-flex justify-content-end align-items-center">
+                                <a href="javascript:void(0)"
+                                   class="text-danger border-end"
+                                   style="padding: 0 12px"
+                                   th:if="*{order.orderStatus.id == 1}"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#addressListModal"
+                                >Thay đổi</a>
+                                <a href="javascript:void(0)"
+                                   class="text-danger"
+                                   style="padding-left: 12px"
+                                   data-bs-toggle="popover"
+                                   role="button"
+                                   data-bs-trigger="hover focus"
+                                   th:data-bs-title="${order.receiverName + ' - ' + order.receiverMobile}"
+                                   th:data-bs-content="${order.shippingAddress}"
+                                >Xem chi tiết</a>
+                              </div>
+                            </div>
+                          </div>
                           <div class="item" th:unless="*{order.orderNote.isEmpty()}">
                             <div class="d-flex justify-content-between align-items-center">
                               <div>Ghi chú - lời nhắn</div>
@@ -77,17 +102,25 @@
                       <div class="order-footer">
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="secondary-text">
-                            <span th:if="*{order.orderStatus.id == 1}" class="badge bg-info-subtle border-info-subtle text-info-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
-                            <span th:if="*{order.orderStatus.id == 2}" class="badge bg-primary-subtle border-primary-subtle text-primary-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
-                            <span th:if="*{order.orderStatus.id == 3 || order.orderStatus.id == 4}" class="badge bg-warning-subtle border-warning-subtle text-warning-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
-                            <span th:if="*{order.orderStatus.id == 5}" class="badge bg-success-subtle border-success-subtle text-success-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
-                            <span th:if="*{order.orderStatus.id == 6}" class="badge bg-danger-subtle border-danger-subtle text-danger-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
-                            <span th:if="*{order.orderStatus.id == 7 || order.orderStatus.id == 8}" class="badge bg-secondary-subtle border-secondary-subtle text-secondary-emphasis" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 1}" class="text-uppercase" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 2}" class="text-uppercase" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 3 || order.orderStatus.id == 4}" class="text-uppercase text-primary" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 5}" class="text-uppercase text-irish" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 6 || order.orderStatus.id == 8}" class="text-uppercase text-danger" th:text="*{order.orderStatus.orderStatus}"></span>
+                            <span th:if="*{order.orderStatus.id == 7}" class="text-uppercase" th:text="*{order.orderStatus.orderStatus}"></span>
                           </div>
                           <div class="text-end">
-                            <a href="javascript:void(0)" class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#userCancelOrderModal">
-                              Huỷ đơn hàng
-                            </a>
+                            <th:block th:if="*{order.orderStatus.id == 1 || order.orderStatus.id == 2}">
+                              <a href="javascript:void(0)" class="btn btn-small-medium btn-danger">
+                                Huỷ đơn hàng
+                              </a>
+                            </th:block>
+                            <th:block></th:block>
+                            <th:block></th:block>
+                            <th:block></th:block>
+                            <th:block></th:block>
+                            <th:block></th:block>
+                            <th:block></th:block>
                           </div>
                         </div>
                       </div>
@@ -112,6 +145,10 @@
         </div>
       </div>
     </div>
+  </th:block>
+
+  <th:block layout:fragment="modal">
+    <div th:replace="~{modal/client/change-address :: change-address-modal}"></div>
   </th:block>
 
   <th:block layout:fragment="js">

@@ -83,3 +83,14 @@
   border-radius: 6px;
   margin-right: 16px;
 }
+
+
+/*
+ * ADDRESS LIST MODAL --------------------------------------------------------------------------------------------------
+ */
+
+#addressListModal .address .address-info {
+  border-left: 1px solid var(--line-border-color);
+  padding-left: 16px;
+  margin-left: 8px;
+}
