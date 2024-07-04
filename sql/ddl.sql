@@ -74,14 +74,16 @@ create table role (
 go
 
 create table [user] (
-    user_id    bigint identity primary key,
-    email      varchar(255) unique not null,
-    username   varchar(100) unique not null,
-    password   varchar(100) not null,
-    full_name  nvarchar(100) not null,
-    created_at datetime2(6) not null,
-    status     int          not null,
-    deleted    bit          not null
+    user_id         bigint identity primary key,
+    email           varchar(255) unique not null,
+    username        varchar(100) unique not null,
+    password        varchar(100) not null,
+    full_name       nvarchar(100) not null,
+    created_at      datetime2(6) not null,
+    status          int          not null,
+    deleted         bit          not null,
+    enabled         bit          not null,
+    activation_code varchar(100)
 )
 go
 

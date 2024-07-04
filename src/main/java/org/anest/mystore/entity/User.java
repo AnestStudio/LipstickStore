@@ -41,6 +41,12 @@ public class User {
     @Column (name = "status", nullable = false)
     private int status;
 
+    @Column (name = "enabled", nullable = false)
+    private boolean enabled;
+
+    @Column (name = "activation_code", nullable = false)
+    private String activationCode;
+
     @OneToOne (mappedBy = "user", cascade = CascadeType.ALL)
     private UserDetail userDetail;
 

@@ -16,6 +16,8 @@ public class AuthUser extends User {
     private Date createAt;
     private boolean deleted;
     private int status;
+    private boolean enabled;
+    private String activationCode;
 
     public AuthUser(
             String username,
@@ -24,12 +26,16 @@ public class AuthUser extends User {
             Long id,
             Date createAt,
             boolean deleted,
-            int status
+            int status,
+            boolean enabled,
+            String activationCode
     ) {
         super(username, password, authorities);
         this.id = id;
         this.createAt = createAt;
         this.deleted = deleted;
         this.status = status;
+        this.enabled = enabled;
+        this.activationCode = activationCode;
     }
 }

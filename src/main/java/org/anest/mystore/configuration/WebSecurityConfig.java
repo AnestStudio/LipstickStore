@@ -9,6 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
 @Configuration
 @EnableWebSecurity
@@ -39,6 +40,9 @@ public class WebSecurityConfig {
                         .passwordParameter("password")
                         .successHandler(new CustomAuthenticationSuccessHandler())
                         .failureUrl("/login?error=true")
+                )
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/active-account"))
                 )
                 .rememberMe(rememberMe -> rememberMe
                         .key("uniqueAndSecret")

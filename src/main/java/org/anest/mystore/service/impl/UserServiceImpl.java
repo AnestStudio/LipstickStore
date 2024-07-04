@@ -60,7 +60,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 user.getId(),
                 user.getCreateAt(),
                 user.isDeleted(),
-                user.getStatus()
+                user.getStatus(),
+                user.isEnabled(),
+                user.getActivationCode()
         );
     }
 
@@ -75,6 +77,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
+    public User findByActivationCode(String activationCode) {
+        return userRepository.findByActivationCode(activationCode);
+    }
+
+    @Override
     public void save(User user, String roleName) {
         Role userRole = roleRepository.findByRoleName(roleName);
         Set<Role> roles = new HashSet<>();
@@ -82,6 +89,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
         user.setRoles(roles);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
+
+    @Override
+    public void save(User user) {
         userRepository.save(user);
     }
 }
