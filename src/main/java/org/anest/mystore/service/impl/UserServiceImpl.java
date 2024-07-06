@@ -7,6 +7,7 @@ import org.anest.mystore.repository.RoleRepository;
 import org.anest.mystore.repository.UserRepository;
 import org.anest.mystore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,7 +29,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-
     @Autowired
     public UserServiceImpl(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.roleRepository = roleRepository;
@@ -37,11 +37,17 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DisabledException {
 
         User user = userRepository.findByUsername(username);
         if (user == null) {
+            System.out.println("ERROR: user not found");
             throw new UsernameNotFoundException(username);
+        }
+
+        if (!user.isEnabled()) {
+            System.out.println("ERROR: not enabled");
+            throw new DisabledException("User account is not enabled");
         }
 
         Set<Role> roles  = user.getRoles();

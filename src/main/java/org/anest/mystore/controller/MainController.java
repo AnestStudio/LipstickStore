@@ -7,6 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 
@@ -34,8 +35,23 @@ public class MainController {
         return "forgot-password";
     }
 
+    @GetMapping("/error")
+    public String error(@RequestParam(required = false) String error) {
+        return "error500";
+    }
+
+    @GetMapping("/access-denied")
+    public String accessDenied() {
+        return "access-denied";
+    }
+
     @GetMapping("/auth")
-    public String auth(Model model, Principal principal, Authentication authentication, @AuthenticationPrincipal AuthUser authUser) {
+    public String auth(
+            Model model,
+            Principal principal,
+            Authentication authentication,
+            @AuthenticationPrincipal AuthUser authUser
+    ) {
         model.addAttribute("username", principal.getName());
         model.addAttribute("userRole", authentication.getAuthorities());
         model.addAttribute("authUser", authUser);

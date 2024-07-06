@@ -2,14 +2,18 @@ package org.anest.mystore.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -38,21 +42,45 @@ public class WebSecurityConfig {
                         .loginPage("/login")
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .successHandler(new CustomAuthenticationSuccessHandler())
-                        .failureUrl("/login?error=true")
+//                        .failureUrl("/login?error=true")
+//                        .failureHandler((request, response, e) -> {
+//                            if (e instanceof UsernameNotFoundException) {
+//                                response.sendRedirect("/error?error=true");
+//                            } else if (e instanceof DisabledException) {
+//                                response.sendRedirect("/error?error=false");
+//                            } else {
+//                                response.sendRedirect("/error");
+//                            }
+//                        })
+                        .successHandler(authenticationSuccessHandler())
+                        .failureHandler(authenticationFailureHandler())
                 )
-                .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/active-account"))
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedHandler(accessDeniedHandler())
                 )
-                .rememberMe(rememberMe -> rememberMe
-                        .key("uniqueAndSecret")
-                        .tokenValiditySeconds(86400)
-                )
+//                .exceptionHandling(exceptionHandling -> exceptionHandling
+//                        .authenticationEntryPoint((request, response, authException) -> {
+//                            if (authException instanceof UsernameNotFoundException) {
+//                                response.sendRedirect("/error?error=true");
+//                            } else if (authException instanceof DisabledException) {
+//                                response.sendRedirect("/error?error=false");
+//                            } else {
+//                                response.sendRedirect("/error");
+//                            }
+//                        })
+//                        .accessDeniedHandler((request, response, accessDeniedException) ->
+//                                response.sendRedirect("/access-denied")
+//                        )
+//                )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
+                )
+                .rememberMe(rememberMe -> rememberMe
+                        .key("uniqueAndSecret")
+                        .tokenValiditySeconds(86400)
                 )
                 .sessionManagement(sessionManagement -> sessionManagement
                         .invalidSessionUrl("/login")
@@ -64,5 +92,20 @@ public class WebSecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return new CustomAuthenticationFailureHandler();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new CustomAuthenticationSuccessHandler();
+    }
+
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
     }
 }
