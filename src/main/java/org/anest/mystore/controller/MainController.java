@@ -21,28 +21,28 @@ public class MainController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "pages/common/login";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "login";
+        return "pages/common/login";
     }
 
     @GetMapping("/forgot-password")
     public String forgotPasswordLoad() {
-        return "forgot-password";
+        return "pages/common/forgot-password";
     }
 
     @GetMapping("/error")
     public String error(@RequestParam(required = false) String error) {
-        return "error500";
+        return "pages/error/error500";
     }
 
     @GetMapping("/access-denied")
     public String accessDenied() {
-        return "access-denied";
+        return "pages/error/access-denied";
     }
 
     @GetMapping("/auth")

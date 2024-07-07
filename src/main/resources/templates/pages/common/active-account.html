@@ -13,8 +13,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap-icons.min.css}"/>
-    <link rel="stylesheet" th:href="@{/css/public/login.css}"/>
-    <title>Quên mật khẩu</title>
+    <link rel="stylesheet" th:href="@{/css/public/app.css}"/>
+    <title>Kích hoạt tài khoản</title>
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
 
@@ -69,16 +69,16 @@
       </ul>
     </div>
 
-    <main class="form form-forgot-password w-100 m-auto">
-      <form th:action="@{/forgot-password}" method='POST'>
-        <h1 class="h3 mb-3 fw-normal">Khôi phục mật khẩu</h1>
+    <main class="form form-active w-100 m-auto">
+      <form th:action="@{/active-account}" method='POST'>
+        <h1 class="h3 mb-3 fw-normal">Kích hoạt tài khoản</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="floating-email" name="email" placeholder="Nhập email đã đăng ký" required />
-          <label for="floating-email">Nhập email đã đăng ký</label>
+          <input type="text" class="form-control" id="floating-active-code" name="activeCode" placeholder="Nhập mã kích hoạt">
+          <label for="floating-active-code">Nhập mã kích hoạt</label>
         </div>
 
-        <button class="btn btn-danger btn-login w-100" type="submit">KIỂM TRA</button>
+        <button class="btn btn-danger btn-login w-100" type="submit">KÍCH HOẠT TÀI KHOẢN</button>
       </form>
       <div class="d-flex justify-content-between my-3">
         <a th:href="@{/login}" class="text-decoration-none">Đăng nhập</a>
@@ -86,7 +86,26 @@
       </div>
     </main>
 
+    <div th:if="${param.registered}" id="toast-info-registered" class="toast-info">Đăng ký tài khoản thành công.</div>
+    <div th:if="${param.error}" id="toast-error-code" class="toast-error">Mã kích hoạt không chính xác.</div>
+
     <script th:src="@{/js/bootstrap/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/shared/color-mode.js}"></script>
+
+    <script th:if="${param.registered}">
+      const toastInfo = document.getElementById("toast-info-registered");
+      toastInfo.className = "show success toast-info";
+      setTimeout(function () {
+        toastInfo.style.display = "none";
+      }, 3000);
+    </script>
+
+    <script th:if="${param.error}">
+      const toastError = document.getElementById("toast-error-code");
+      toastError.className = "show danger toast-error";
+      setTimeout(function () {
+        toastError.style.display = "none";
+      }, 3000);
+    </script>
   </body>
 </html>

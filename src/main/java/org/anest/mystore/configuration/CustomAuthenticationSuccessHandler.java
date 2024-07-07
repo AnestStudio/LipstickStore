@@ -23,7 +23,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         UserStatusEnum status = UserStatusEnum.fromValue(statusCode);
         switch (status) {
             case PENDING:
-                response.sendRedirect("/active-account?username=" + authUser.getUsername());
+                response.sendRedirect("/active-account");
                 break;
             case ACTIVE:
             case REPORTED:

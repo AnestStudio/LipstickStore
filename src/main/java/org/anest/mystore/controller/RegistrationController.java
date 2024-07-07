@@ -35,7 +35,7 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String registerLoad(UserDto userDto) {
-        return "register";
+        return "pages/common/register";
     }
 
     @PostMapping("/register")
@@ -66,7 +66,7 @@ public class RegistrationController {
         }
 
         if (result.hasErrors()) {
-            return "register";
+            return "pages/common/register";
         }
 
         User user = getUser(userDto);
@@ -100,7 +100,7 @@ public class RegistrationController {
 
     @GetMapping("/active-account")
     public String activeAccountLoad() {
-        return "active-account";
+        return "pages/common/active-account";
     }
 
     @PostMapping("/active-account")
@@ -110,9 +110,9 @@ public class RegistrationController {
             user.setEnabled(true);
             user.setActivationCode(null);
             userService.save(user);
-            return "login";
+            return "pages/common/login";
         } else {
-            return "active-account";
+            return "pages/common/active-account";
         }
     }
 }

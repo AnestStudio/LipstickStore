@@ -35,11 +35,11 @@ public class User {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createAt;
 
-    @Column(name = "deleted", nullable = false)
-    private boolean deleted;
-
     @Column (name = "status", nullable = false)
     private int status;
+
+    @Column(name = "deleted", nullable = false)
+    private boolean deleted;
 
     @Column (name = "enabled", nullable = false)
     private boolean enabled;

@@ -10,16 +10,16 @@ public class GlobalExceptionHandlerController {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public String handleException(Exception e) {
-        return "error400";
+        return "pages/error/error400";
     }
 
     @ExceptionHandler({ProductNotFoundException.class, BrandNotFoundException.class})
     public String handleNotFoundException(Exception e) {
-        return "error404";
+        return "pages/error/error404";
     }
 
     @ExceptionHandler(Exception.class)
     public String defaultErrorHandler(Exception e) {
-        return "error500";
+        return "pages/error/error500";
     }
 }
