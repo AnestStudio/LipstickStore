@@ -433,8 +433,8 @@ nav ul.dropdown-menu .item .item-name {
 }
 
 .page-item .page-link {
-  height: 40px;
-  width: 40px;
+  height: 38px;
+  width: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -583,61 +583,33 @@ a.page-link:hover {
  */
 
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
   border-radius: 50px;
 }
 
 .btn-small-medium {
-  padding: 6px 14px;
+  height: 38px;
+  padding: 0 16px;
 }
 
 .btn-medium {
-  padding: 8px 16px;
+  height: 42px;
+  padding: 0 18px;
 }
 
 .btn-large {
-  padding: 10px 20px;
+  height: 48px;
+  padding: 0 20px;
 }
-
-/* BUTTON ACTION - REMOTE */
-
-.btn-remove,
-.btn-action {
-  position: absolute;
-  right: 20px;
-  top: 12px;
-}
-
-.btn-remove a,
-.btn-remove i {
-  font-size: 16px;
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
-  display: inline-block;
-  transition: 0.3s;
-}
-
-.btn-remove a:hover i {
-  color: #DC3545;
-}
-
-.btn-action a,
-.btn-action i {
-  font-size: 16px;
-  color: #198754;
-  display: inline-block;
-  transition: 0.3s;
-}
-
-.btn-action a:hover i {
-  color: #27D016;
-}
-
 
 /* BUTTON CIRCLE */
 
 .btn-circle {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   background-color: var(--btn-circle-background-color);
   border-radius: 50%;
   margin-left: 8px;
