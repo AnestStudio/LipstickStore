@@ -35,6 +35,8 @@ html[data-bs-theme='light'] {
   --shadow-1: rgb(0 0 0 / 10%);
   --shadow-2: rgb(0 0 0 / 20%);
   --shadow-inset: rgb(255 255 255 / 50%);
+
+  --scrollbar-thumb-color: #C2C2C2;
 }
 
 html[data-bs-theme='dark'] {
@@ -70,6 +72,8 @@ html[data-bs-theme='dark'] {
   --shadow-1: rgb(0 0 0 / 10%);
   --shadow-2: rgb(0 0 0 / 20%);
   --shadow-inset: rgb(255 255 255 / 5%);
+
+  --scrollbar-thumb-color: #636568;
 }
 
 .text-irish {
