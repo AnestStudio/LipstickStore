@@ -611,6 +611,12 @@ a.page-link:hover {
   border-radius: 50px;
 }
 
+.btn-100 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-small-medium {
   height: 38px;
   padding: 0 16px;
